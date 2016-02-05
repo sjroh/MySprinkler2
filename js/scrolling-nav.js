@@ -2,6 +2,22 @@
  * Created by Kyle on 2/4/2016.
  */
 //jQuery to collapse the navbar on scroll
+$(document).ready(function(){
+
+    function checkWidth(){
+        if($(window).width() < 600){
+            $(".mobile").show();
+            $(".desktop").hide();
+        } else{
+            $(".mobile").hide();
+            $(".desktop").show();
+        }
+    }
+    checkWidth();
+    $(window).resize(checkWidth);
+});
+
+
 $(window).scroll(function() {
     if ($(".navbar").offset().top > 50) {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
