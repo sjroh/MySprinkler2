@@ -34,19 +34,16 @@ of those sections to manage the look and feel of the site. */
 .intro-section {
     padding-top: 150px;
     text-align: center;
-    background: #86afff;
 }
 
 .about-section {
     padding-top: 50px;
     text-align: center;
-    background: #eee;
 }
 
 .team-section {
     padding-top: 50px;
     padding-bottom:220px;
     text-align: center;
-    background: #86afff;
 }
 
