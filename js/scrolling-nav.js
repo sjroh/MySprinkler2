@@ -15,6 +15,14 @@ $(document).ready(function(){
     }
     checkWidth();
     $(window).resize(checkWidth);
+
+    function hideThis(){
+        $('.adem').hide();
+    }
+    $(".adem").delay(2000).queue(function(){
+        $(this).addClass('animated fadeOutUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', hideThis).dequeue();
+    });
+
 });
 
 

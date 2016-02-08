@@ -31,3 +31,16 @@
     -moz-box-shadow: 1px 4px 6px -2px rgba(0,0,0,0.44);
     box-shadow: 1px 4px 6px -2px rgba(0,0,0,0.44);
 }
+
+.adem{
+    display:inline-block;
+    *display:inline;
+}
+
+.cursive{
+    font-family:cursive;
+}
+
+.impact{
+    font-family:impact;
+}
