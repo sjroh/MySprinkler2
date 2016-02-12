@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SSS Home</title>
+    <title>SSS Schedule</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,8 @@
     <link href="../css/simple-sidebar.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
     <link href="schedule.css" rel="stylesheet">
-
+    <link href="jquery.timepicker.css" rel="stylesheet">
+    <link href="bootstrap-datepicker.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="../home">Home</a>
+                <a href="../index.html">Home</a>
             </li>
             <li>
                 <a href="#">Schedule</a>
@@ -64,7 +65,7 @@
                 <div class="col-lg-12">
                     <br>
                     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="menu-btn" aria-hidden="true"></span></a>
-                    <h1 class="impact">Home</h1>
+                    <h1 class="impact">Schedule</h1>
                     <!--<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
                 </div>
             </div>
@@ -80,14 +81,21 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Add Event</h4>
+                            <h4 class="modal-title">Add Watering Event</h4>
                         </div>
                         <div class="modal-body">
                             <!--http://jonthornton.github.io/jquery-timepicker/-->
+                            <p id="datepairExample">
+                                <input type="text" class="date start" />
+                                <input type="text" class="time start" /><br>
+                                to <br>
+                                <input type="text" class="time end" />
+                                <input type="text" class="date end" />
+                            </p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary addEvent">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -118,7 +126,10 @@
 
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
-
+<script type="text/javascript" src="datepair.js"></script>
+<script type="text/javascript" src="jquery.datepair.js"></script>
+<script type="text/javascript" src="jquery.timepicker.js"></script>
+<script type="text/javascript" src="bootstrap-datepicker.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/slideshow.js"></script>
