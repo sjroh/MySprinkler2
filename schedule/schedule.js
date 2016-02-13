@@ -4,19 +4,36 @@
 $(document).ready(function(){
 
     // initialize input widgets first
-    $('#datepairExample .time').timepicker({
+    $('#basicExample .time').timepicker({
         'showDuration': true,
         'timeFormat': 'g:ia'
     });
 
-    $('#datepairExample .date').datepicker({
-        'format': 'yyyy-m-d',
+    $('#basicExample .date').datepicker({
+        'format': 'm/d/yyyy',
         'autoclose': true
     });
 
     // initialize datepair
-    $('#datepairExample').datepair();
+    var basicExampleEl = document.getElementById('basicExample');
+    var datepair = new Datepair(basicExampleEl);
+    $('.addEvent').click(function(){
+        //if valid date, then
+        var currDate = new Date();
+        var endDate = datepair.getStartTime();
+        if(currDate >= endDate){
+            alert("Sorry, invalid date");
+        }
+        else{
+            alert("You have added a water event!");
+        }
+        //code here to save water event to google calendar & google drive & raspberry pi
+        //else
+        //error message
+        //alert(datepair.getEndTime());
 
+
+    });
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();
@@ -39,11 +56,5 @@ $(document).ready(function(){
         }
     });
 
-    $(".addEvent").click(function(){
-        //if valid date, then
-            //code here to save water event to google calendar & google drive & raspberry pi
-        //else
-            //error message
-        alert("You have added a water event!");
-    });
+
 });

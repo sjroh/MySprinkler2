@@ -84,7 +84,18 @@
         this.endDateInput = this.container.querySelector('.'+this.settings.endClass+'.'+this.settings.dateClass);
         this.startTimeInput = this.container.querySelector('.'+this.settings.startClass+'.'+this.settings.timeClass);
         this.endTimeInput = this.container.querySelector('.'+this.settings.endClass+'.'+this.settings.timeClass);
-
+        this.getStartTime = function(){
+            var sDate = this.settings.parseDate(this.startDateInput);
+            sDate.setHours(this.settings.parseTime(this.startTimeInput).getHours());
+            sDate.setMinutes(this.settings.parseTime(this.startTimeInput).getMinutes());
+            return sDate;
+        };
+        this.getEndTime = function(){
+            var eDate = this.settings.parseDate(this.endDateInput);
+            eDate.setHours(this.settings.parseTime(this.endTimeInput).getHours());
+            eDate.setMinutes(this.settings.parseTime(this.endTimeInput).getMinutes());
+            return eDate;
+        };
         // initialize date and time deltas
         this.refresh();
 
@@ -94,6 +105,8 @@
 
     Datepair.prototype = {
         constructor: Datepair,
+
+
 
         option: function(key, value)
         {
