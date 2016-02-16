@@ -2,7 +2,6 @@
  * Created by Kyle on 2/4/2016.
  */
 var signedIn = false;
-$("#desktopSignOut").hide();
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
@@ -25,6 +24,10 @@ function signOut() {
 }
 
 function checkWidth2(){
+    $("#desktopSignOut").hide();
+    $("#desktopSignIn").hide();
+    $("#mobileSignOut").hide();
+    $("#mobileSignIn").hide();
     if($(window).width() < 750){
         $("#desktopSignOut").hide();
         $("#desktopSignIn").hide();
