@@ -8,8 +8,8 @@ function onSignIn(googleUser) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
     //window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
-
 }
+
 function signOut() {
     alert("testing");
     var auth2 = gapi.auth2.getAuthInstance();
