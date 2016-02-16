@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
 
-var signedIn = true;
+var signedIn = false;
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
