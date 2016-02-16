@@ -2,8 +2,8 @@
  * Created by Kyle on 2/4/2016.
  */
 var signedIn = false;
-$(".signOut").hide();//hide by default
-
+$("#mobileSignOut").hide();//hide by default
+$("#desktopSignOut").hide();
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
