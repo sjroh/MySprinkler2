@@ -47,10 +47,6 @@ of those sections to manage the look and feel of the site. */
     text-align: center;
 }
 
-#buttonsHere{
-    text-align:center;
-}
-
 #desktopSignOut{
     margin-top:1em;
     float:right;
@@ -63,4 +59,14 @@ of those sections to manage the look and feel of the site. */
 
 #mobileButtonParent{
     text-align:center;
+}
+
+#mobileSignOut{
+    mergin-left:auto;
+    margin-right:auto;
+}
+
+#mobileSignIn{
+    mergin-left:auto;
+    margin-right:auto;
 }
