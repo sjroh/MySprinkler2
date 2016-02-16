@@ -50,6 +50,7 @@ of those sections to manage the look and feel of the site. */
 #desktopSignOut{
     margin-top:1em;
     float:right;
+    margin-left:2em;
 }
 
 #desktopSignIn{
