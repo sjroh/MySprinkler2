@@ -14,6 +14,7 @@ function onSignIn(googleUser) {
     $(".signIn").hide();
     $(".signOut").show();
     signedIn = true;
+    checkWidth();
     //window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 }
 
@@ -24,13 +25,12 @@ function signOut() {
         $(".signIn").show();
         $(".signOut").hide();
         signedIn = false;
+        checkWidth();
     });
 }
 
 //jQuery to collapse the navbar on scroll
 $(document).ready(function(){
-
-
 
     function checkWidth(){
         if($(window).width() < 750){
