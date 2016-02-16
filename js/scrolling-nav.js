@@ -10,7 +10,7 @@ function onSignIn(googleUser) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
     signedIn = true;
-    checkWidth2();
+    checkStatus();
     window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 }
 
@@ -19,11 +19,11 @@ function signOut() {
     auth2.signOut().then(function () {
         console.log('User signed out.');
         signedIn = false;
-        checkWidth2();
+        checkStatus();
     });
 }
 
-function checkWidth2(){
+function checkStatus(){
     if($(window).width() < 750){
         $("#desktopSignOut").hide();
         $("#desktopSignIn").hide();
@@ -46,7 +46,7 @@ function checkWidth2(){
         }
     }
 }
-checkWidth2();
+checkStatus();
 
 //jQuery to collapse the navbar on scroll
 $(document).ready(function(){
@@ -55,15 +55,6 @@ $(document).ready(function(){
         if($(window).width() < 750){
             $(".mobile").show();
             $(".desktop").hide();
-            $("#desktopSignOut").hide();
-            $("#desktopSignIn").hide();
-            if(signedIn){
-                $("#mobileSignOut").show();
-                $("#mobileSignIn").hide();
-            } else{
-                $("#mobileSignIn").show();
-                $("#mobileSignOut").hide();
-            }
             /*var googleButtons = document.getElementsByClassName("topMenu");
             var mobileButtonParent = document.getElementById("mobileButtonParent");
             console.log("button size: " + googleButtons.length);
@@ -78,15 +69,6 @@ $(document).ready(function(){
         } else{
             $(".mobile").hide();
             $(".desktop").show();
-            $("#mobileSignOut").hide();
-            $("#mobileSignIn").hide();
-            if(signedIn){
-                $("#desktopSignOut").show();
-                $("#desktopSignIn").hide();
-            } else{
-                $("#desktopSignIn").show();
-                $("#desktopSignOut").show();
-            }
             /*googleButtons = document.getElementsByClassName("bottomMenu");
 
             var desktopButtonParent = document.getElementById("desktopButtonParent");
