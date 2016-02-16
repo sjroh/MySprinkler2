@@ -11,7 +11,7 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail());
     signedIn = true;
     checkWidth2();
-    //window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+    window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 }
 
 function signOut() {
@@ -24,10 +24,6 @@ function signOut() {
 }
 
 function checkWidth2(){
-    $("#desktopSignOut").hide();
-    $("#desktopSignIn").hide();
-    $("#mobileSignOut").hide();
-    $("#mobileSignIn").hide();
     if($(window).width() < 750){
         $("#desktopSignOut").hide();
         $("#desktopSignIn").hide();

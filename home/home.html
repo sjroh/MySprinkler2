@@ -54,6 +54,12 @@
             <li>
                 <a href="../settings/settings.html">Settings</a>
             </li>
+            <li>
+                <a href="#" class="btn btn-default" role="button" onclick="signOut();">Sign out</a>
+            </li>
+            <li>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -74,11 +80,7 @@
             <br>
             Welcome <span id="userName"></span>!
             <br><br>
-            <!-- <img src="../images/overviewCal.PNG">-->
-            <br>
-            <a href="#" onclick="signOut();">Sign out</a>
-            <br>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <img src="../images/overviewCal.PNG">
             <br><br>
             Connected to home system: <span id="connected">Connected</span><span id="error">Error</span>
         </div>
