@@ -1,10 +1,10 @@
 /**
  * Created by Kyle on 2/4/2016.
  */
-$(document).ready(function(){
-
 var signedIn = false;
 
+$(document).ready(function(){
+    
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
