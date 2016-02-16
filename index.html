@@ -61,9 +61,9 @@
           <a class="page-scroll" href="#team">Team</a>
         </li>
       </ul>
-      <a href="#" class="topMenu signOut" onclick="signOut();">Sign out</a>
+      <a href="#" id="desktopSignOut" onclick="signOut();">Sign out</a>
 
-      <div class="g-signin2 topMenu signIn" data-onsuccess="onSignIn"></div>
+      <div class="g-signin2" id="desktopSignIn" data-onsuccess="onSignIn"></div>
     </div>
     <!-- /.navbar-collapse -->
   </div>
@@ -80,7 +80,9 @@
         <h3 class="impact">AD<span class="adem">aptable Sprinkler Syst</span>EM</h3>
         <br>
         <div id="mobileButtonParent">
+          <a href="#" id="mobileSignOut" onclick="signOut();">Sign out</a>
 
+          <div class="g-signin2" id="mobileSignIn" data-onsuccess="onSignIn"></div>
         </div>
         <!--Sign In/Out buttons moved here when mobile view-->
       </div>

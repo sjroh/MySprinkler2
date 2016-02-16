@@ -1,6 +1,7 @@
 /**
  * Created by Kyle on 2/4/2016.
  */
+var signedIn = false;
 $(".signOut").hide();//hide by default
 
 
@@ -12,6 +13,7 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail());
     $(".signIn").hide();
     $(".signOut").show();
+    signedIn = true;
     //window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 }
 
@@ -21,6 +23,7 @@ function signOut() {
         console.log('User signed out.');
         $(".signIn").show();
         $(".signOut").hide();
+        signedIn = false;
     });
 }
 
@@ -33,7 +36,14 @@ $(document).ready(function(){
         if($(window).width() < 750){
             $(".mobile").show();
             $(".desktop").hide();
-            var googleButtons = document.getElementsByClassName("topMenu");
+            $("#desktopSignOut").hide();
+            $("#desktopSignIn").hide();
+            if(signedIn){
+                $("#mobileSignOut").show();
+            } else{
+                $("#mobileSignIn").show();
+            }
+            /*var googleButtons = document.getElementsByClassName("topMenu");
             var mobileButtonParent = document.getElementById("mobileButtonParent");
             console.log("button size: " + googleButtons.length);
             for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
@@ -43,11 +53,18 @@ $(document).ready(function(){
                 googleButtons[i].className += " bottomMenu";
                 mobileButtonParent.appendChild(googleButtons[i]);
                 $(".topMenu").removeClass("topMenu");
-            }
+            }*/
         } else{
             $(".mobile").hide();
             $(".desktop").show();
-            googleButtons = document.getElementsByClassName("bottomMenu");
+            $("#mobileSignOut").hide();
+            $("#mobileSignIn").hide();
+            if(signedIn){
+                $("#desktopSignOut").show();
+            } else{
+                $("#desktopSignIn").show();
+            }
+            /*googleButtons = document.getElementsByClassName("bottomMenu");
 
             var desktopButtonParent = document.getElementById("desktopButtonParent");
             for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
@@ -57,7 +74,7 @@ $(document).ready(function(){
                 googleButtons[i].className += " topMenu";
                 desktopButtonParent.appendChild(googleButtons[i]);
                 $(".bottomMenu").removeClass("bottomMenu");
-            }
+            }*/
         }
     }
     checkWidth();
