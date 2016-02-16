@@ -1,6 +1,16 @@
 /**
  * Created by Kyle on 2/8/2016.
  */
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+    window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+
+}
+
 $(document).ready(function(){
     function checkWidth(){
         if($(window).width() < 600){

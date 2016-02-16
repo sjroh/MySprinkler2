@@ -8,7 +8,7 @@ function onSignIn(googleUser) {
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
-    window.location = "http://sjroh.github.io/MySprinkler2/schedule/schedule.html";
+    window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 
 }
 

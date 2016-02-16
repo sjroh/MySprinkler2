@@ -61,7 +61,6 @@
           <a class="page-scroll" href="#team">Team</a>
         </li>
       </ul>
-      <a href="#" onclick="signOut();">Sign out</a>
       <script>
         function signOut() {
           var auth2 = gapi.auth2.getAuthInstance();
@@ -70,6 +69,8 @@
           });
         }
       </script>
+      <a href="#" onclick="signOut();">Sign out</a>
+
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </div>
     <!-- /.navbar-collapse -->
