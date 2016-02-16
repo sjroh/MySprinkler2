@@ -34,7 +34,6 @@ $(document).ready(function(){
             $(".mobile").show();
             $(".desktop").hide();
             var googleButtons = document.getElementsByClassName("topMenu");
-            $(".topMenu").removeClass("topMenu");
             var mobileButtonParent = document.getElementById("mobileButtonParent");
             console.log("button size: " + googleButtons.length);
             for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
@@ -43,12 +42,13 @@ $(document).ready(function(){
                 //googleButtons[i].removeClass("topMenu");
                 googleButtons[i].addClass("bottomMenu");
                 mobileButtonParent.appendChild(googleButtons[i]);
+                $(".topMenu").removeClass("topMenu");
             }
         } else{
             $(".mobile").hide();
             $(".desktop").show();
             googleButtons = document.getElementsByClassName("bottomMenu");
-            $(".bottomMenu").removeClass("bottomMenu");
+
             var desktopButtonParent = document.getElementById("desktopButtonParent");
             for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
                 parent = googleButtons[i].parentNode;
@@ -56,6 +56,7 @@ $(document).ready(function(){
                 //googleButtons[i].removeClass("bottomMenu");
                 googleButtons[i].addClass("topMenu");
                 desktopButtonParent.appendChild(googleButtons[i]);
+                $(".bottomMenu").removeClass("bottomMenu");
             }
         }
     }
