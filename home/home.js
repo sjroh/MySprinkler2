@@ -10,7 +10,7 @@ function onSignIn(googleUser) {
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
     globalVariables.userName = profile.getName();
-    $("#userName").textContent(profile.getName());
+    $("#userName").html(profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
     signedIn = true;
