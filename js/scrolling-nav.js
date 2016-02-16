@@ -1,6 +1,8 @@
 /**
  * Created by Kyle on 2/4/2016.
  */
+$(document).ready(function(){
+
 var signedIn = false;
 $("#mobileSignOut").hide();//hide by default
 $("#desktopSignOut").hide();
@@ -30,7 +32,6 @@ function signOut() {
 }
 
 //jQuery to collapse the navbar on scroll
-$(document).ready(function(){
 
     function checkWidth(){
         if($(window).width() < 750){
@@ -87,7 +88,7 @@ $(document).ready(function(){
         $(this).addClass('animated fadeOutUp').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', hideThis).dequeue();
     });
 
-});
+
 
 
 $(window).scroll(function() {
@@ -107,4 +108,6 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+});
+
 });
