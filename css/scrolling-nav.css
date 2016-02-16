@@ -54,3 +54,11 @@ of those sections to manage the look and feel of the site. */
 #buttonsHere{
     text-align:center;
 }
+
+.signOut{
+    margin-top:1em;
+}
+
+.signIn{
+    margin-top:.4em;
+}

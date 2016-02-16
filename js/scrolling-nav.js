@@ -35,9 +35,9 @@ $(document).ready(function(){
             var mobileButtonParent = document.getElementById("mobileButtonParent");
             for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
                 var parent = googleButtons[i].parentNode;
+                parent.removeChild(googleButtons[i]);
                 googleButtons[i].removeClass("topMenu");
                 googleButtons[i].addClass("bottomMenu");
-                parent.removeChild(googleButtons[i]);
                 mobileButtonParent.appendChild(googleButtons[i]);
             }
         } else{
@@ -47,9 +47,9 @@ $(document).ready(function(){
             var desktopButtonParent = document.getElementById("desktopButtonParent");
             for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
                 parent = googleButtons[i].parentNode;
+                parent.removeChild(googleButtons[i]);
                 googleButtons[i].removeClass("bottomMenu");
                 googleButtons[i].addClass("topMenu");
-                parent.removeChild(googleButtons[i]);
                 desktopButtonParent.appendChild(googleButtons[i]);
             }
         }
