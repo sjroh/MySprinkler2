@@ -4,7 +4,7 @@
 var signedIn = false;
 
 $(document).ready(function(){
-    
+
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -12,6 +12,7 @@ function onSignIn(googleUser) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
     signedIn = true;
+    alert(signedIn);
     checkWidth();
     //window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 }
