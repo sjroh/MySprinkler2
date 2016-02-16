@@ -3,6 +3,7 @@
  */
 var signedIn = false;
 
+
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -37,6 +38,7 @@ function checkWidth2(){
     } else{
         $("#mobileSignOut").hide();
         $("#mobileSignIn").hide();
+        $("#desktopSignOut").hide();
         if(signedIn){
             $("#desktopSignOut").show();
             $("#desktopSignIn").hide();
