@@ -59,6 +59,9 @@ of those sections to manage the look and feel of the site. */
 
 #mobileButtonParent{
     text-align:center;
+    width:30%;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 #mobileSignOut{
