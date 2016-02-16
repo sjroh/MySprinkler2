@@ -13,8 +13,6 @@ function onSignIn(googleUser) {
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
-    $(".signIn").hide();
-    $(".signOut").show();
     signedIn = true;
     checkWidth();
     //window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
@@ -24,8 +22,6 @@ function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
-        $(".signIn").show();
-        $(".signOut").hide();
         signedIn = false;
         checkWidth();
     });
