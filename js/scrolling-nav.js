@@ -4,8 +4,6 @@
 $(document).ready(function(){
 
 var signedIn = false;
-$("#mobileSignOut").hide();//hide by default
-$("#desktopSignOut").hide();
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
@@ -37,8 +35,10 @@ function signOut() {
             $("#desktopSignIn").hide();
             if(signedIn){
                 $("#mobileSignOut").show();
+                $("#mobileSignIn").hide();
             } else{
                 $("#mobileSignIn").show();
+                $("#mobileSignOut").hide();
             }
             /*var googleButtons = document.getElementsByClassName("topMenu");
             var mobileButtonParent = document.getElementById("mobileButtonParent");
@@ -58,8 +58,10 @@ function signOut() {
             $("#mobileSignIn").hide();
             if(signedIn){
                 $("#desktopSignOut").show();
+                $("#desktopSignIn").hide();
             } else{
                 $("#desktopSignIn").show();
+                $("#desktopSignOut").hide();
             }
             /*googleButtons = document.getElementsByClassName("bottomMenu");
 
