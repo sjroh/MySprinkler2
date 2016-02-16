@@ -40,7 +40,7 @@ $(document).ready(function(){
                 var parent = googleButtons[i].parentNode;
                 parent.removeChild(googleButtons[i]);
                 //googleButtons[i].removeClass("topMenu");
-                googleButtons[i].className+= " bottomMenu";
+                googleButtons[i].className += " bottomMenu";
                 mobileButtonParent.appendChild(googleButtons[i]);
                 $(".topMenu").removeClass("topMenu");
             }
@@ -54,7 +54,7 @@ $(document).ready(function(){
                 parent = googleButtons[i].parentNode;
                 parent.removeChild(googleButtons[i]);
                 //googleButtons[i].removeClass("bottomMenu");
-                googleButtons[i].className += "topMenu";
+                googleButtons[i].className += " topMenu";
                 desktopButtonParent.appendChild(googleButtons[i]);
                 $(".bottomMenu").removeClass("bottomMenu");
             }
