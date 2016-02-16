@@ -7,6 +7,8 @@ function onSignIn(googleUser) {
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
+    $(".signIn").hide();
+    $(".signOut").show();
     //window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 }
 
@@ -15,6 +17,8 @@ function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
+        $(".signIn").show();
+        $(".signOut").hide();
     });
 }
 
@@ -24,12 +28,30 @@ $(document).ready(function(){
 
 
     function checkWidth(){
-        if($(window).width() < 600){
+        if($(window).width() < 750){
             $(".mobile").show();
             $(".desktop").hide();
+            var googleButtons = document.getElementsByClassName("topMenu");
+            var mobileButtonParent = document.getElementById("mobileButtonParent");
+            for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
+                var parent = googleButtons[i].parentNode;
+                googleButtons[i].removeClass("topMenu");
+                googleButtons[i].addClass("bottomMenu");
+                parent.removeChild(googleButtons[i]);
+                mobileButtonParent.appendChild(googleButtons[i]);
+            }
         } else{
             $(".mobile").hide();
             $(".desktop").show();
+            googleButtons = document.getElementsByClassName("bottomMenu");
+            var desktopButtonParent = document.getElementById("desktopButtonParent");
+            for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
+                parent = googleButtons[i].parentNode;
+                googleButtons[i].removeClass("bottomMenu");
+                googleButtons[i].addClass("topMenu");
+                parent.removeChild(googleButtons[i]);
+                desktopButtonParent.appendChild(googleButtons[i]);
+            }
         }
     }
     checkWidth();

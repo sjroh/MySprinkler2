@@ -17,7 +17,7 @@ function signOut() {
 }
 $(document).ready(function(){
     function checkWidth(){
-        if($(window).width() < 600){
+        if($(window).width() < 750){
             $(".mobile").show();
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");

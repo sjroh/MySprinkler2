@@ -47,6 +47,10 @@ of those sections to manage the look and feel of the site. */
     text-align: center;
 }
 
-.g-signin2{
+.topMenu{
     float:right;
+}
+
+#buttonsHere{
+    text-align:center;
 }
