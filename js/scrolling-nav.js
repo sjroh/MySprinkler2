@@ -1,6 +1,9 @@
 /**
  * Created by Kyle on 2/4/2016.
  */
+$(".signOut").hide();//hide by default
+
+
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -13,7 +16,6 @@ function onSignIn(googleUser) {
 }
 
 function signOut() {
-    alert("testing");
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
@@ -33,6 +35,7 @@ $(document).ready(function(){
             $(".desktop").hide();
             var googleButtons = document.getElementsByClassName("topMenu");
             var mobileButtonParent = document.getElementById("mobileButtonParent");
+            console.log("button size: " + googleButtons.length);
             for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
                 var parent = googleButtons[i].parentNode;
                 parent.removeChild(googleButtons[i]);
