@@ -42,7 +42,7 @@ function checkWidth2(){
             $("#desktopSignIn").hide();
         } else{
             $("#desktopSignIn").show();
-            $("#desktopSignOut").show();
+            $("#desktopSignOut").hide();
         }
     }
 }
