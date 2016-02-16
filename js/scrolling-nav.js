@@ -10,7 +10,7 @@ function onSignIn(googleUser) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
     signedIn = true;
-    checkWidth();
+    checkWidth2();
     //window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 }
 
@@ -19,9 +19,34 @@ function signOut() {
     auth2.signOut().then(function () {
         console.log('User signed out.');
         signedIn = false;
-        checkWidth();
+        checkWidth2();
     });
 }
+
+function checkWidth2(){
+    if($(window).width() < 750){
+        $("#desktopSignOut").hide();
+        $("#desktopSignIn").hide();
+        if(signedIn){
+            $("#mobileSignOut").show();
+            $("#mobileSignIn").hide();
+        } else{
+            $("#mobileSignIn").show();
+            $("#mobileSignOut").hide();
+        }
+    } else{
+        $("#mobileSignOut").hide();
+        $("#mobileSignIn").hide();
+        if(signedIn){
+            $("#desktopSignOut").show();
+            $("#desktopSignIn").hide();
+        } else{
+            $("#desktopSignIn").show();
+            $("#desktopSignOut").show();
+        }
+    }
+}
+checkWidth2();
 
 //jQuery to collapse the navbar on scroll
 $(document).ready(function(){
