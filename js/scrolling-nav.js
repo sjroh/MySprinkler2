@@ -33,7 +33,7 @@ function signOut() {
             $(".desktop").hide();
             $("#desktopSignOut").hide();
             $("#desktopSignIn").hide();
-            if(signedIn){
+            if(!signedIn){
                 $("#mobileSignOut").show();
                 $("#mobileSignIn").hide();
             } else{
@@ -56,7 +56,7 @@ function signOut() {
             $(".desktop").show();
             $("#mobileSignOut").hide();
             $("#mobileSignIn").hide();
-            if(signedIn){
+            if(!signedIn){
                 $("#desktopSignOut").show();
                 $("#desktopSignIn").hide();
             } else{
