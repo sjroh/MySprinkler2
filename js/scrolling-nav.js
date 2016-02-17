@@ -84,7 +84,7 @@ $(document).ready(function(){
     }
     checkWidth();
     $(window).resize(checkWidth);
-
+    $(window).resize(checkStatus);
     function hideThis(){
         $('.adem').hide();
     }
