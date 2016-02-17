@@ -22,3 +22,7 @@
 #signIn{
     margin-left:1em;
 }
+
+#overviewSchedule{
+    overflow-x:auto;
+}

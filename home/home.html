@@ -78,31 +78,28 @@
             <br>
             Hello <span id="userName"></span>!
             <br><br>
+            <div id="authorize-div" style="display: none">
+                <span>Authorize access to Drive API</span>
+                <!--Button for the user to click to initiate auth sequence -->
+                <button id="authorize-button" onclick="handleAuthClick(event)">
+                    Authorize
+                </button>
+            </div>
+            <br><br>
+            <pre id="output"></pre>
             <img src="../images/overviewCal.PNG">
             <br><br>
-            <div id="overviewSchedule">
-                <div class="day">
-
-                </div>
-                <div class="day">
-
-                </div>
-                <div class="day">
-
-                </div>
-                <div class="day">
-
-                </div>
-                <div class="day">
-
-                </div>
-                <div class="day">
-
-                </div>
-                <div class="day">
-
-                </div>
-            </div>
+            <table id="overviewSchedule">
+                <tr class="weather">
+                    <td class="day1"></td>
+                    <td class="day2"></td>
+                    <td class="day3"></td>
+                    <td class="day4"></td>
+                    <td class="day5"></td>
+                    <td class="day6"></td>
+                    <td class="day7"></td>
+                </tr>
+            </table>
             Connected to home system: <span id="connected">Connected</span><span id="error">Error</span>
         </div>
     </div>
@@ -120,6 +117,7 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/slideshow.js"></script>
+<script src="../js/googleDrive.js"></script>
 <script src="home.js"></script>
 <!-- Menu Toggle Script -->
 <script>
