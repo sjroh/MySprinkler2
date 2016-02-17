@@ -3,7 +3,7 @@
  */
 // Your Client ID can be retrieved from your project in the Google
 // Developer Console, https://console.developers.google.com
-var CLIENT_ID = '<1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com>';
+var CLIENT_ID = '1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com';
 
 var SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
 
