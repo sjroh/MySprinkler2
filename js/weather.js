@@ -6,9 +6,9 @@ $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=30.627977&lon=-
     weatherData = data.list;
    // console.log(weatherData);
     for(var i = 0; i < weatherData.length; i++){
-        var className = "day" + (i+1).toString();
+        var idName = "#day" + (i+1).toString();
         var date = new Date(weatherData[i].dt);
-        $(className).text(date.getMonth() + " " + date.getDay());
+        $(idName).text(date.getMonth() + " " + date.getDay());
     }
 
 
