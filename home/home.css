@@ -24,7 +24,6 @@
 }
 
 #overviewSchedule{
-    overflow-x:auto;
     width:40em;
     margin-left:auto;
     margin-right:auto;
@@ -32,4 +31,9 @@
 
 #day td{
     /*width:10em;*/
+}
+
+#tableHolder{
+    overflow-x:auto;
+    width:80%;
 }
