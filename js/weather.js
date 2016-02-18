@@ -10,7 +10,7 @@ $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=30.627977&lon=-
         var idName = "#day" + (i+1).toString();
         var date = new Date(weatherData[i].dt);
        // date.setTime(weatherData[i].dt * 1000);//date = epoch value * 1000
-        //date.setUTCSeconds();
+        //date.setUTCSeconds()
         $(idName).text(months[date.getMonth()] + " " + date.getDay());
         console.log("Date: " + [date.getMonth()] + " " + date.getDay());
     }
