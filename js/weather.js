@@ -12,7 +12,7 @@ $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=30.627977&lon=-
         date.setUTCSeconds(weatherData[i].dt);
        // date.setTime(weatherData[i].dt * 1000);//date = epoch value * 1000
         //date.setUTCSeconds()
-        $(idName).text(months[date.getMonth()] + " " + date.getDay());
+        $(idName).text(months[date.getMonth()] + " " + date.getUTCDate());
         console.log(weatherData[i].dt + ": " + date.toDateString());
     }
 });
