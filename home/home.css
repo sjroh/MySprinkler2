@@ -34,6 +34,8 @@
 }
 
 #tableHolder{
+    margin-left:auto;
+    margin-right:auto;
     overflow-x:auto;
     width:80%;
 }
