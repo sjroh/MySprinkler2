@@ -43,6 +43,7 @@ p {
             font-weight:600;
             color:#4c4c4c;
             transition:all linear 0.15s;
+			width:150px;
         }
  
         .tab-links a:hover {
