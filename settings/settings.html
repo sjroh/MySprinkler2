@@ -19,6 +19,9 @@
     <link href="../css/simple-sidebar.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
     <link href="settings.css" rel="stylesheet">
+	<link href="jquery.timepicker.css" rel="stylesheet">
+    <link href="bootstrap-datepicker.css" rel="stylesheet">
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -88,76 +91,155 @@
 					<div id="tab1" class="tab active">
 					
 					
-					
-					
 						
 						<p>
 							Sector 1:
-							<a class="btn" data-popup-open="popup-1" href="#">High</a>
-							<a class="btn" data-popup-open="popup-2" href="#">Medium</a>
-							<a class="btn" data-popup-open="popup-3" href="#">Low</a>
-							<a class="btn" data-popup-open="popup-4" href="#">Custom</a>
- 
+							
+							<button id = "sec1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="High">High</button>
+							
+							<button id = "sec1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="Medium">Medium</button>
+							<button id = "sec1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="Low">Low</button>
+							<button  id = "sec1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="Custom">Custom</button>
+							
 						</p>
 						
-							<div class="popup" data-popup="popup-1">
-								<div class="popup-inner">
-									<h2>Wow! This is Awesome! (Popup #1)</h2>
-									<p>Donec in volutpat nisi. In quam lectus, aliquet rhoncus</p>
-									<p><a data-popup-close="popup-1" href="#">Close</a></p>
-									<a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Time Preference</h4>
+							  </div>
+							  <div class="modal-body">
+									<!--http://jonthornton.github.io/jquery-timepicker/-->
+									<p id="basicExample">
+										<!--input type="text" class="date start" /-->
+										<input type="text" class="time start" /><br>
+										to <br>
+										<input type="text" class="time end" >
+										<!--input type="text" class="date end" /-->
+									</p>
 								</div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default addEvent">Save changes</button>
+							  </div>
 							</div>
-							
-							<div class="popup" data-popup="popup-2">
-								<div class="popup-inner">
-									<h2>Wow! This is Awesome! (Popup #1)</h2>
-									<p>Donec in volutpat nisi. In quam lectus, aliquet rhoncus</p>
-									<p><a data-popup-close="popup-2" href="#">Close</a></p>
-									<a class="popup-close" data-popup-close="popup-2" href="#">x</a>
-								</div>
-							</div>
-							
-							<div class="popup" data-popup="popup-3">
-								<div class="popup-inner">
-									<h2>Wow! This is Awesome! (Popup #1)</h2>
-									<p>Donec in volutpat nisi. In quam lectus, aliquet rhoncus</p>
-									<p><a data-popup-close="popup-3" href="#">Close</a></p>
-									<a class="popup-close" data-popup-close="popup-3" href="#">x</a>
-								</div>
-							</div>
-							
-							<div class="popup" data-popup="popup-4">
-								<div class="popup-inner">
-									<h2>Wow! This is Awesome! (Popup #1)</h2>
-									<p>Donec in volutpat nisi. In quam lectus, aliquet rhoncus</p>
-									<p><a data-popup-close="popup-4" href="#">Close</a></p>
-									<a class="popup-close" data-popup-close="popup-4" href="#">x</a>
-								</div>
-							</div>
+						  </div>
+						</div>
 						
 						
-						<p>
+						
+							<p>
 							Sector 2:
-							<button class="button button1">High</button>
-							<button class="button button2">Medium</button>
-							<button class="button button3">Low</button>
-							<button class="button button4">Custom</button>
+							
+							<button id = "sec2" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="High">High</button>
+							
+							<button id = "sec2" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="Medium">Medium</button>
+							<button id = "sec2" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="Low">Low</button>
+							<button  id = "sec2" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="Custom">Custom</button>
+							
 						</p>
-						<p>
+						
+						<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Time Preference</h4>
+							  </div>
+							  <div class="modal-body">
+									<!--http://jonthornton.github.io/jquery-timepicker/-->
+									<p id="basicExample">
+										<!--input type="text" class="date start" /-->
+										<input type="text" class="time start" /><br>
+										to <br>
+										<input type="text" class="time end" >
+										<!--input type="text" class="date end" /-->
+									</p>
+								</div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default addEvent">Save changes</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						
+							<p>
 							Sector 3:
-							<button class="button button1">High</button>
-							<button class="button button2">Medium</button>
-							<button class="button button3">Low</button>
-							<button class="button button4">Custom</button>
+							
+							<button id = "sec3" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="High">High</button>
+							
+							<button id = "sec3" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="Medium">Medium</button>
+							<button id = "sec3" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="Low">Low</button>
+							<button  id = "sec3" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="Custom">Custom</button>
+							
 						</p>
-						<p>
+						
+						<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Time Preference</h4>
+							  </div>
+							  <div class="modal-body">
+									<!--http://jonthornton.github.io/jquery-timepicker/-->
+									<p id="basicExample">
+										<!--input type="text" class="date start" /-->
+										<input type="text" class="time start" /><br>
+										to <br>
+										<input type="text" class="time end" >
+										<!--input type="text" class="date end" /-->
+									</p>
+								</div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default addEvent">Save changes</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						
+							<p>
 							Sector 4:
-							<button class="button button1">High</button>
-							<button class="button button2">Medium</button>
-							<button class="button button3">Low</button>
-							<button class="button button4">Custom</button>
+							
+							<button id = "sec4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="High">High</button>
+							
+							<button id = "sec4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="Medium">Medium</button>
+							<button id = "sec4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="Low">Low</button>
+							<button  id = "sec4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="Custom">Custom</button>
+							
 						</p>
+						
+						<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModal4">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Time Preference</h4>
+							  </div>
+							  <div class="modal-body">
+									<!--http://jonthornton.github.io/jquery-timepicker/-->
+									<p id="basicExample">
+										<!--input type="text" class="date start" /-->
+										<input type="text" class="time start" /><br>
+										to <br>
+										<input type="text" class="time end" >
+										<!--input type="text" class="date end" /-->
+									</p>
+								</div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default addEvent">Save changes</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						
+						
+						
 					</div>
 			 
 					<div id="tab2" class="tab">
@@ -186,6 +268,10 @@
 
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
+<script type="text/javascript" src="datepair.js"></script>
+<script type="text/javascript" src="jquery.datepair.js"></script>
+<script type="text/javascript" src="jquery.timepicker.js"></script>
+<script type="text/javascript" src="bootstrap-datepicker.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../js/bootstrap.min.js"></script>

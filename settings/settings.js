@@ -3,7 +3,39 @@
  *Edited by Abigail Rodriguez 2/21/16
  */
 $(document).ready(function(){
+	
+	
+    // initialize input widgets first
+    $('#basicExample .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
 
+    $('#basicExample .date').datepicker({
+        'format': 'm/d/yyyy',
+        'autoclose': true
+    });
+
+    // initialize datepair
+    var basicExampleEl = document.getElementById('basicExample');
+    var datepair = new Datepair(basicExampleEl);
+    $('.addEvent').click(function(){
+        //if valid date, then
+        var currDate = new Date();
+        var endDate = datepair.getStartTime();
+        if(currDate >= endDate){
+            alert("Sorry, invalid date");
+        }
+        else{
+            alert("You have added a water event!");
+        }
+        //code here to save water event to google calendar & google drive & raspberry pi
+        //else
+        //error message
+        //alert(datepair.getEndTime());
+
+
+    });
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();
@@ -35,23 +67,6 @@ $(document).ready(function(){
  
         // Change/remove current tab to active
         jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
- 
-        e.preventDefault();
-    });
-	
-	
-	//----- OPEN
-    $('[data-popup-open]').on('click', function(e)  {
-        var targeted_popup_class = jQuery(this).attr('data-popup-open');
-        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
- 
-        e.preventDefault();
-    });
- 
-    //----- CLOSE
-    $('[data-popup-close]').on('click', function(e)  {
-        var targeted_popup_class = jQuery(this).attr('data-popup-close');
-        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
  
         e.preventDefault();
     });
