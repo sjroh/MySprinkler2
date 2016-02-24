@@ -82,39 +82,45 @@ $(document).ready(function(){
                 var mobileButtonParent = document.getElementById("mobileButtonParent");
                 //console.log("button size: " + googleButtons.length);
                 var parent = googleButton.parentNode;
-                parent.removeChild(googleButton);
-                mobileButtonParent.appendChild(googleButton);
-                /*for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
-                 var parent = googleButtons[i].parentNode;
-                 parent.removeChild(googleButtons[i]);
-                 //googleButtons[i].removeClass("topMenu");
-                 googleButtons[i].className += " bottomMenu";
-                 mobileButtonParent.appendChild(googleButtons[i]);
-                 $(".topMenu").removeClass("topMenu");
-                 }*/
-                mobile = true;
-                desktop = false;
+                if(parent){
+                    parent.removeChild(googleButton);
+                    mobileButtonParent.appendChild(googleButton);
+                    /*for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
+                     var parent = googleButtons[i].parentNode;
+                     parent.removeChild(googleButtons[i]);
+                     //googleButtons[i].removeClass("topMenu");
+                     googleButtons[i].className += " bottomMenu";
+                     mobileButtonParent.appendChild(googleButtons[i]);
+                     $(".topMenu").removeClass("topMenu");
+                     }*/
+                    mobile = true;
+                    desktop = false;
+                }
+
             }
 
         } else{
             if(!desktop){
                 $(".mobile").hide();
                 $(".desktop").show();
-                var googleButton = document.getElementsByClassName("signIn");
+                var googleButton = document.getElementById("signIn");
                 var desktopButtonParent = document.getElementById("desktopButtonParent");
                 var parent = googleButton.parentNode;
-                parent.removeChild(googleButton);
-                desktopButtonParent.appendChild(googleButton);
-                /*for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
-                 parent = googleButtons[i].parentNode;
-                 parent.removeChild(googleButtons[i]);
-                 //googleButtons[i].removeClass("bottomMenu");
-                 googleButtons[i].className += " topMenu";
-                 desktopButtonParent.appendChild(googleButtons[i]);
-                 $(".bottomMenu").removeClass("bottomMenu");
-                 }*/
-                mobile = false;
-                desktop = true;
+                if(parent){
+                    parent.removeChild(googleButton);
+                    desktopButtonParent.appendChild(googleButton);
+                    /*for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
+                     parent = googleButtons[i].parentNode;
+                     parent.removeChild(googleButtons[i]);
+                     //googleButtons[i].removeClass("bottomMenu");
+                     googleButtons[i].className += " topMenu";
+                     desktopButtonParent.appendChild(googleButtons[i]);
+                     $(".bottomMenu").removeClass("bottomMenu");
+                     }*/
+                    mobile = false;
+                    desktop = true;
+                }
+
             }
 
         }
