@@ -71,36 +71,52 @@ checkStatus();
 
 //jQuery to collapse the navbar on scroll
 $(document).ready(function(){
-
+    var desktop = false;
+    var mobile = false;
     function checkWidth(){
         if($(window).width() < 750){
-            $(".mobile").show();
-            $(".desktop").hide();
-            /*var googleButtons = document.getElementsByClassName("topMenu");
-            var mobileButtonParent = document.getElementById("mobileButtonParent");
-            console.log("button size: " + googleButtons.length);
-            for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
-                var parent = googleButtons[i].parentNode;
-                parent.removeChild(googleButtons[i]);
-                //googleButtons[i].removeClass("topMenu");
-                googleButtons[i].className += " bottomMenu";
-                mobileButtonParent.appendChild(googleButtons[i]);
-                $(".topMenu").removeClass("topMenu");
-            }*/
-        } else{
-            $(".mobile").hide();
-            $(".desktop").show();
-            /*googleButtons = document.getElementsByClassName("bottomMenu");
+            if(!mobile){
+                $(".mobile").show();
+                $(".desktop").hide();
+                var googleButton = document.getElementById("signIn");
+                var mobileButtonParent = document.getElementById("mobileButtonParent");
+                //console.log("button size: " + googleButtons.length);
+                var parent = googleButton.parentNode;
+                parent.removeChild(googleButton);
+                mobileButtonParent.appendChild(googleButton);
+                /*for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
+                 var parent = googleButtons[i].parentNode;
+                 parent.removeChild(googleButtons[i]);
+                 //googleButtons[i].removeClass("topMenu");
+                 googleButtons[i].className += " bottomMenu";
+                 mobileButtonParent.appendChild(googleButtons[i]);
+                 $(".topMenu").removeClass("topMenu");
+                 }*/
+                mobile = true;
+                desktop = false;
+            }
 
-            var desktopButtonParent = document.getElementById("desktopButtonParent");
-            for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
-                parent = googleButtons[i].parentNode;
-                parent.removeChild(googleButtons[i]);
-                //googleButtons[i].removeClass("bottomMenu");
-                googleButtons[i].className += " topMenu";
-                desktopButtonParent.appendChild(googleButtons[i]);
-                $(".bottomMenu").removeClass("bottomMenu");
-            }*/
+        } else{
+            if(!desktop){
+                $(".mobile").hide();
+                $(".desktop").show();
+                var googleButton = document.getElementsByClassName("signIn");
+                var desktopButtonParent = document.getElementById("desktopButtonParent");
+                var parent = googleButton.parentNode;
+                parent.removeChild(googleButton);
+                desktopButtonParent.appendChild(googleButton);
+                /*for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
+                 parent = googleButtons[i].parentNode;
+                 parent.removeChild(googleButtons[i]);
+                 //googleButtons[i].removeClass("bottomMenu");
+                 googleButtons[i].className += " topMenu";
+                 desktopButtonParent.appendChild(googleButtons[i]);
+                 $(".bottomMenu").removeClass("bottomMenu");
+                 }*/
+                mobile = false;
+                desktop = true;
+            }
+
         }
     }
     checkWidth();
