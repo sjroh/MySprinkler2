@@ -23,6 +23,7 @@ function onSuccess(googleUser) {
     $("#userName").html(googleUser.getBasicProfile().getName());
     checkStatus();
     listFilesInApplicationDataFolder();
+    //test
 }
 function onFailure(error) {
     console.log(error);
