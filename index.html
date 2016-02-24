@@ -27,6 +27,8 @@
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+  
+  <script src="https://apis.google.com/js/api:client.js"></script>
 
 </head>
 
@@ -63,7 +65,8 @@
       </ul>
       <a href="#" id="desktopSignOut" onclick="signOut();">Sign out</a>
 
-      <div class="g-signin2" id="desktopSignIn" data-onsuccess="onSignIn"></div>
+      <div id="my-signin2 desktopSignIn"></div>
+      <!--<div class="g-signin2" id="desktopSignIn" data-onsuccess="onSignIn"></div>-->
     </div>
     <!-- /.navbar-collapse -->
   </div>
@@ -82,7 +85,8 @@
         <div id="mobileButtonParent">
           <a href="#" id="mobileSignOut" class="btn btn-default" role="button" onclick="signOut();">Sign out</a>
 
-          <div class="g-signin2" id="mobileSignIn" data-onsuccess="onSignIn"></div>
+          <div id="my-signin2 mobileSignIn"></div>
+          <!--<div class="g-signin2" id="mobileSignIn" data-onsuccess="onSignIn"></div>-->
         </div>
         <!--Sign In/Out buttons moved here when mobile view-->
       </div>
@@ -176,7 +180,8 @@
 </section>
 
 <!-- Google Login -->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 

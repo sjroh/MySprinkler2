@@ -3,7 +3,7 @@
  */
 var signedIn = false;
 
-function onSignIn(googleUser) {
+/*function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
@@ -12,6 +12,27 @@ function onSignIn(googleUser) {
     signedIn = true;
     checkStatus();
     window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+}*/
+
+function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    signedIn = true;
+    checkStatus();
+    window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+}
+function onFailure(error) {
+    console.log(error);
+}
+function renderButton() {
+    gapi.signin2.render('my-signin2', {
+        'scope': 'profile email https://www.googleapis.com/auth/drive.appfolder',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
 }
 
 function signOut() {
