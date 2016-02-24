@@ -15,7 +15,18 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail());
     signedIn = true;
     checkStatus();
+
+    var options = new gapi.auth2.SigninOptionsBuilder(
+        {'scope': 'https://www.googleapis.com/auth/drive.appfolder'});
+    googleUser.grant(options).then(
+        function(success){
+            console.log(JSON.stringify({message: "success", value: success}));
+        },
+        function(fail){
+            alert(JSON.stringify({message: "fail", value: fail}));
+        });
 }
+
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
