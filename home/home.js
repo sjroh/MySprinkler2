@@ -22,6 +22,7 @@ function onSuccess(googleUser) {
     signedIn = true;
     $("#userName").html(googleUser.getBasicProfile().getName());
     checkStatus();
+    //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
     //test
 }
@@ -66,6 +67,7 @@ function checkStatus(){
  *
  * @param {Function} callback Function to call when the request is complete.
  */
+
 function listFilesInApplicationDataFolder() {
     var retrievePageOfFiles = function(request) {
         request.execute(function(resp) {
@@ -77,8 +79,13 @@ function listFilesInApplicationDataFolder() {
             }
         });
     };
-    var initialRequest = gapi.client.drive.files.list({
+    /*var initialRequest = gapi.client.drive.files.list({
         'q': '(\'appfolder\' in parents) and (title = \'settings\')'
+    });*/
+    var initialRequest = gapi.client.request({
+        'path': '/drive/v2/files',
+        'method': 'GET',
+        'params': {'q': '(\'appfolder\' in parents) and (title = \'settings\')'}
     });
     retrievePageOfFiles(initialRequest);
 }
