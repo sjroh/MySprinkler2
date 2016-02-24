@@ -86,7 +86,7 @@ function listFilesInApplicationDataFolder(callback) {
         });
     }
     var initialRequest = gapi.client.drive.files.list({
-        'q': 'title = \'settings\''
+        'q': '(\'appfolder\' in parents) and (title = \'settings\')'
     });
     retrievePageOfFiles(initialRequest, []);
 }
