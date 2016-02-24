@@ -81,10 +81,13 @@
             <br>
             Hello <span id="userName"></span>!
             <br><br>
-            <div class="alert alert-danger" id="locationAlert">
-                <strong>Location Needed!</strong>
-                We don't have your location yet! Click <a href="#" onclick="getLocation()">here</a> to provide us with your location.  This location will be used to gather weather data for your sprinkler system.
+            <div id="setup"><!--We can use this for setup div's-->
+                <div class="alert alert-danger" id="locationAlert">
+                    <strong>Location Needed!</strong>
+                    We don't have your location yet! Click <a href="#" onclick="getLocation()">here</a> to provide us with your location.  This location will be used to gather weather data for your sprinkler system.
+                </div>
             </div>
+
             <!--<div id="authorize-div" style="display: none">
                 <span>Authorize access to Drive API</span>
                 <button id="authorize-button" onclick="handleAuthClick(event)">

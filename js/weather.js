@@ -23,16 +23,39 @@ var weatherData = {};
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(createSettingsFile);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        alert("Geolocation is not supported by this browser. Use another browser.");
     }
 }
 
-function showPosition(position) {
+function createSettingsFile(position) {
     weatherData.lat = position.coords.latitude;
     weatherData.long = position.coords.longitude;
 
+    var settings = {
+        "location": {
+            "lat": weatherData.lat,
+            "long": weatherData.long
+        },
+        "zones": [
+            {
+                "currLevel": "high",
+                "custom": "N/A"
+            },
+            {
+                "currLevel": "high",
+                "custom": "N/A"
+            }
+        ]
+    };
+    var jsonse = JSON.stringify(settings);
+    var blob = new Blob([jsonse], {type: "application/json"});
+
+    //I STOPPED WORKING HERE -> I NEED TO NOW INSERT THE BLOB OBJ INTO DRIVE TO CREATE THE FILE
+    //THEN CAL listFilesInApplicationDataFolder AGAIN TO OBTAIN SETTINGS.JSON FROM DRIVE
+
+    
     //should store in google app data now
     var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + weatherData.lat + "&lon=" + weatherData.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
     $.get(getString, function(data){

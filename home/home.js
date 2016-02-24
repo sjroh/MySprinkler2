@@ -2,7 +2,7 @@
  * Created by Kyle on 2/8/2016.
  */
 var signedIn = false;
-
+$("#setup").hide();
 var globalVariables = {};
 
 /*function onSignIn(googleUser) {
@@ -72,9 +72,14 @@ function listFilesInApplicationDataFolder() {
     var retrievePageOfFiles = function(request) {
         request.execute(function(resp) {
             if(resp.items.length == 0){
-                alert("no settings exist")
+                //no settings file in gdrive exists so show
+                //location warning for user to click on
+                //once they click on this, create a settings.json file
+                $("#setup").show();
+                alert("no settings file in drive exists");
             }
-            for(var i in resp.items){
+            else{
+                //found settings -> parse json to obtain settings data
                 alert("found settings");
             }
         });
@@ -88,6 +93,14 @@ function listFilesInApplicationDataFolder() {
         'params': {'q': '(\'appfolder\' in parents) and (title = \'settings\')'}
     });
     retrievePageOfFiles(initialRequest);
+}
+
+function createDriveSettingsFile(){
+    var settings = {
+        "loc": {
+            "lat":
+        }
+    }
 }
 
 $(document).ready(function(){
