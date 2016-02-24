@@ -27,7 +27,10 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+
 </head>
 
 <body>
@@ -57,7 +60,8 @@
             <br>
             <a href="#" id="signOut" class="btn btn-default" role="button" onclick="signOut();">Sign out</a>
 
-            <div class="g-signin2" id="signIn" data-onsuccess="onSignIn"></div>
+            <div id="my-signin2"></div>
+            <!--<div class="g-signin2" id="signIn" data-onsuccess="onSignIn"></div>-->
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -119,8 +123,8 @@
 <!-- /#wrapper -->
 
 <!-- Google Login -->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
 
