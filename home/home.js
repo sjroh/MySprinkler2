@@ -95,14 +95,6 @@ function listFilesInApplicationDataFolder() {
     retrievePageOfFiles(initialRequest);
 }
 
-function createDriveSettingsFile(){
-    var settings = {
-        "loc": {
-            "lat":
-        }
-    }
-}
-
 $(document).ready(function(){
     function checkWidth(){
         if($(window).width() < 750){
