@@ -69,12 +69,11 @@ function checkStatus(){
 function listFilesInApplicationDataFolder() {
     var retrievePageOfFiles = function(request) {
         request.execute(function(resp) {
-            for(i in resp.items){
-                if(resp.items[i] == "appsettings.json"){
-                    alert("found settings");
-                } else{
-                    alert("no setttings exist");
-                }
+            if(resp.items.length == 0){
+                alert("no settings exist")
+            }
+            for(var i in resp.items){
+                alert("found settings");
             }
         });
     };
