@@ -5,7 +5,7 @@ var signedIn = false;
 
 var globalVariables = {};
 
-function onSignIn(googleUser) {
+/*function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
@@ -15,10 +15,12 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail());
     signedIn = true;
     checkStatus();
-}
+}*/
+
 function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
+    $("#userName").html(googleUser.getBasicProfile().getName());
     checkStatus();
 }
 function onFailure(error) {
