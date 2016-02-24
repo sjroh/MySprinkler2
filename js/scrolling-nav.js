@@ -18,14 +18,26 @@ function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
     checkStatus();
+    var options = new gapi.auth2.SigninOptionsBuilder(
+        {'scope': 'email https://www.googleapis.com/auth/drive.appfolder'});
+
+    googleUser.grant(options).then(
+        function(success){
+            console.log(JSON.stringify({message: "success", value: success}));
+        },
+        function(fail){
+            alert(JSON.stringify({message: "fail", value: fail}));
+        });
     window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+
+
 }
 function onFailure(error) {
     console.log(error);
 }
 function renderButton() {
     gapi.signin2.render('my-signin2', {
-        'scope': 'profile email https://www.googleapis.com/auth/drive.appfolder https://www.googleapis.com/auth/calendar.readonly',
+        'scope': 'profile email https://www.googleapis.com/auth/calendar.readonly',
         'width': 240,
         'height': 50,
         'longtitle': true,
@@ -33,6 +45,7 @@ function renderButton() {
         'onsuccess': onSuccess,
         'onfailure': onFailure
     });
+
 }
 
 function signOut() {
