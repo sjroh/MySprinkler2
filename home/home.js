@@ -23,7 +23,7 @@ function signOut() {
         console.log('User signed out.');
         signedIn = false;
         checkStatus();
-        //window.location = "http://sjroh.github.io/MySprinkler2/";
+        window.location = "http://sjroh.github.io/MySprinkler2/";
     });
 }
 
