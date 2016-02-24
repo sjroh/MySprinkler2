@@ -5,18 +5,7 @@ var signedIn = false;
 
 var globalVariables = {};
 
-var options = new gapi.auth2.SigninOptionsBuilder(
-    {'scope': 'email https://www.googleapis.com/auth/drive'});
-
-googleUser = auth2.currentUser.get();
-googleUser.grant(options).then(
-    function(success){
-        console.log(JSON.stringify({message: "success", value: success}));
-    },
-    function(fail){
-        alert(JSON.stringify({message: "fail", value: fail}));
-    });
-/*function onSignIn(googleUser) {
+function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
@@ -26,17 +15,7 @@ googleUser.grant(options).then(
     console.log('Email: ' + profile.getEmail());
     signedIn = true;
     checkStatus();
-
-    var options = new gapi.auth2.SigninOptionsBuilder(
-        {'scope': 'https://www.googleapis.com/auth/drive.appfolder'});
-    googleUser.grant(options).then(
-        function(success){
-            console.log(JSON.stringify({message: "success", value: success}));
-        },
-        function(fail){
-            alert(JSON.stringify({message: "fail", value: fail}));
-        });
-}*/
+}
 function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
@@ -47,7 +26,7 @@ function onFailure(error) {
 }
 function renderButton() {
     gapi.signin2.render('my-signin2', {
-        'scope': 'profile email https://www.googleapis.com/auth/drive.appfolder https://www.googleapis.com/auth/calendar.readonly',
+        'scope': 'profile https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/calendar.readonly',
         'width': 240,
         'height': 50,
         'longtitle': true,
