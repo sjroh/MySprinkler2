@@ -26,7 +26,7 @@ function onFailure(error) {
 }
 function renderButton() {
     gapi.signin2.render('my-signin2', {
-        'scope': 'profile https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/calendar.readonly',
+        'scope': 'profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive.appdata',
         'width': 240,
         'height': 50,
         'longtitle': true,
