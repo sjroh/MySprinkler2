@@ -22,7 +22,7 @@ function onSuccess(googleUser) {
     signedIn = true;
     $("#userName").html(googleUser.getBasicProfile().getName());
     checkStatus();
-    listFilesInApplicationDataFolder(checkForDriveFile);
+    listFilesInApplicationDataFolder();
 }
 function onFailure(error) {
     console.log(error);
@@ -59,36 +59,28 @@ function checkStatus(){
     }
 }
 
-function checkForDriveFile(result) {
-    console.log(result);
-    alert("result given");
-}
-
 
 /**
  * List all files contained in the Application Data folder.
  *
  * @param {Function} callback Function to call when the request is complete.
  */
-function listFilesInApplicationDataFolder(callback) {
-    var retrievePageOfFiles = function(request, result) {
+function listFilesInApplicationDataFolder() {
+    var retrievePageOfFiles = function(request) {
         request.execute(function(resp) {
-            result = result.concat(resp.items);
-            var nextPageToken = resp.nextPageToken;
-            if (nextPageToken) {
-                request = gapi.client.drive.files.list({
-                    'pageToken': nextPageToken
-                });
-                retrievePageOfFiles(request, result);
-            } else {
-                callback(result);
+            for(i in resp.items){
+                if(resp.items[i] == "appsettings.json"){
+                    alert("found settings");
+                } else{
+                    alert("no setttings exist");
+                }
             }
         });
-    }
+    };
     var initialRequest = gapi.client.drive.files.list({
         'q': '(\'appfolder\' in parents) and (title = \'settings\')'
     });
-    retrievePageOfFiles(initialRequest, []);
+    retrievePageOfFiles(initialRequest);
 }
 
 $(document).ready(function(){
