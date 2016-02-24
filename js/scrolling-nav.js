@@ -47,22 +47,22 @@ function signOut() {
 function checkStatus(){
     if($(window).width() < 750){
         $("#desktopSignOut").hide();
-        $("#desktopSignIn").hide();
+        //$("#desktopSignIn").hide();
         if(signedIn){
             $("#mobileSignOut").show();
-            $("#mobileSignIn").hide();
+            //$("#mobileSignIn").hide();
         } else{
-            $("#mobileSignIn").show();
+            //$("#mobileSignIn").show();
             $("#mobileSignOut").hide();
         }
     } else{
         $("#mobileSignOut").hide();
-        $("#mobileSignIn").hide();
+        //$("#mobileSignIn").hide();
         if(signedIn){
             $("#desktopSignOut").show();
-            $("#desktopSignIn").hide();
+            //$("#desktopSignIn").hide();
         } else{
-            $("#desktopSignIn").show();
+            //$("#desktopSignIn").show();
             $("#desktopSignOut").hide();
         }
     }
