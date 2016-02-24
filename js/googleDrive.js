@@ -1,12 +1,7 @@
-/**
- * Created by Kyle on 2/16/2016.
- */
 // Your Client ID can be retrieved from your project in the Google
 // Developer Console, https://console.developers.google.com
 var CLIENT_ID = '1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com';
-
-var SCOPES = ['https://www.googleapis.com/auth/drive.appDataFolder '];
-
+var SCOPES = ['https://www.googleapis.com/auth/drive.appfolder'];
 /**
  * Check if current user has authorized this application.
  */
@@ -18,7 +13,6 @@ function checkAuth() {
             'immediate': true
         }, handleAuthResult);
 }
-
 /**
  * Handle response from authorization server.
  *
@@ -36,7 +30,6 @@ function handleAuthResult(authResult) {
         authorizeDiv.style.display = 'inline';
     }
 }
-
 /**
  * Initiate auth flow in response to user clicking authorize button.
  *
@@ -48,14 +41,12 @@ function handleAuthClick(event) {
         handleAuthResult);
     return false;
 }
-
 /**
  * Load Drive API client library.
  */
 function loadDriveApi() {
     gapi.client.load('drive', 'v3', listFiles);
 }
-
 /**
  * Print files.
  */
@@ -64,7 +55,6 @@ function listFiles() {
         'pageSize': 10,
         'fields': "nextPageToken, files(id, name)"
     });
-
     request.execute(function(resp) {
         appendPre('Files:');
         var files = resp.files;
@@ -78,7 +68,6 @@ function listFiles() {
         }
     });
 }
-
 /**
  * Append a pre element to the body containing the given message
  * as its text node.
