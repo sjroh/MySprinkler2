@@ -51,7 +51,7 @@ function createSettingsFile(position) {
     };
     var jsonse = JSON.stringify(settings);
     var blob = new Blob([jsonse], {type: "application/json"});
-    insertFileInApplicationDataFolder(blob, createdFile);
+    insertFileInApplicationDataFolder(blob, null);
     //I STOPPED WORKING HERE -> I NEED TO NOW INSERT THE BLOB OBJ INTO DRIVE TO CREATE THE FILE
     //THEN CAL listFilesInApplicationDataFolder AGAIN TO OBTAIN SETTINGS.JSON FROM DRIVE
 
