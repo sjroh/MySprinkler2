@@ -69,6 +69,9 @@ function checkStatus(){
             $("#desktopSignOut").hide();
         }
     }
+    if (auth2.isSignedIn.get()) {
+        window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+    }
 }
 checkStatus();
 
