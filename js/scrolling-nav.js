@@ -69,6 +69,7 @@ function checkStatus(){
             $("#desktopSignOut").hide();
         }
     }
+    var auth2 = gapi.auth2.getAuthInstance();
     if (auth2.isSignedIn.get()) {
         window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
     }
