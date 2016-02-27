@@ -25,14 +25,13 @@ function onSuccess(googleUser) {
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
     //test
-    console.log(gapi.auth.getToken().access_token);
 }
 function onFailure(error) {
     console.log(error);
 }
 function renderButton() {
     gapi.signin2.render('my-signin2', {
-        'scope': 'profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive.appdata',
+        'scope': 'profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive',
         'width': 240,
         'height': 50,
         'longtitle': true,
