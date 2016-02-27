@@ -137,7 +137,7 @@ function insertFileInApplicationDataFolder(jData, fileName) {
     const close_delim = "\r\n--" + boundary + "--";
     var contentType = 'application/json';
     var metadata = {
-        'title': fileName,
+        'title': "settings",
         'mimeType': contentType,
         'parents': [{'id': 'appfolder'}]
     };
