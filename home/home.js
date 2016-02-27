@@ -82,11 +82,11 @@ function listFilesInApplicationDataFolder() {
                 //found settings -> parse json to obtain settings data
                 console.log(resp.items.length + " file(s) found");
                 for(var i = 0; i < resp.items.length; i++){
-                    var title = resp.items[i].title;
-                    console.log(resp.items[i].title + ": ");
-                    var url = resp.items[i].downloadUrl;
-                    console.log(url);
-                    getFile(url);
+                    console.log(resp.items[i].title);
+                    //var url = resp.items[i].downloadUrl;
+                    //var fileId = resp.items[i].id;
+                    //console.log(url);
+                    //getFile(fileId);
                     /*var reader = new FileReader();
                     reader.onload = function(){
                         console.log(reader.result);
