@@ -85,11 +85,12 @@ function listFilesInApplicationDataFolder() {
                     var title = resp.items[i].title;
                     console.log(resp.items[i].title + ": ");
 
-                    var reader = new FileReader();
+                    console.log("type: " + jQuery.type(resp.items[i]));
+                    /*var reader = new FileReader();
                     reader.onload = function(){
                         console.log(reader.result);
                     };
-                    reader.readAsText(resp.items[i]);
+                    reader.readAsText(resp.items[i]);*/
                 }
             }
         });
