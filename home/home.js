@@ -86,6 +86,7 @@ function listFilesInApplicationDataFolder() {
                     console.log(resp.items[i].title + ": ");
                     var url = resp.items[i].downloadUrl;
                     console.log(url);
+                    getFile(url);
                     /*var reader = new FileReader();
                     reader.onload = function(){
                         console.log(reader.result);
@@ -104,6 +105,20 @@ function listFilesInApplicationDataFolder() {
         'params': {'q': '(\'appfolder\' in parents)'}
     });
     retrievePageOfFiles(initialRequest);
+}
+
+function getFile(downloadUrl){
+    var accessToken = gapi.auth.getToken().access_token;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', downloadUrl);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+    xhr.onload = function() {
+        console.log("CONTENT: " + xhr.responseText);
+    };
+    xhr.onerror = function() {
+        console.log("fuck error");
+    };
+    xhr.send();
 }
 
 $(document).ready(function(){
