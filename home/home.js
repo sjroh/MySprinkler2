@@ -82,7 +82,7 @@ function listFilesInApplicationDataFolder() {
                 //found settings -> parse json to obtain settings data
                 console.log(resp.items.length + " file(s) found");
                 for(var i = 0; i < resp.items.length; i++){
-                    console.log(resp.items[i].title);
+                    console.log(resp.items[i]);
                     //var url = resp.items[i].downloadUrl;
                     //var fileId = resp.items[i].id;
                     //console.log(url);
