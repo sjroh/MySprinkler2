@@ -49,9 +49,9 @@ function createSettingsFile(position) {
             }
         ]
     };
-    var jsonse = JSON.stringify(settings);
-    var blob = new Blob([jsonse], {type: "application/json"});
-    insertFileInApplicationDataFolder(blob, null, "settings");
+    //var jsonse = JSON.stringify(settings);
+    //var blob = new Blob([jsonse], {type: "application/json"});
+    insertFileInApplicationDataFolder(settings, null, "settings.txt");
     //I STOPPED WORKING HERE -> I NEED TO NOW INSERT THE BLOB OBJ INTO DRIVE TO CREATE THE FILE
     //THEN CAL listFilesInApplicationDataFolder AGAIN TO OBTAIN SETTINGS.JSON FROM DRIVE
 
@@ -88,8 +88,8 @@ function createdFile(){
  * @param {File} fileData File object to read data from.
  * @param {Function} callback Function to call when the request is complete.
  */
-function insertFileInApplicationDataFolder(fileData, callback, fileName) {
-    const boundary = '-------314159265358979323846';
+function insertFileInApplicationDataFolder(jData, fileName) {
+    /*const boundary = '-------314159265358979323846';
     const delimiter = "\r\n--" + boundary + "\r\n";
     const close_delim = "\r\n--" + boundary + "--";
 
@@ -129,5 +129,37 @@ function insertFileInApplicationDataFolder(fileData, callback, fileName) {
             };
         }
         request.execute(callback);
-    }
+    }*/
+
+    //found following code from https://gist.github.com/csusbdt/4525042
+    const boundary = '-------314159265358979323846264';
+    const delimiter = "\r\n--" + boundary + "\r\n";
+    const close_delim = "\r\n--" + boundary + "--";
+    var contentType = 'application/json';
+    var metadata = {
+        'title': fileName,
+        'mimeType': contentType
+    };
+    var base64Data = btoa(JSON.stringify(jData));
+    var multipartRequestBody =
+        delimiter +
+        'Content-Type: application/json\r\n\r\n' +
+        JSON.stringify(metadata) +
+        delimiter +
+        'Content-Type: ' + contentType + '\r\n' +
+        'Content-Transfer-Encoding: base64\r\n' +
+        '\r\n' +
+        base64Data +
+        close_delim;
+    var request = gapi.client.request({
+        'path': '/upload/drive/v2/files',
+        'method': 'POST',
+        'params': {'uploadType': 'multipart'},
+        'headers': {
+            'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+        },
+        'body': multipartRequestBody});
+    request.execute(function(arg) {
+        console.log(arg);
+    });
 }
