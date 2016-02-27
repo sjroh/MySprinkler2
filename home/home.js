@@ -83,7 +83,13 @@ function listFilesInApplicationDataFolder() {
                 console.log(resp.items.length + " file(s) found");
                 for(var i = 0; i < resp.items.length; i++){
                     var title = resp.items[i].title;
-                    console.log(resp.items[i]);
+                    console.log(resp.items[i].title + ": ");
+
+                    var reader = new FileReader();
+                    reader.onload = function(){
+                        console.log(reader.result);
+                    };
+                    reader.readAsText(resp.items[i]);
                 }
             }
         });
