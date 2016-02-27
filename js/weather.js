@@ -51,7 +51,7 @@ function createSettingsFile(position) {
     };
     var jsonse = JSON.stringify(settings);
     var blob = new Blob([jsonse], {type: "application/json"});
-    insertFileInApplicationDataFolder(blob, null);
+    insertFileInApplicationDataFolder(blob, null, "settings");
     //I STOPPED WORKING HERE -> I NEED TO NOW INSERT THE BLOB OBJ INTO DRIVE TO CREATE THE FILE
     //THEN CAL listFilesInApplicationDataFolder AGAIN TO OBTAIN SETTINGS.JSON FROM DRIVE
 
@@ -88,7 +88,7 @@ function createdFile(){
  * @param {File} fileData File object to read data from.
  * @param {Function} callback Function to call when the request is complete.
  */
-function insertFileInApplicationDataFolder(fileData, callback) {
+function insertFileInApplicationDataFolder(fileData, callback, fileName) {
     const boundary = '-------314159265358979323846';
     const delimiter = "\r\n--" + boundary + "\r\n";
     const close_delim = "\r\n--" + boundary + "--";
@@ -98,7 +98,7 @@ function insertFileInApplicationDataFolder(fileData, callback) {
     reader.onload = function(e) {
         var contentType = fileData.type || 'application/octet-stream';
         var metadata = {
-            'title': fileData.fileName,
+            'title': fileName,
             'mimeType': contentType,
             'parents': [{'id': 'appfolder'}]
         };

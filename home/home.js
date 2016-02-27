@@ -76,11 +76,15 @@ function listFilesInApplicationDataFolder() {
                 //location warning for user to click on
                 //once they click on this, create a settings.json file
                 $("#setup").show();
-                alert("no file in drive exists");
+                console.log("no file in drive exists");
             }
             else{
                 //found settings -> parse json to obtain settings data
-                alert("found file");
+                console.log(resp.items.length + " file(s) found");
+                for(var i = 0; i < resp.items.length; i++){
+                    var title = resp.items[i].title;
+                    console.log(resp.items[i]);
+                }
             }
         });
     };
