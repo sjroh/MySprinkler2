@@ -103,7 +103,8 @@ function listFilesInApplicationDataFolder() {
     var initialRequest = gapi.client.request({
         'path': '/drive/v2/files',
         'method': 'GET',
-        'params': {'q': '(\'appfolder\' in parents)'}
+        //'params': {'q': '(\'appfolder\' in parents)'}
+        'params': {'q': 'title = \'settings.txt\''}
     });
     retrievePageOfFiles(initialRequest);
 }

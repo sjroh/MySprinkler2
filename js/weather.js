@@ -138,8 +138,8 @@ function insertFileInApplicationDataFolder(jData, fileName) {
     var contentType = 'application/json';
     var metadata = {
         'title': fileName,
-        'mimeType': contentType,
-        'parents': [{'id': 'appfolder'}]
+        'mimeType': contentType
+        //'parents': [{'id': 'appfolder'}]
     };
     var base64Data = btoa(JSON.stringify(jData));
     var multipartRequestBody =
