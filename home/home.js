@@ -84,8 +84,8 @@ function listFilesInApplicationDataFolder() {
                 for(var i = 0; i < resp.items.length; i++){
                     var title = resp.items[i].title;
                     console.log(resp.items[i].title + ": ");
-
-                    console.log("type: " + jQuery.type(resp.items[i]));
+                    var url = resp.items[i].downloadUrl;
+                    console.log(url);
                     /*var reader = new FileReader();
                     reader.onload = function(){
                         console.log(reader.result);
