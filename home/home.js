@@ -25,6 +25,7 @@ function onSuccess(googleUser) {
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
     //test
+    console.log(gapi.auth.getToken().access_token);
 }
 function onFailure(error) {
     console.log(error);
