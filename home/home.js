@@ -76,11 +76,11 @@ function listFilesInApplicationDataFolder() {
                 //location warning for user to click on
                 //once they click on this, create a settings.json file
                 $("#setup").show();
-                alert("no settings file in drive exists");
+                alert("no file in drive exists");
             }
             else{
                 //found settings -> parse json to obtain settings data
-                alert("found settings");
+                alert("found file");
             }
         });
     };
@@ -90,7 +90,7 @@ function listFilesInApplicationDataFolder() {
     var initialRequest = gapi.client.request({
         'path': '/drive/v2/files',
         'method': 'GET',
-        'params': {'q': '(\'appfolder\' in parents) and (title = \'settings\')'}
+        'params': {'q': '(\'appfolder\' in parents)'}
     });
     retrievePageOfFiles(initialRequest);
 }
