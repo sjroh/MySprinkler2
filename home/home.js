@@ -83,6 +83,7 @@ function listFilesInApplicationDataFolder() {
                 console.log(resp.items.length + " file(s) found");
                 for(var i = 0; i < resp.items.length; i++){
                     console.log(resp.items[i]);
+                    downloadFile(resp.items[i]);
                     //var url = resp.items[i].downloadUrl;
                     //var fileId = resp.items[i].id;
                     //console.log(url);
@@ -107,18 +108,22 @@ function listFilesInApplicationDataFolder() {
     retrievePageOfFiles(initialRequest);
 }
 
-function getFile(downloadUrl){
-    var accessToken = gapi.auth.getToken().access_token;
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', downloadUrl);
-    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
-    xhr.onload = function() {
-        console.log("CONTENT: " + xhr.responseText);
-    };
-    xhr.onerror = function() {
-        console.log("fuck error");
-    };
-    xhr.send();
+function downloadFile(file) {
+    if (file.downloadUrl) {
+        var accessToken = gapi.auth.getToken().access_token;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', file.downloadUrl);
+        xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+        xhr.onload = function() {
+            console.log(xhr.responseText);
+        };
+        xhr.onerror = function() {
+            console.log("ERROR");
+        };
+        xhr.send();
+    } else {
+        console.log("No file.downloadUrl");
+    }
 }
 
 $(document).ready(function(){
