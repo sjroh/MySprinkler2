@@ -108,7 +108,7 @@ function listFilesInApplicationDataFolder() {
 }
 
 function getFile(downloadUrl){
-    var accessToken = gapi.auth2.getToken().access_token;
+    var accessToken = gapi.auth.getToken().access_token;
     var xhr = new XMLHttpRequest();
     xhr.open('GET', downloadUrl);
     xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
