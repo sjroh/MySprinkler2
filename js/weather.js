@@ -51,7 +51,7 @@ function createSettingsFile(position) {
     };
     //var jsonse = JSON.stringify(settings);
     //var blob = new Blob([jsonse], {type: "application/json"});
-    insertFileInApplicationDataFolder(settings, null, "settings.txt");
+    insertFileInApplicationDataFolder(settings, "settings.txt");
     //I STOPPED WORKING HERE -> I NEED TO NOW INSERT THE BLOB OBJ INTO DRIVE TO CREATE THE FILE
     //THEN CAL listFilesInApplicationDataFolder AGAIN TO OBTAIN SETTINGS.JSON FROM DRIVE
 
@@ -137,7 +137,7 @@ function insertFileInApplicationDataFolder(jData, fileName) {
     const close_delim = "\r\n--" + boundary + "--";
     var contentType = 'application/json';
     var metadata = {
-        'title': "settings",
+        'title': fileName,
         'mimeType': contentType,
         'parents': [{'id': 'appfolder'}]
     };
