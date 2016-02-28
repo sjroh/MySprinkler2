@@ -2,6 +2,7 @@
  * Created by Kyle on 2/8/2016.
  */
 var signedIn = false;
+var apiKey = 'AIzaSyBozblUKAA8gFXaRNswfYxCIQoZ7MhvHHQ';
 $("#setup").hide();
 var globalVariables = {};
 
@@ -111,7 +112,7 @@ function listFilesInApplicationDataFolder() {
 
 function downloadFile(file) {
     if (file.downloadUrl) {
-        var accessToken = gapi.auth.getToken().access_token;
+        var accessToken = gapi.auth2.getToken().access_token;
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file.downloadUrl);
         xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
