@@ -112,11 +112,11 @@ function listFilesInApplicationDataFolder() {
 
 function downloadFile(file) {
     if (file.downloadUrl) {
-        //var auth2 = gapi.auth2.getAuthInstance();
-        //var accessToken = auth2.getToken().access_token;
+        //var accessToken = gapi.auth.getToken().access_token;
+        var accessToken = gapi.auth2.getAccessToken();
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file.downloadUrl);
-        //xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+        xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
         xhr.onload = function() {
             console.log(xhr.responseText);
         };
