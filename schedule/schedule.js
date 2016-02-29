@@ -38,7 +38,7 @@ $(document).ready(function(){
     $('#submit').on('click', function(){
         var iframeHtml = $("#iFrame").val();
         if(iframeHtml.length <=8  || (iframeHtml.substring(0,6) != "<iframe")){
-            alert("Invalid Link: Try again");
+            alert(iframeHtml.substring(0,6) + " Invalid Link: Try again");
             $("#iFrame").val("");
         }
         else{
