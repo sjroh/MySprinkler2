@@ -137,6 +137,9 @@ $('#submitNumber').on('click', function(){
 
 function createSettingsFile(){
     //first check if user has entered the needed data
+    console.log("ifram: " + iframeHtml);
+    console.log("weatherdata: " + weatherData.haveLocation);
+    console.log("zonenum: " + zoneNum);
     if(iframeHtml != "" && weatherData.haveLocation && zoneNum != -1)
     {
         var zoneArr = [];
