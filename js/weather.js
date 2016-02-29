@@ -104,7 +104,7 @@ function insertFileInApplicationDataFolder(jData, fileName) {
 
 $('#submit').on('click', function(){
     iframeHtml = $("#iFrame").val();
-    console.log("clicked submit");
+    console.log("clicked submit: " + iframeHtml);
     if(iframeHtml.length <=8  || (iframeHtml.substring(0,7) != "<iframe")){
         alert("Invalid Link: Try again");
         $("#iFrame").val("");
