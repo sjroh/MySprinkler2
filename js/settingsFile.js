@@ -125,7 +125,7 @@ $('#submitIfram').on('click', function(){
     }
 });
 
-$('#submitNumber').on('click', function(){
+$('#zoneAlert').submit(function(){
     zoneNum = $('#zoneNum').val();
     console.log("num: " + zoneNum);
     zoneNum++;
@@ -133,6 +133,7 @@ $('#submitNumber').on('click', function(){
     zoneNum--;
     $('#zoneAlert').hide();
     createSettingsFile();
+    return false;
 });
 
 function createSettingsFile(){
