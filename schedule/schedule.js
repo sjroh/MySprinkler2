@@ -34,6 +34,19 @@ $(document).ready(function(){
 
 
     });
+
+    $('#submit').on('click', function(){
+        var iframeHtml = $("#iFrame").val();
+        if(iframeHtml.length <=8  || (iframeHtml.substring(0,6) != "<iframe")){
+            alert("Invalid Link: Try again");
+            $("#iFrame").val("");
+        }
+        else{
+            $("#calendarAlert").after(iframeHtml);
+            $("#calendarAlert").hide();
+        }
+    });
+
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();

@@ -73,6 +73,15 @@
         <div class="impact" id="homeBody">
             <br>
             <!--<img src="../images/googleCal.png">-->
+            <div class="alert alert-danger" id="calendarAlert">
+                <strong>Calendar Needed!</strong>
+                Follow the "Embed a calendar on your website" steps <a href="https://support.google.com/calendar/answer/41207?hl=en" target="_blank">here</a> to provide us with your google calendar.  This will be used to display your sprinkler schedule.  NOTE:  Make sure
+                to choose the 'ADEM' calendar (step 4) so that only your sprinkler events are shown on this site.
+                <form>
+                    Input iFrame code: <input id="iFrame" type="text">
+                    <input id="submit" type="submit" value="Submit">
+                </form>
+            </div>
             <iframe src="https://calendar.google.com/calendar/htmlembed?src=%23contacts%40group.v.calendar.google.com&ctz=America/Chicago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>            <br><br>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">Add Watering Time</button>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#removeModal">Remove Watering Time</button>
