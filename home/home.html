@@ -93,7 +93,16 @@
                     <form>
                         Input iFrame code: <input id="iFrame" type="text">
                     </form>
-                    <button id="submit">Submit</button>
+                    <button id="submitIfram">Submit</button>
+                </div>
+                <div class="alert alert-danger" id="zoneAlert">
+                    <strong>Zones Needed!</strong>
+                    Let us know how many zones your lawn has.  They will default to a 'Medium' water level.  Feel free to change this in Settings later.
+                    <form id="submitNumber">
+                        <input id="zoneNum" type="number" min="1" max="30">
+                        <input type="submit">
+                    </form>
+
                 </div>
             </div>
 
@@ -147,7 +156,7 @@
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/slideshow.js"></script>
 <script src="../js/googleDrive.js"></script>
-<script src="../js/weather.js"></script>
+<script src="../js/settingsFile.js"></script>
 <script src="home.js"></script>
 <!-- Menu Toggle Script -->
 <script>

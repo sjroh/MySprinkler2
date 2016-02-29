@@ -1,10 +1,21 @@
 /**
  * Created by Kyle on 2/17/2016.
  */
+/*
+    Watering/inch ratio?:
+    We have three settings:
+        High:
+        Med:
+        Low:
+    What inch amount do you think works for each one?
+ */
+
+
 var weatherData = {
     haveLocation: false
 };
 var iframeHtml = "";
+var zoneNum = -1;
 /*$.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=30.627977&lon=-96.334407&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b', function(data){
     weatherData = data.list;
     // console.log(weatherData);
@@ -102,9 +113,8 @@ function insertFileInApplicationDataFolder(jData, fileName) {
     });
 }
 
-$('#submit').on('click', function(){
+$('#submitIfram').on('click', function(){
     iframeHtml = $("#iFrame").val();
-    console.log("clicked submit: " + iframeHtml);
     if(iframeHtml.length <=8  || (iframeHtml.substring(0,7) != "<iframe")){
         alert("Invalid Link: Try again");
         $("#iFrame").val("");
@@ -114,26 +124,33 @@ $('#submit').on('click', function(){
     }
 });
 
+$('#submitNumber').submit(function(){
+    zoneNum = $('#zoneNum').val();
+    zoneNum++;
+    zoneNum--;
+    $('#zoneAlert').hide();
+    createSettingsFile();
+    return false;
+});
+
 function createSettingsFile(){
     //first check if user has entered the needed data
-    if(iframeHtml != "" && weatherData.haveLocation)
+    if(iframeHtml != "" && weatherData.haveLocation && zoneNum != -1)
     {
+        var zoneArr = [];
+        for(var i = 0; i < zoneNum; i++){
+            zoneArr.push({
+                currLevel: "medium",
+                custom: "na"
+            })
+        }
         var settings = {
             "location": {
                 "lat": weatherData.lat,
                 "long": weatherData.long
             },
             "calLink": iframeHtml,
-            "zones": [
-                {
-                    "currLevel": "high",
-                    "custom": "N/A"
-                },
-                {
-                    "currLevel": "high",
-                    "custom": "N/A"
-                }
-            ]
+            "zones": zoneArr
         };
         insertFileInApplicationDataFolder(settings, "settings.txt");
         console.log("Settings.txt successfully uploaded");
