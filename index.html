@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <meta name="google-signin-client_id" content="1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com">
+  <!--<meta name="google-signin-client_id" content="1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com">-->
 
   <title>SSS</title>
 
@@ -64,9 +64,9 @@
           <a class="page-scroll" href="#team">Team</a>
         </li>
       </ul>
+      <button id="authorize-button" style="visibility: hidden">Authorize</button>
       <a href="#" id="desktopSignOut" onclick="signOut();">Sign out</a>
-
-      <div id="signIn"><div id="my-signin2"></div></div>
+      <!--<div id="signIn"><div id="my-signin2"></div></div>-->
 
       <!--<div class="g-signin2" id="desktopSignIn" data-onsuccess="onSignIn"></div>-->
     </div>
@@ -183,7 +183,8 @@
 
 <!-- Google Login -->
 <!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
-<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
