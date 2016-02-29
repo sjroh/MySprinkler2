@@ -24,6 +24,7 @@ var iframeHtml = "";
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setLocation);
+        $("#locationAlert").hide();
     } else {
         alert("Geolocation is not supported by this browser. Please use Chrome.");
     }
@@ -132,6 +133,8 @@ function createSettingsFile(){
             ]
         };
         insertFileInApplicationDataFolder(settings, "settings.txt");
+        console.log("Settings.txt successfully uploaded");
+        $("#setup").hide();
     }
     else{
         //user still needs to input calendar url and/or location permission
