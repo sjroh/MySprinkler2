@@ -37,7 +37,7 @@ $(document).ready(function(){
 
     $('#submit').on('click', function(){
         var iframeHtml = $("#iFrame").val();
-        if(iframeHtml.length <=8  || (iframeHtml.substring(0,6) != "<iframe")){
+        if(iframeHtml.length <=8  || (iframeHtml.substring(0,7) != "<iframe")){
             alert(iframeHtml.substring(0,6) + " Invalid Link: Try again");
             $("#iFrame").val("");
         }
