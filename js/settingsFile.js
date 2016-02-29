@@ -133,7 +133,7 @@ $('#submitNumber').submit(function(){
     zoneNum--;
     $('#zoneAlert').hide();
     createSettingsFile();
-    return false;
+    //return false;
 });
 
 function createSettingsFile(){
