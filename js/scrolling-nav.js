@@ -3,7 +3,7 @@
  */
 var signedIn = false;
 
-function onSignIn(googleUser) {
+/*function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
@@ -12,6 +12,30 @@ function onSignIn(googleUser) {
     signedIn = true;
     checkStatus();
     window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+}*/
+
+function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    signedIn = true;
+    checkStatus();
+    window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+
+
+}
+function onFailure(error) {
+    console.log(error);
+}
+function renderButton() {
+    gapi.signin2.render('my-signin2', {
+        'scope': 'profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive',
+        'width': 240,
+        'height': 40,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
+
 }
 
 function signOut() {
@@ -26,22 +50,22 @@ function signOut() {
 function checkStatus(){
     if($(window).width() < 750){
         $("#desktopSignOut").hide();
-        $("#desktopSignIn").hide();
+        //$("#desktopSignIn").hide();
         if(signedIn){
             $("#mobileSignOut").show();
-            $("#mobileSignIn").hide();
+            //$("#mobileSignIn").hide();
         } else{
-            $("#mobileSignIn").show();
+            //$("#mobileSignIn").show();
             $("#mobileSignOut").hide();
         }
     } else{
         $("#mobileSignOut").hide();
-        $("#mobileSignIn").hide();
+        //$("#mobileSignIn").hide();
         if(signedIn){
             $("#desktopSignOut").show();
-            $("#desktopSignIn").hide();
+            //$("#desktopSignIn").hide();
         } else{
-            $("#desktopSignIn").show();
+            //$("#desktopSignIn").show();
             $("#desktopSignOut").hide();
         }
     }
@@ -50,36 +74,58 @@ checkStatus();
 
 //jQuery to collapse the navbar on scroll
 $(document).ready(function(){
-
+    var desktop = false;
+    var mobile = false;
     function checkWidth(){
         if($(window).width() < 750){
-            $(".mobile").show();
-            $(".desktop").hide();
-            /*var googleButtons = document.getElementsByClassName("topMenu");
-            var mobileButtonParent = document.getElementById("mobileButtonParent");
-            console.log("button size: " + googleButtons.length);
-            for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
-                var parent = googleButtons[i].parentNode;
-                parent.removeChild(googleButtons[i]);
-                //googleButtons[i].removeClass("topMenu");
-                googleButtons[i].className += " bottomMenu";
-                mobileButtonParent.appendChild(googleButtons[i]);
-                $(".topMenu").removeClass("topMenu");
-            }*/
-        } else{
-            $(".mobile").hide();
-            $(".desktop").show();
-            /*googleButtons = document.getElementsByClassName("bottomMenu");
+            if(!mobile){
+                $(".mobile").show();
+                $(".desktop").hide();
+                var googleButton = document.getElementById("signIn");
+                var mobileButtonParent = document.getElementById("mobileButtonParent");
+                //console.log("button size: " + googleButtons.length);
+                var parent = googleButton.parentNode;
+                if(parent){
+                    parent.removeChild(googleButton);
+                    mobileButtonParent.appendChild(googleButton);
+                    /*for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
+                     var parent = googleButtons[i].parentNode;
+                     parent.removeChild(googleButtons[i]);
+                     //googleButtons[i].removeClass("topMenu");
+                     googleButtons[i].className += " bottomMenu";
+                     mobileButtonParent.appendChild(googleButtons[i]);
+                     $(".topMenu").removeClass("topMenu");
+                     }*/
+                    mobile = true;
+                    desktop = false;
+                }
 
-            var desktopButtonParent = document.getElementById("desktopButtonParent");
-            for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
-                parent = googleButtons[i].parentNode;
-                parent.removeChild(googleButtons[i]);
-                //googleButtons[i].removeClass("bottomMenu");
-                googleButtons[i].className += " topMenu";
-                desktopButtonParent.appendChild(googleButtons[i]);
-                $(".bottomMenu").removeClass("bottomMenu");
-            }*/
+            }
+
+        } else{
+            if(!desktop){
+                $(".mobile").hide();
+                $(".desktop").show();
+                var googleButton = document.getElementById("signIn");
+                var desktopButtonParent = document.getElementById("desktopButtonParent");
+                var parent = googleButton.parentNode;
+                if(parent){
+                    parent.removeChild(googleButton);
+                    desktopButtonParent.appendChild(googleButton);
+                    /*for(i = 0; i < googleButtons.length; i++){//move buttons to desktop view
+                     parent = googleButtons[i].parentNode;
+                     parent.removeChild(googleButtons[i]);
+                     //googleButtons[i].removeClass("bottomMenu");
+                     googleButtons[i].className += " topMenu";
+                     desktopButtonParent.appendChild(googleButtons[i]);
+                     $(".bottomMenu").removeClass("bottomMenu");
+                     }*/
+                    mobile = false;
+                    desktop = true;
+                }
+
+            }
+
         }
     }
     checkWidth();

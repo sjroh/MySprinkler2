@@ -27,7 +27,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
 </head>
 
 <body>
@@ -57,7 +59,8 @@
             <br>
             <a href="#" id="signOut" class="btn btn-default" role="button" onclick="signOut();">Sign out</a>
 
-            <div class="g-signin2" id="signIn" data-onsuccess="onSignIn"></div>
+            <div id="signIn"><div id="my-signin2"></div></div>
+            <!--<div class="g-signin2" id="signIn" data-onsuccess="onSignIn"></div>-->
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -78,14 +81,20 @@
             <br>
             Hello <span id="userName"></span>!
             <br><br>
-            <div id="authorize-div" style="display: none">
+            <div id="setup"><!--We can use this for setup div's-->
+                <div class="alert alert-danger" id="locationAlert">
+                    <strong>Location Needed!</strong>
+                    We don't have your location yet! Click <a href="#" onclick="getLocation()">here</a> to provide us with your location.  This location will be used to gather weather data for your sprinkler system.
+                </div>
+            </div>
+
+            <!--<div id="authorize-div" style="display: none">
                 <span>Authorize access to Drive API</span>
-                <!--Button for the user to click to initiate auth sequence -->
                 <button id="authorize-button" onclick="handleAuthClick(event)">
                     Authorize
                 </button>
             </div>
-            <pre id="output"></pre>
+            <pre id="output"></pre>-->
             <!--<img src="../images/overviewCal.PNG">-->
             <br><br>
             <div id="tableHolder">
@@ -120,8 +129,8 @@
 <!-- /#wrapper -->
 
 <!-- Google Login -->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
 
