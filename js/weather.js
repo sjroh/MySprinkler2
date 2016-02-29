@@ -102,6 +102,7 @@ function insertFileInApplicationDataFolder(jData, fileName) {
 
 $('#submit').on('click', function(){
     iframeHtml = $("#iFrame").val();
+    console.log("clicked submit");
     if(iframeHtml.length <=8  || (iframeHtml.substring(0,7) != "<iframe")){
         alert("Invalid Link: Try again");
         $("#iFrame").val("");
@@ -137,6 +138,7 @@ function createSettingsFile(){
         $("#setup").hide();
     }
     else{
+        console.log("user still needs to input info");
         //user still needs to input calendar url and/or location permission
     }
 
