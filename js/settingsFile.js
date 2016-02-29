@@ -120,13 +120,16 @@ $('#submitIfram').on('click', function(){
         $("#iFrame").val("");
     }
     else{
+        $('#calendarAlert').hide();
         createSettingsFile();
     }
 });
 
 $('#submitNumber').submit(function(){
     zoneNum = $('#zoneNum').val();
+    console.log("num: " + zoneNum);
     zoneNum++;
+    console.log("num: " + zoneNum);
     zoneNum--;
     $('#zoneAlert').hide();
     createSettingsFile();
