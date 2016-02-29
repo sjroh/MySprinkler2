@@ -1,9 +1,137 @@
 /**
  * Created by Kyle on 2/8/2016.
  */
+var signedIn = false;
+var apiKey = 'AIzaSyBozblUKAA8gFXaRNswfYxCIQoZ7MhvHHQ';
+$("#setup").hide();
+var globalVariables = {};
+
+/*function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    globalVariables.userName = profile.getName();
+    $("#userName").html(profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+    signedIn = true;
+    checkStatus();
+}*/
+
+function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    signedIn = true;
+    $("#userName").html(googleUser.getBasicProfile().getName());
+    checkStatus();
+    //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
+    listFilesInApplicationDataFolder();
+    //test
+}
+function onFailure(error) {
+    console.log(error);
+}
+function renderButton() {
+    gapi.signin2.render('my-signin2', {
+        'scope': 'profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+        signedIn = false;
+        checkStatus();
+        window.location = "http://sjroh.github.io/MySprinkler2/";
+    });
+}
+
+function checkStatus(){
+    if(signedIn){
+        $("#signOut").show();
+        $("#signIn").hide();
+    } else{
+        $("#signIn").show();
+        $("#signOut").hide();
+    }
+}
+
+
+/**
+ * List all files contained in the Application Data folder.
+ *
+ * @param {Function} callback Function to call when the request is complete.
+ */
+
+function listFilesInApplicationDataFolder() {
+    var retrievePageOfFiles = function(request) {
+        request.execute(function(resp) {
+            if(resp.items.length == 0){
+                //no settings file in gdrive exists so show
+                //location warning for user to click on
+                //once they click on this, create a settings.json file
+                $("#setup").show();
+                console.log("no file in drive exists");
+            }
+            else{
+                //found settings -> parse json to obtain settings data
+                console.log(resp.items.length + " file(s) found");
+                for(var i = 0; i < resp.items.length; i++){
+                    console.log(resp.items[i]);
+                    downloadFile(resp.items[i]);
+                    //var url = resp.items[i].downloadUrl;
+                    //var fileId = resp.items[i].id;
+                    //console.log(url);
+                    //getFile(fileId);
+                    /*var reader = new FileReader();
+                    reader.onload = function(){
+                        console.log(reader.result);
+                    };
+                    reader.readAsText(resp.items[i]);*/
+                }
+            }
+        });
+    };
+    /*var initialRequest = gapi.client.drive.files.list({
+        'q': '(\'appfolder\' in parents) and (title = \'settings\')'
+    });*/
+    var initialRequest = gapi.client.request({
+        'path': '/drive/v2/files',
+        'method': 'GET',
+        //'params': {'q': '(\'appfolder\' in parents)'}
+        'params': {'q': 'title = \'settings.txt\''}
+    });
+    retrievePageOfFiles(initialRequest);
+}
+
+function downloadFile(file) {
+    if (file.downloadUrl) {
+        //var accessToken = gapi.auth.getToken().access_token;
+        var accessToken = gapi.auth2.getAccessToken();
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', file.downloadUrl);
+        xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+        xhr.onload = function() {
+            console.log(xhr.responseText);
+        };
+        xhr.onerror = function() {
+            console.log("ERROR");
+        };
+        xhr.send();
+    } else {
+        console.log("No file.downloadUrl");
+    }
+}
+
 $(document).ready(function(){
     function checkWidth(){
-        if($(window).width() < 600){
+        if($(window).width() < 750){
             $(".mobile").show();
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");

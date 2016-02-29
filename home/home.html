@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="google-signin-client_id" content="1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com">
 
     <title>SSS Home</title>
 
@@ -27,6 +28,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
 </head>
 
 <body>
@@ -38,21 +41,26 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
                 <a href="#">
-                    Start Bootstrap
+                    ADEM
                 </a>
             </li>
             <li>
                 <a href="#">Home</a>
             </li>
             <li>
-                <a href="../schedule">Schedule</a>
+                <a href="../schedule/schedule.html">Schedule</a>
             </li>
             <li>
-                <a href="../weather">Weather</a>
+                <a href="../weather/weather.html">Weather</a>
             </li>
             <li>
-                <a href="../settings">Settings</a>
+                <a href="../settings/settings.html">Settings</a>
             </li>
+            <br>
+            <a href="#" id="signOut" class="btn btn-default" role="button" onclick="signOut();">Sign out</a>
+
+            <div id="signIn"><div id="my-signin2"></div></div>
+            <!--<div class="g-signin2" id="signIn" data-onsuccess="onSignIn"></div>-->
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -71,10 +79,47 @@
         </section>
         <div class="impact" id="homeBody">
             <br>
-            Welcome <span id="userName"></span>!
+            Hello <span id="userName"></span>!
             <br><br>
-            <img src="../images/overviewCal.PNG">
+            <div id="setup"><!--We can use this for setup div's-->
+                <div class="alert alert-danger" id="locationAlert">
+                    <strong>Location Needed!</strong>
+                    We don't have your location yet! Click <a href="#" onclick="getLocation()">here</a> to provide us with your location.  This location will be used to gather weather data for your sprinkler system.
+                </div>
+            </div>
+
+            <!--<div id="authorize-div" style="display: none">
+                <span>Authorize access to Drive API</span>
+                <button id="authorize-button" onclick="handleAuthClick(event)">
+                    Authorize
+                </button>
+            </div>
+            <pre id="output"></pre>-->
+            <!--<img src="../images/overviewCal.PNG">-->
             <br><br>
+            <div id="tableHolder">
+                <table id="overviewSchedule">
+                    <tr id="day">
+                        <td id="day1"></td>
+                        <td id="day2"></td>
+                        <td id="day3"></td>
+                        <td id="day4"></td>
+                        <td id="day5"></td>
+                        <td id="day6"></td>
+                        <td id="day7"></td>
+                    </tr>
+                    <tr id="weather">
+                        <td id="w1"></td>
+                        <td id="w2"></td>
+                        <td id="w3"></td>
+                        <td id="w4"></td>
+                        <td id="w5"></td>
+                        <td id="w6"></td>
+                        <td id="w7"></td>
+                    </tr>
+                </table>
+            </div>
+            <br>
             Connected to home system: <span id="connected">Connected</span><span id="error">Error</span>
         </div>
     </div>
@@ -83,12 +128,17 @@
 </div>
 <!-- /#wrapper -->
 
+<!-- Google Login -->
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/slideshow.js"></script>
+<script src="../js/googleDrive.js"></script>
+<script src="../js/weather.js"></script>
 <script src="home.js"></script>
 <!-- Menu Toggle Script -->
 <script>

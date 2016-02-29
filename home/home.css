@@ -14,3 +14,28 @@
 #error{
     color:red;
 }
+
+#signOut{
+    margin-left:1em;
+}
+
+#signIn{
+    margin-left:1em;
+}
+
+#overviewSchedule{
+    width:45em;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#day td{
+    /*width:10em;*/
+}
+
+#tableHolder{
+    margin-left:auto;
+    margin-right:auto;
+    overflow-x:auto;
+    width:80%;
+}

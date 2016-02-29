@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SSS Settings</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="settings.css" rel="stylesheet">
+	<link href="jquery.timepicker.css" rel="stylesheet">
+    <link href="bootstrap-datepicker.css" rel="stylesheet">
+	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    ADEM
+                </a>
+            </li>
+            <li>
+                <a href="../home/home.html">Home</a>
+            </li>
+            <li>
+                <a href="../schedule/schedule.html">Schedule</a>
+            </li>
+            <li>
+                <a href="../weather/weather.html">Weather</a>
+            </li>
+            <li>
+                <a href="#">Settings</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <section class="container-fluid slideshow" style="background-image: url('../images/slide2.PNG'); background-size: 100% 100%;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <br>
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="menu-btn" aria-hidden="true"></span></a>
+                    <h1 class="impact">Settings</h1>
+                    <!--<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
+                </div>
+            </div>
+        </section>
+        <div class="impact" id="homeBody">
+            <br>
+            <!--img src="../images/googleCal.png"-->
+            <br><br>
+			
+			
+			
+			<div class="tabs">
+				<ul class="tab-links">
+					<li class="active"><a href="#tab1">Level</a></li>
+					<li><a href="#tab2">Tab #2</a></li>
+					<li><a href="#tab3">Tab #3</a></li>
+					<li><a href="#tab4">Tab #4</a></li>
+				</ul>
+			 
+			 
+				<div class="tab-content">
+					<div id="tab1" class="tab active">
+					
+					
+						
+						<p>
+							Sector 1:
+							
+							<button id = "sec1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="High">High</button>
+							
+							<button id = "sec1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="Medium">Medium</button>
+							<button id = "sec1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="Low">Low</button>
+							<button  id = "sec1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="Custom">Custom</button>
+							
+						</p>
+						
+						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Time Preference</h4>
+							  </div>
+							  <div class="modal-body">
+									<!--http://jonthornton.github.io/jquery-timepicker/-->
+									<p id="basicExample">
+										<!--input type="text" class="date start" /-->
+										<input type="text" class="time start" /><br>
+										to <br>
+										<input type="text" class="time end" >
+										<!--input type="text" class="date end" /-->
+									</p>
+								</div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default addEvent">Save changes</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						
+						
+						
+							<p>
+							Sector 2:
+							
+							<button id = "sec2" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="High">High</button>
+							
+							<button id = "sec2" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="Medium">Medium</button>
+							<button id = "sec2" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="Low">Low</button>
+							<button  id = "sec2" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="Custom">Custom</button>
+							
+						</p>
+						
+						<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Time Preference</h4>
+							  </div>
+							  <div class="modal-body">
+									<!--http://jonthornton.github.io/jquery-timepicker/-->
+									<p id="basicExample">
+										<!--input type="text" class="date start" /-->
+										<input type="text" class="time start" /><br>
+										to <br>
+										<input type="text" class="time end" >
+										<!--input type="text" class="date end" /-->
+									</p>
+								</div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default addEvent">Save changes</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						
+							<p>
+							Sector 3:
+							
+							<button id = "sec3" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="High">High</button>
+							
+							<button id = "sec3" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="Medium">Medium</button>
+							<button id = "sec3" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="Low">Low</button>
+							<button  id = "sec3" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" data-whatever="Custom">Custom</button>
+							
+						</p>
+						
+						<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Time Preference</h4>
+							  </div>
+							  <div class="modal-body">
+									<!--http://jonthornton.github.io/jquery-timepicker/-->
+									<p id="basicExample">
+										<!--input type="text" class="date start" /-->
+										<input type="text" class="time start" /><br>
+										to <br>
+										<input type="text" class="time end" >
+										<!--input type="text" class="date end" /-->
+									</p>
+								</div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default addEvent">Save changes</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						
+							<p>
+							Sector 4:
+							
+							<button id = "sec4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="High">High</button>
+							
+							<button id = "sec4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="Medium">Medium</button>
+							<button id = "sec4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="Low">Low</button>
+							<button  id = "sec4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4" data-whatever="Custom">Custom</button>
+							
+						</p>
+						
+						<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModal4">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Time Preference</h4>
+							  </div>
+							  <div class="modal-body">
+									<!--http://jonthornton.github.io/jquery-timepicker/-->
+									<p id="basicExample">
+										<!--input type="text" class="date start" /-->
+										<input type="text" class="time start" /><br>
+										to <br>
+										<input type="text" class="time end" >
+										<!--input type="text" class="date end" /-->
+									</p>
+								</div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default addEvent">Save changes</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						
+						
+						
+					</div>
+			 
+					<div id="tab2" class="tab">
+						<p>Tab #2 content goes here!</p>
+						<p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
+					</div>
+			 
+					<div id="tab3" class="tab">
+						<p>Tab #3 content goes here!</p>
+						<p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum ri.</p>
+					</div>
+			 
+					<div id="tab4" class="tab">
+						<p>Tab #4 content goes here!</p>
+						<p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
+					</div>
+				</div>
+		</div>
+			
+ 
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
+<script type="text/javascript" src="datepair.js"></script>
+<script type="text/javascript" src="jquery.datepair.js"></script>
+<script type="text/javascript" src="jquery.timepicker.js"></script>
+<script type="text/javascript" src="bootstrap-datepicker.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/slideshow.js"></script>
+<script src="settings.js"></script>
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+
+</html>
