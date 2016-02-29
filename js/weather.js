@@ -114,7 +114,7 @@ $('#submit').on('click', function(){
 
 function createSettingsFile(){
     //first check if user has entered the needed data
-    if(iframeHtml != "" && weatherData.lat)
+    if(iframeHtml != "" && hasOwnProperty(weatherData, lat))
     {
         var settings = {
             "location": {
@@ -142,4 +142,10 @@ function createSettingsFile(){
         //user still needs to input calendar url and/or location permission
     }
 
+}
+
+function hasOwnProperty(obj, prop) {
+    var proto = obj.__proto__ || obj.constructor.prototype;
+    return (prop in obj) &&
+        (!(prop in proto) || proto[prop] !== obj[prop]);
 }
