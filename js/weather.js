@@ -1,7 +1,9 @@
 /**
  * Created by Kyle on 2/17/2016.
  */
-var weatherData = {};
+var weatherData = {
+    haveDistance: false
+};
 var iframeHtml = "";
 /*$.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=30.627977&lon=-96.334407&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b', function(data){
     weatherData = data.list;
@@ -33,7 +35,7 @@ function getLocation() {
 function setLocation(position) {
     weatherData.lat = position.coords.latitude;
     weatherData.long = position.coords.longitude;
-
+    weatherData.haveDistance = true;
     createSettingsFile();
 
     //should store in google app data now
@@ -114,7 +116,7 @@ $('#submit').on('click', function(){
 
 function createSettingsFile(){
     //first check if user has entered the needed data
-    if(iframeHtml != "" && hasOwnProperty(weatherData, lat))
+    if(iframeHtml != "" && weatherData.haveLocation)
     {
         var settings = {
             "location": {
@@ -142,10 +144,4 @@ function createSettingsFile(){
         //user still needs to input calendar url and/or location permission
     }
 
-}
-
-function hasOwnProperty(obj, prop) {
-    var proto = obj.__proto__ || obj.constructor.prototype;
-    return (prop in obj) &&
-        (!(prop in proto) || proto[prop] !== obj[prop]);
 }
