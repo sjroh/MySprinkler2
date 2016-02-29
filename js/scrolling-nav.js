@@ -2,34 +2,40 @@
  * Created by Kyle on 2/4/2016.
  */
 var signedIn = false;
-var clientId = "1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com";
-var apiKey = "AIzaSyBozblUKAA8gFXaRNswfYxCIQoZ7MhvHHQ";
-var scopes = "profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive";
 
-function handleClientLoad() {
-    gapi.client.setApiKey(apiKey);
-    window.setTimeout(checkAuth,1);
+/*function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+    signedIn = true;
+    checkStatus();
+    window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+}*/
+
+function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    signedIn = true;
+    checkStatus();
+    window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
+
+
 }
-
-function checkAuth() {
-    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+function onFailure(error) {
+    console.log(error);
 }
+function renderButton() {
+    gapi.signin2.render('my-signin2', {
+        'scope': 'profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive',
+        'width': 240,
+        'height': 40,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
 
-function handleAuthResult(authResult) {
-    var authorizeButton = document.getElementById('authorize-button');
-    if (authResult && !authResult.error) {
-        authorizeButton.style.visibility = 'hidden';
-        //makeApiCall();
-        window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
-    } else {
-        authorizeButton.style.visibility = '';
-        authorizeButton.onclick = handleAuthClick;
-    }
-}
-
-function handleAuthClick(event) {
-    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
-    return false;
 }
 
 function signOut() {
@@ -100,7 +106,7 @@ $(document).ready(function(){
             if(!desktop){
                 $(".mobile").hide();
                 $(".desktop").show();
-                var googleButton = document.getElementById("authorize-button");
+                var googleButton = document.getElementById("signIn");
                 var desktopButtonParent = document.getElementById("desktopButtonParent");
                 var parent = googleButton.parentNode;
                 if(parent){
