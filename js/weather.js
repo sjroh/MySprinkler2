@@ -2,7 +2,7 @@
  * Created by Kyle on 2/17/2016.
  */
 var weatherData = {};
-
+var iframeHtml = "";
 /*$.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=30.627977&lon=-96.334407&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b', function(data){
     weatherData = data.list;
     // console.log(weatherData);
@@ -23,38 +23,17 @@ var weatherData = {};
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(createSettingsFile);
+        navigator.geolocation.getCurrentPosition(setLocation);
     } else {
-        alert("Geolocation is not supported by this browser. Use another browser.");
+        alert("Geolocation is not supported by this browser. Please use Chrome.");
     }
 }
 
-function createSettingsFile(position) {
+function setLocation(position) {
     weatherData.lat = position.coords.latitude;
     weatherData.long = position.coords.longitude;
 
-    var settings = {
-        "location": {
-            "lat": weatherData.lat,
-            "long": weatherData.long
-        },
-        "zones": [
-            {
-                "currLevel": "high",
-                "custom": "N/A"
-            },
-            {
-                "currLevel": "high",
-                "custom": "N/A"
-            }
-        ]
-    };
-    //var jsonse = JSON.stringify(settings);
-    //var blob = new Blob([jsonse], {type: "application/json"});
-    insertFileInApplicationDataFolder(settings, "settings.txt");
-    //I STOPPED WORKING HERE -> I NEED TO NOW INSERT THE BLOB OBJ INTO DRIVE TO CREATE THE FILE
-    //THEN CAL listFilesInApplicationDataFolder AGAIN TO OBTAIN SETTINGS.JSON FROM DRIVE
-
+    createSettingsFile();
 
     //should store in google app data now
     var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + weatherData.lat + "&lon=" + weatherData.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
@@ -78,10 +57,6 @@ function createSettingsFile(position) {
 
 }
 
-function createdFile(){
-    alert("settings file should have been created");
-}
-
 /**
  * Insert new file in the Application Data folder.
  *
@@ -89,47 +64,6 @@ function createdFile(){
  * @param {Function} callback Function to call when the request is complete.
  */
 function insertFileInApplicationDataFolder(jData, fileName) {
-    /*const boundary = '-------314159265358979323846';
-    const delimiter = "\r\n--" + boundary + "\r\n";
-    const close_delim = "\r\n--" + boundary + "--";
-
-    var reader = new FileReader();
-    reader.readAsBinaryString(fileData);
-    reader.onload = function(e) {
-        var contentType = fileData.type || 'application/octet-stream';
-        var metadata = {
-            'title': fileName,
-            'mimeType': contentType,
-            'parents': [{'id': 'appfolder'}]
-        };
-
-        var base64Data = btoa(reader.result);
-        var multipartRequestBody =
-            delimiter +
-            'Content-Type: application/json\r\n\r\n' +
-            JSON.stringify(metadata) +
-            delimiter +
-            'Content-Type: ' + contentType + '\r\n' +
-            'Content-Transfer-Encoding: base64\r\n' +
-            '\r\n' +
-            base64Data +
-            close_delim;
-
-        var request = gapi.client.request({
-            'path': '/upload/drive/v2/files',
-            'method': 'POST',
-            'params': {'uploadType': 'multipart'},
-            'headers': {
-                'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
-            },
-            'body': multipartRequestBody});
-        if (!callback) {
-            callback = function(file) {
-                console.log(file)
-            };
-        }
-        request.execute(callback);
-    }*/
 
     //found following code from https://gist.github.com/csusbdt/4525042
     const boundary = '-------314159265358979323846264';
@@ -163,4 +97,44 @@ function insertFileInApplicationDataFolder(jData, fileName) {
     request.execute(function(arg) {
         console.log(arg);
     });
+}
+
+$('#submit').on('click', function(){
+    iframeHtml = $("#iFrame").val();
+    if(iframeHtml.length <=8  || (iframeHtml.substring(0,7) != "<iframe")){
+        alert("Invalid Link: Try again");
+        $("#iFrame").val("");
+    }
+    else{
+        createSettingsFile();
+    }
+});
+
+function createSettingsFile(){
+    //first check if user has entered the needed data
+    if(iframeHtml != "" && weatherData.lat)
+    {
+        var settings = {
+            "location": {
+                "lat": weatherData.lat,
+                "long": weatherData.long
+            },
+            "calLink": iframeHtml,
+            "zones": [
+                {
+                    "currLevel": "high",
+                    "custom": "N/A"
+                },
+                {
+                    "currLevel": "high",
+                    "custom": "N/A"
+                }
+            ]
+        };
+        insertFileInApplicationDataFolder(settings, "settings.txt");
+    }
+    else{
+        //user still needs to input calendar url and/or location permission
+    }
+
 }
