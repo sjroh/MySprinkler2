@@ -68,20 +68,11 @@ function setLocation(position) {
             date.setUTCSeconds(weatherData.list[i].dt);
             // date.setTime(weatherData[i].dt * 1000);//date = epoch value * 1000
             //date.setUTCSeconds()
-            $(idName).html(days[date.getDay()] + "<br>" + months[date.getMonth()] + "  " + date.getUTCDate());
+            $(idName).html(days[date.getDay() - 1] + "<br>" + months[date.getMonth()] + "  " + date.getUTCDate());
             //console.log(weatherData.list[i].dt + ": " + date.toDateString());
             $(idWName).html("<img src='http://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png'>");
         }
     });
-
-    var getTodayWeather = "http://api.openweathermap.org/data/2.5/weather?lat=" + weatherData.lat + "&lon=" + weatherData.long + "&appid=0039a67282bf9ff15995e2c340d6906b"
-    $.get(getTodayWeather, function(data){
-        weatherData.todaysWeather = data;
-        var date = new Date(0);
-        date.setUTCSeconds(weatherData.todaysWeather.dt);
-        $("#day0").html(days[date.getDay()] + "<br>" + months[date.getMonth()] + " " + date.getUTCDate());
-        $("#w0").html("<img src='http://openweathermap.org/img/w/" + weatherData.todaysWeather.weather.icon + ".png>");
-    })
 
 }
 
