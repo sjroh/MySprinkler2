@@ -4,7 +4,7 @@
  */
 $(document).ready(function(){
 	var numOfSectors = 5;
-    var sectorString = "<p>" +
+    /*var sectorString = "<p>" +
     "Sector 1:" +
     "<button id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”High\”>High</button>" +
     "<button id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”Medium\”>Medium</button>" +
@@ -35,16 +35,23 @@ $(document).ready(function(){
     "</div>" +
     "</div>" +
     "</div>" +
-    "</div>";
+    "</div>";*/
 
-    $("#tab1").prepend(sectorString + " <br><br> " + sectorStringBody);
+    //$("#tab1").prepend(sectorString + " <br><br> " + sectorStringBody);
+
 
 
 
     function initializeNumberOfSectors(){
         //get number of sectors from settings.txt in google drive here
-        numSectors = numOfSectors;
-
+        var numSectors = numOfSectors;
+        var sectorHTML = $("#tab1").html();
+        for(var i = 0; i < numSectors - 1/*already have 1*/; i++){
+            var newID = "exampleModal" + (i + 2).toString();
+            var copyHTML = sectorHTML;
+            copyHTML = copyHTML.replace("exampleModal1", newID);
+            $("#tab1").append(copyHTML);
+        }
     }
 	
     // initialize input widgets first
