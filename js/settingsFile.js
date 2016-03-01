@@ -58,7 +58,7 @@ function setLocation(position) {
     //and we have their google settings.txt file (with their lat and long coordinates in it)
     var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + weatherData.lat + "&lon=" + weatherData.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    var days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+    var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
     $.get(getString, function(data){
         weatherData.list = data.list;
         for(var i = 0; i < weatherData.list.length; i++){
@@ -68,7 +68,7 @@ function setLocation(position) {
             date.setUTCSeconds(weatherData.list[i].dt);
             // date.setTime(weatherData[i].dt * 1000);//date = epoch value * 1000
             //date.setUTCSeconds()
-            $(idName).html(days[date.getDay() - 1] + "<br>" + months[date.getMonth()] + "  " + date.getUTCDate());
+            $(idName).html(days[date.getDay()] + "<br>" + months[date.getMonth()] + "  " + date.getUTCDate());
             //console.log(weatherData.list[i].dt + ": " + date.toDateString());
             $(idWName).html("<img src='http://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png'>");
         }
