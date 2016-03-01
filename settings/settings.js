@@ -48,8 +48,10 @@ $(document).ready(function(){
         var sectorHTML = $("#tab1").html();
         for(var i = 0; i < numSectors - 1/*already have 1*/; i++){
             var newID = "exampleModal" + (i + 2).toString();
+            var secID = "sec" + (i + 2).toString();
             var copyHTML = sectorHTML;
             copyHTML = copyHTML.replace("exampleModal1", newID);
+            copyHTML = copyHTML.replace("sec1", secID);
             $("#tab1").append(copyHTML);
         }
     }
