@@ -10,7 +10,8 @@ $(document).ready(function(){
     "<button id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”Medium\”>Medium</button>" +
     "<button id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”Low\”>Low</button>" +
     "<button  id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”Custom\”>Custom</button>" +
-    "</p>" +
+    "</p>";
+    var sectorStringBody =
     "<div class=\”modal fade\” id=\”exampleModal\” tabindex=\”-1\” role=\”dialog\” aria-labelledby=\”exampleModalLabel\”>" +
     "<div class=\”modal-dialog\” role=\”document\”>" +
     "<div class=\”modal-content\”>" +
@@ -36,7 +37,7 @@ $(document).ready(function(){
     "</div>" +
     "</div>";
 
-    $("#tab1").prepend(sectorString);
+    $("#tab1").prepend(sectorString + " <br><br> " + sectorStringBody);
 
 
 
