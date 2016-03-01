@@ -29,13 +29,17 @@
     margin-right:auto;
 }
 
-#day td{
-    /*width:10em;*/
-}
-
 #tableHolder{
     margin-left:auto;
     margin-right:auto;
     overflow-x:auto;
     width:80%;
+}
+
+td#day0, td#w0{
+    border-right:solid 1px;
+}
+
+td{
+    width:10em;
 }

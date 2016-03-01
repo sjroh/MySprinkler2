@@ -50,12 +50,17 @@ function setLocation(position) {
     createSettingsFile();
 
     //should store in google app data now
+
+
+    //the rest of the code in this function obtains the weather data for today to 7 days from now and puts it on the page
+    //we're going to have to use this data somewhere to make the preliminary schedule for the week.
+    //this code below should be moved somewhere else, into another function to be called every time the user logs in
+    //and we have their google settings.txt file (with their lat and long coordinates in it)
     var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + weatherData.lat + "&lon=" + weatherData.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
     $.get(getString, function(data){
         weatherData.list = data.list;
-        // console.log(weatherData);
-        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        var days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
         for(var i = 0; i < weatherData.list.length; i++){
             var idName = "#day" + (i+1).toString();
             var idWName = "#w" + (i+1).toString();
@@ -64,10 +69,19 @@ function setLocation(position) {
             // date.setTime(weatherData[i].dt * 1000);//date = epoch value * 1000
             //date.setUTCSeconds()
             $(idName).html(days[date.getDay()] + "<br>" + months[date.getMonth()] + "  " + date.getUTCDate());
-            console.log(weatherData.list[i].dt + ": " + date.toDateString());
+            //console.log(weatherData.list[i].dt + ": " + date.toDateString());
             $(idWName).html("<img src='http://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png'>");
         }
     });
+
+    var getTodayWeather = "http://api.openweathermap.org/data/2.5/weather?lat=" + weatherData.lat + "&lon=" + weatherData.long + "&appid=0039a67282bf9ff15995e2c340d6906b"
+    $.get(getString, function(data){
+        weatherData.todaysWeather = data;
+        var date = new Date(0);
+        date.setUTCSeconds(weatherData.todaysWeather.dt);
+        $("#day0").html(days[date.getDay()] + "<br>" + months[date.getMonth()] + " " + date.getUTCDate());
+        $("#w0").html("<img src='http://openweathermap.org/img/w/" + weatherData.todaysWeather.weather.icon + ".png>");
+    })
 
 }
 
