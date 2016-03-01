@@ -39,9 +39,6 @@ $(document).ready(function(){
 
     //$("#tab1").prepend(sectorString + " <br><br> " + sectorStringBody);
 
-
-
-
     function initializeNumberOfSectors(){
         //get number of sectors from settings.txt in google drive here
         var numSectors = numOfSectors;
@@ -52,6 +49,7 @@ $(document).ready(function(){
             var copyHTML = sectorHTML;
             copyHTML = copyHTML.replace("exampleModal1", newID);
             copyHTML = copyHTML.replace("sec1", secID);
+            copyHTML = copyHTML.replace("Sector 1:", "Sector " + (i + 2).toString() + ":");
             $("#tab1").append(copyHTML);
         }
     }
