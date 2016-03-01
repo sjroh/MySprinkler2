@@ -75,7 +75,7 @@ function setLocation(position) {
     });
 
     var getTodayWeather = "http://api.openweathermap.org/data/2.5/weather?lat=" + weatherData.lat + "&lon=" + weatherData.long + "&appid=0039a67282bf9ff15995e2c340d6906b"
-    $.get(getString, function(data){
+    $.get(getTodayWeather, function(data){
         weatherData.todaysWeather = data;
         var date = new Date(0);
         date.setUTCSeconds(weatherData.todaysWeather.dt);
