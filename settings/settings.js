@@ -4,40 +4,6 @@
  */
 $(document).ready(function(){
 	var numOfSectors = 5;
-    /*var sectorString = "<p>" +
-    "Sector 1:" +
-    "<button id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”High\”>High</button>" +
-    "<button id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”Medium\”>Medium</button>" +
-    "<button id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”Low\”>Low</button>" +
-    "<button  id = \”sec1\” class=\”btn btn-primary\” data-toggle=\”modal\” data-target=\”#exampleModal\” data-whatever=\”Custom\”>Custom</button>" +
-    "</p>";
-    var sectorStringBody =
-    "<div class=\”modal fade\” id=\”exampleModal\” tabindex=\”-1\” role=\”dialog\” aria-labelledby=\”exampleModalLabel\”>" +
-    "<div class=\”modal-dialog\” role=\”document\”>" +
-    "<div class=\”modal-content\”>" +
-    "<div class=\”modal-header\”>" +
-    "<button type=\”button\” class=\”close\” data-dismiss=\”modal\” aria-label=\”Close\”><span aria-hidden=\”true\”>&times;</span></button>"+
-    "<h4 class=\”modal-title\”>Time Preference</h4>" +
-    "</div>" +
-    "<div class=\”modal-body\”>" +
-    "<!--http://jonthornton.github.io/jquery-timepicker/-->" +
-    "<p id=\”basicExample\”>" +
-    "<!--input type=\”text\” class=\”date start\” /-->" +
-    "<input type=\”text\” class=\”time start\” /><br>" +
-    "to <br>" +
-    "<input type=\”text\” class=\”time end\” >" +
-    "<!--input type=\”text\” class=\”date end\” /-->" +
-    "</p>" +
-    "</div>" +
-    "<div class=\”modal-footer\”>" +
-    "<button type=\”button\” class=\”btn btn-default\” data-dismiss=\”modal\”>Close</button>" +
-    "<button type=\”button\” class=\”btn btn-default addEvent\”>Save changes</button>" +
-    "</div>" +
-    "</div>" +
-    "</div>" +
-    "</div>";*/
-
-    //$("#tab1").prepend(sectorString + " <br><br> " + sectorStringBody);
 
     function initializeNumberOfSectors(){
         //get number of sectors from settings.txt in google drive here
