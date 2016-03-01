@@ -4,9 +4,9 @@
 /*
     Watering/inch ratio?:
     We have three settings:
-        High:
-        Med:
-        Low:
+        High: 2 inch
+        Med: 1 inch
+        Low: .5 inch
     What inch amount do you think works for each one?
  */
 
