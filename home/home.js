@@ -218,27 +218,27 @@ function addEventsToOverview(/*jsonResponse*/){
             if(startTime.getHours() >= 12){
                 colorStart = "blackTop";
                 sTimeText = ((startTime.getHours() - 12) == 0) ? "12" : (startTime.getHours() - 12).toString();
-                sTimeText += ":" + startTime.getMinutes().toString();
+                sTimeText += ":" + ((startTime.getMinutes() < 10) ? ("0" + startTime.getMinutes().toString()) : startTime.getMinutes().toString());
             }
             else{
                 colorStart = "orangeTop";
                 sTimeText = (startTime.getHours() == 0) ? "12" : startTime.getHours().toString();
-                sTimeText += ":" + startTime.getMinutes().toString();
+                sTimeText += ":" + ((startTime.getMinutes() < 10) ? ("0" + startTime.getMinutes().toString()) : startTime.getMinutes().toString());
             }
             endTime = new Date(0);
             endTime.setUTCSeconds(sortedByDay[i][j].eTime);
             if(endTime.getHours() > 12){
                 colorEnd = "blackBottom";
                 eTimeText = ((endTime.getHours() - 12) == 0) ? "12" : (endTime.getHours() - 12).toString();
-                eTimeText += ":" + endTime.getMinutes().toString();
+                eTimeText += ":" + ((endTime.getMinutes() < 10) ? ("0" + endTime.getMinutes().toString()) : endTime.getMinutes().toString());
             }
             else{
                 colorEnd = "orangeBottom";
                 eTimeText = (endTime.getHours() == 0) ? "12" : endTime.getHours().toString();
-                eTimeText += ":" + endTime.getMinutes().toString();
+                eTimeText += ":" + ((endTime.getMinutes() < 10) ? ("0" + endTime.getMinutes().toString()) : endTime.getMinutes().toString());
             }
 
-            var htmlEvent = "<div class='" + colorStart + " " + colorEnd + "'> " + sTimeText + " - " + eTimeText + "</div>";
+            var htmlEvent = "<div class='" + colorStart + " " + colorEnd + " event'> " + sTimeText + " - " + eTimeText + "</div>";
             $("#e" + i.toString()).append(htmlEvent);
         }
     }
