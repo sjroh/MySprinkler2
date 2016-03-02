@@ -240,7 +240,7 @@ function addEventsToOverview(/*jsonResponse*/){
             }
 
             var htmlEvent = "<div class='" + colorStart + " " + colorEnd + " event'> " + sTimeText + " - " + eTimeText + "</div>";
-            $("#e" + i.toString()).append(htmlEvent);
+            $("#e" + (i + 1).toString()).append(htmlEvent);
         }
     }
 }
