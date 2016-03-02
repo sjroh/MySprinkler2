@@ -33,7 +33,7 @@ function onFailure(error) {
 }
 function renderButton() {
     gapi.signin2.render('my-signin2', {
-        'scope': 'profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive',
+        'scope': 'profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive',
         'width': 240,
         'height': 50,
         'longtitle': true,
@@ -114,7 +114,7 @@ function listFilesInApplicationDataFolder() {
 function downloadFile(file) {
     if (file.downloadUrl) {
         //var accessToken = gapi.auth.getToken().access_token;
-        var accessToken = gapi.auth2.getAccessToken();
+        var accessToken = gapi.auth.getAccessToken();
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file.downloadUrl);
         xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
