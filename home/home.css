@@ -50,3 +50,19 @@ td{
     margin-right:auto;
     color:white;
 }
+
+.blackBottom{
+    border-bottom:3px solid black;
+}
+
+.blackTop{
+    border-top:3px solid black;
+}
+
+.orangeBottom{
+    border-bottom:3px solid orange;
+}
+
+.orangeTop{
+    border-top:3px solid orange;
+}

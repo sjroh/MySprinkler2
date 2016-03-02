@@ -25,6 +25,7 @@ function onSuccess(googleUser) {
     checkStatus();
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
+    addEventsToOverview();
     //test
 }
 function onFailure(error) {
@@ -122,7 +123,7 @@ function downloadFile(file) {
             var jsonResponse = updateJson(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
             //NOTE: should probably put some time stamp in the events.txt file to store when schedule/weather was updated & checked
             //perhaps we could check up to twice a day (if user logs in at least twice a day).
-            addEventsToOverview(jsonResponse);//add events to overview on home page
+            //addEventsToOverview(jsonResponse);//add events to overview on home page
         };
         xhr.onerror = function() {
             console.log("ERROR");
@@ -137,9 +138,9 @@ function updateJson(jsonRetrieved){
 
 }
 
-function addEventsToOverview(jsonResponse){
+function addEventsToOverview(/*jsonResponse*/){
     //sample json object
-    jsonResponse = {
+    var jsonResponse = {
         prev: {},
         current: [
             {
@@ -188,20 +189,59 @@ function addEventsToOverview(jsonResponse){
         var index = findIndexOfDay(startTime, currWeekEpoch);
         if(sortedByDay[index].length == 0){
             sortedByDay[index].push(jsonResponse.current[i]);
-        } else if(sortedByDay[index].length == 1){
-            if(sortedByDay[index][0].sTime > startTime)
-                sortedByDay[index].unshift(jsonResponse.current[i]);
-            else
-                sortedByDay[index].push(jsonResponse.current[i]);
         } else {
-            for(var j = 0; j < sortedByDay[index].length; j++){
-                //add in jsonresponse.current[i] in right spot
+            if(sortedByDay[index][0].sTime >= startTime){
+                sortedByDay[index].unshift(jsonResponse.current[i]);
+            }
+            else if(sortedByDay[index][sortedByDay[index].length - 1].sTime <= startTime){
+                sortedByDay[index].push(jsonResponse.current[i])
+            } else{
+                for(var j = 1; j < sortedByDay[index].length; j++){
+                    //add in jsonresponse.current[i] in right spot
+                    if(sortedByDay[index][j].sTime >= startTime && sortedByDay[index][j - 1].sTime < startTime){
+                        sortedByDay[index].splice(j, 0, jsonResponse.current[i]);
+                    }
+                }
             }
         }
     }
 
     //now iterate thru sortedByDay and add to home.html in proper table td
+    var colorStart;
+    var colorEnd;
+    var sTimeText;
+    var eTimeText;
+    for(i = 0; i < sortedByDay.length; i++){
+        for(j = 0; j < sortedByDay[i].length; j++){
+            startTime = new Date(0);
+            startTime.setUTCSeconds(sortedByDay[i][j].sTime);
+            if(startTime.getHours() >= 12){
+                colorStart = "blackTop";
+                sTimeText = ((startTime.getHours() - 12) == 0) ? "12" : (startTime.getHours() - 12).toString();
+                sTimeText += ":" + startTime.getMinutes().toString();
+            }
+            else{
+                colorStart = "orangeTop";
+                sTimeText = (startTime.getHours() == 0) ? "12" : startTime.getHours().toString();
+                sTimeText += ":" + startTime.getMinutes().toString();
+            }
+            endTime = new Date(0);
+            endTime.setUTCSeconds(sortedByDay[i][j].eTime);
+            if(endTime.getHours() > 12){
+                colorEnd = "blackBottom";
+                eTimeText = ((endTime.getHours() - 12) == 0) ? "12" : (endTime.getHours() - 12).toString();
+                eTimeText += ":" + endTime.getMinutes().toString();
+            }
+            else{
+                colorEnd = "orangeBottom";
+                eTimeText = (endTime.getHours() == 0) ? "12" : endTime.getHours().toString();
+                eTimeText += ":" + endTime.getMinutes().toString();
+            }
 
+            var htmlEvent = "<div class='" + colorStart + " " + colorEnd + "'> " + sTimeText + " - " + eTimeText + "</div>";
+            $("#e" + i.toString()).append(htmlEvent);
+        }
+    }
 }
 
 function findIndexOfDay(time, currWeekEpoch){

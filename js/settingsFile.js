@@ -118,7 +118,7 @@ function insertFileInApplicationDataFolder(jData, fileName) {
     });
 }
 
-$('#submitIfram').on('click', function(){
+$('#submitIframe').on('click', function(){
     iframeHtml = $("#iFrame").val();
     if(iframeHtml.length <=8  || (iframeHtml.substring(0,7) != "<iframe")){
         alert("Invalid Link: Try again");
