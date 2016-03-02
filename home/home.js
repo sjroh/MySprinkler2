@@ -187,6 +187,7 @@ function addEventsToOverview(/*jsonResponse*/){
         var startTime = jsonResponse.current[i].sTime;
         var endTime = jsonResponse.current[i].eTime;
         var index = findIndexOfDay(startTime, currWeekEpoch);
+        console.log(index.toString() + " found for " + startTime);
         if(sortedByDay[index].length == 0){
             sortedByDay[index].push(jsonResponse.current[i]);
         } else {
