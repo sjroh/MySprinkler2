@@ -167,6 +167,11 @@ function addEventsToOverview(/*jsonResponse*/){
                 sTime: 1457268900,
                 eTime: 1457269500,
                 zoneID: 4
+            },
+            {
+                sTime: 1457265329,
+                eTime: 1457266529,
+                zoneID: 4
             }
         ]
     };
