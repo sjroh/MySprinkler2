@@ -207,7 +207,7 @@ function addEventsToOverview(/*jsonResponse*/){
         }
     }
 
-    //now iterate thru sortedByDay and add to home.html in proper table td
+    //now iterate thru sortedByDay and add to home.html in the proper table td
     var colorStart;
     var colorEnd;
     var sTimeText;
