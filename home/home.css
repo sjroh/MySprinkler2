@@ -42,3 +42,8 @@ td#day1, td#w1{
 td{
     width:10em;
 }
+
+.event{
+    width:8em;
+    background-color:#00658a;
+}
