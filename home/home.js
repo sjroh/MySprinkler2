@@ -221,6 +221,7 @@ function addEventsToOverview(/*jsonResponse*/){
         for(j = 0; j < sortedByDay[i].length; j++){
             startTime = new Date(0);
             startTime.setUTCSeconds(sortedByDay[i][j].sTime);
+            console.log(startTime + " found for " + sortedByDay[i][j]);
             if(startTime.getHours() >= 12){
                 colorStart = "blackTop";
                 sTimeText = ((startTime.getHours() - 12) == 0) ? "12" : (startTime.getHours() - 12).toString();
