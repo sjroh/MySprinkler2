@@ -116,8 +116,8 @@ function downloadFile(file) {
         //var accessToken = gapi.auth.getToken().access_token;
         var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', "https://doc-10-90-docs.googleusercontent.com/docs/securesc/uicp8hufop5r0jdeuv34je9gm4s6b7r5/ht0k29vf3p8b9qbf7kg0734o19s4hej1/1456956000000/13052976985605418274/13052976985605418274/0B-q7ueW4T7ngMGlLZXBUcjdxRTQ?e=download&gd=true");
-        console.log("within downloadFile: " + file.title);
+        xhr.open('GET', downloadUrl);
+        console.log("within downloadFile: " + file.downloadUrl);
         xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
         xhr.onload = function() {
             console.log("Response: " + xhr.responseText);
