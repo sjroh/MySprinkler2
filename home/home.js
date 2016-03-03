@@ -116,7 +116,7 @@ function downloadFile(file) {
         //var accessToken = gapi.auth.getToken().access_token;
         var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', downloadUrl);
+        xhr.open('GET', file.downloadUrl);
         console.log("within downloadFile: " + file.downloadUrl);
         xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
         xhr.onload = function() {
