@@ -113,8 +113,8 @@ function listFilesInApplicationDataFolder() {
 
 function downloadFile(file) {
     if (file.downloadUrl) {
-        var accessToken = gapi.auth.getToken().access_token;
-        //var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+        //var accessToken = gapi.auth.getToken().access_token;
+        var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file.webContentLink);
         console.log("accessTokenExpires: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().expires_in);
