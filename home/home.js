@@ -118,10 +118,10 @@ function downloadFile(file) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file.webContentLink);
         console.log("accessTokenExpires: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().expires_in);
-        console.log("accessTokenExpires: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token);
+        console.log("accessToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token);
         console.log("idToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token);
         console.log("downloadUrl: " + file.downloadUrl);
-        xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+        //xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
         xhr.onload = function() {
             console.log("Response: " + xhr.responseText);
             var jsonResponse = updateJson(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
