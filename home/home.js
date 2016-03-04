@@ -22,6 +22,10 @@ function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
     $("#userName").html(googleUser.getBasicProfile().getName());
+    var accessToken = googleUser.getAuthResponse().access_token;
+    var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+
+    alert(accessToken + " -------- " + accessToken2);
     checkStatus();
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
