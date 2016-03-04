@@ -18,6 +18,10 @@ function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
     checkStatus();
+    var accessToken = googleUser.getAuthResponse().access_token;
+    var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+
+    alert(accessToken + " -------- " + accessToken2);
     window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 
 
