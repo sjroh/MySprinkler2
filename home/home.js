@@ -117,7 +117,9 @@ function downloadFile(file) {
         var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file.downloadUrl);
-        console.log("accessToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().expires_in);
+        console.log("accessTokenExpires: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().expires_in);
+        console.log("accessTokenExpires: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token);
+        console.log("idToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token);
         console.log("downloadUrl: " + file.downloadUrl);
         xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
         xhr.onload = function() {
