@@ -18,7 +18,7 @@ var globalVariables = {};
     checkStatus();
 }*/
 
-function onSuccess(googleUser) {
+/*function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
     $("#userName").html(googleUser.getBasicProfile().getName());
@@ -33,7 +33,7 @@ function onSuccess(googleUser) {
     listFilesInApplicationDataFolder();
     addEventsToOverview();
     //test
-}
+}*/
 
 function handleAuthResult(){
 
@@ -64,6 +64,13 @@ function signOut() {
 }
 
 function checkStatus(){
+    gapi.auth.authorize({client_id: "1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com", scope: 'profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive', immediate: false}, handleAuthResult);
+    var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+    var accessToken3 = gapi.auth.getToken().access_token;
+    alert(accessToken2 + " ========== " + accessToken3);
+    //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
+    listFilesInApplicationDataFolder();
+    addEventsToOverview();
     if(signedIn){
         $("#signOut").show();
         $("#signIn").hide();
@@ -72,7 +79,7 @@ function checkStatus(){
         $("#signOut").hide();
     }
 }
-
+checkStatus();
 
 /**
  * List all files contained in the Application Data folder.
