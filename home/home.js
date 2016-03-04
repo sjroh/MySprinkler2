@@ -41,7 +41,7 @@ function handleAuthResult(){
 function onFailure(error) {
     console.log(error);
 }
-function renderButton() {
+/*function renderButton() {
     gapi.signin2.render('my-signin2', {
         'scope': 'profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive',
         'width': 240,
@@ -51,7 +51,7 @@ function renderButton() {
         'onsuccess': onSuccess,
         'onfailure': onFailure
     });
-}
+}*/
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
