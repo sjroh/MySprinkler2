@@ -23,14 +23,20 @@ function onSuccess(googleUser) {
     signedIn = true;
     $("#userName").html(googleUser.getBasicProfile().getName());
     var accessToken = googleUser.getAuthResponse().access_token;
-    var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
 
-    alert(accessToken + " -------- " + accessToken2);
+    gapi.auth.authorize({client_id: "1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com", scope: 'profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive', immediate: true}, handleAuthResult);
+    var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+    var accessToken3 = gapi.auth.getToken().access_token;
+    alert(accessToken + " -------- " + accessToken2 + " ========== " + accessToken3);
     checkStatus();
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
     addEventsToOverview();
     //test
+}
+
+function handleAuthResult(){
+
 }
 function onFailure(error) {
     console.log(error);
