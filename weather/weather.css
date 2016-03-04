@@ -6,3 +6,23 @@
 #homeBody{
     text-align:center;
 }
+
+#signOut{
+    margin-left:1em;
+}
+
+#overviewSchedule{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#tableHolder{
+    margin-left:auto;
+    margin-right:auto;
+    overflow-x:auto;
+    width:80%;
+}
+
+td#day1, td#w1{
+    border-right:solid 1px;
+}

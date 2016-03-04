@@ -2,6 +2,11 @@
     text-align:center;
 }
 
+
+#signOut{
+    margin-left:1em;
+}
+
 .slideshow{
     height:20em;
     color:white;

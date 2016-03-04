@@ -52,6 +52,9 @@
             <li>
                 <a href="../settings/settings.html">Settings</a>
             </li>
+			 <br>
+            <a href="#" id="signOut" class="btn btn-default" role="button" onclick="signOut();">Sign out</a>
+
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -72,6 +75,38 @@
             <br>
             <!--img src="../images/googleCal.png"-->
             <br><br>
+            <div id="tableHolder">
+                <table id="overviewSchedule">
+                    <tr id="day">
+                        <td id="day1"></td>
+                        <td id="day2"></td>
+                        <td id="day3"></td>
+                        <td id="day4"></td>
+                        <td id="day5"></td>
+                        <td id="day6"></td>
+                        <td id="day7"></td>
+                    </tr>
+                    <tr id="weather">
+                        <td id="w1"></td>
+                        <td id="w2"></td>
+                        <td id="w3"></td>
+                        <td id="w4"></td>
+                        <td id="w5"></td>
+                        <td id="w6"></td>
+                        <td id="w7"></td>
+                    </tr>
+                    <tr id="events">
+                        <td id="e1"><!--<div class="event" id="e1event1">5:30 - 5:34</div><div class="event" id="e1event2">5:30 - 5:34</div>--></td>
+                        <td id="e2"><!--<div class="event" id="e2event1">5:30 - 5:34</div>--></td>
+                        <td id="e3"></td>
+                        <td id="e4"></td>
+                        <td id="e5"><!--<div class="event" id="e5event1">5:30 - 5:34</div>--></td>
+                        <td id="e6"></td>
+                        <td id="e7"></td>
+                    </tr>
+                </table>
+            </div>
+            <br>
  
     </div>
     <!-- /#page-content-wrapper -->

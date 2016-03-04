@@ -7,11 +7,16 @@
     text-align:center;
 }
 
+
 p {
     border: 1px solid grey;
 	border-radius: 15px;
     padding: 10px;
 	font-size:20px;
+}
+
+#signOut{
+    margin-left:1em;
 }
 
 /*----- Tabs -----*/
