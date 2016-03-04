@@ -116,12 +116,21 @@ function downloadFile(file) {
         //var accessToken = gapi.auth.getToken().access_token;
         var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', file.webContentLink);
+       // xhr.open('GET', file.webContentLink);
         console.log("accessTokenExpires: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().expires_in);
         console.log("accessToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token);
         console.log("idToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token);
         console.log("downloadUrl: " + file.downloadUrl);
-        xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                console.log("RESPONSE: " + xhr.responseText);
+            }
+        };
+        xhr.open("GET", "https://docs.google.com/uc?id=0B-q7ueW4T7ngWndncXJVN2J4cUE&export=download", true);
+        xhr.send();
+    }
+       /* xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
         xhr.onload = function() {
             console.log("Response: " + xhr.responseText);
             var jsonResponse = updateJson(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
@@ -135,7 +144,7 @@ function downloadFile(file) {
         xhr.send();
     } else {
         console.log("No file.downloadUrl");
-    }
+    }*/
 }
 
 function updateJson(jsonRetrieved){
