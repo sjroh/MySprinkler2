@@ -24,6 +24,7 @@ function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
         oauthToken = authResult.access_token;
         listFilesInApplicationDataFolder();
+        addEventsToOverview();
         gapi.client.load('drive', 'v2'); //load the API.
     } else {
         authorizeButton.onclick = function (event) {
@@ -33,11 +34,7 @@ function handleAuthResult(authResult) {
     }
 }
 
-
-
-
-
-
+OnLoad();
 
 function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
@@ -53,8 +50,8 @@ function onSuccess(googleUser) {
     console.log("accessKey from clicking signin on this page: " + globalAccessToken2);
     checkStatus();
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
-    listFilesInApplicationDataFolder();
-    addEventsToOverview();
+    //listFilesInApplicationDataFolder();
+    //addEventsToOverview();
 }
 
 function onFailure(error) {
@@ -86,10 +83,10 @@ function signOut() {
 function checkStatus(){
     if(signedIn){
         $("#signOut").show();
-        //$("#signIn").hide();
+        $("#signIn").hide();
     } else{
         $("#signIn").show();
-        //$("#signOut").hide();
+        $("#signOut").hide();
     }
 }
 
