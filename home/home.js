@@ -25,7 +25,6 @@ function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
         oauthToken = authResult.access_token;
         findFile('settings.txt');
-        addEventsToOverview();
         gapi.client.load('drive', 'v2'); //load the API.
     } else {
         authorizeButton.onclick = function (event) {
