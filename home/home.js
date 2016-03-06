@@ -4,21 +4,38 @@
 var signedIn = false;
 var globalAccessToken;
 var globalAccessToken2;
-var apiKey = 'AIzaSyBozblUKAA8gFXaRNswfYxCIQoZ7MhvHHQ';
+var oauthToken;
+var clientId = "1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com";
+var scopes = "https://www.googleapis.com/auth/drive";
 $("#setup").hide();
 var globalVariables = {};
 
-/*function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    globalVariables.userName = profile.getName();
-    $("#userName").html(profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-    signedIn = true;
-    checkStatus();
-}*/
+function OnLoad() {
+    window.setTimeout(checkAuth, 1);
+}
+
+function checkAuth() {
+    gapi.auth.authorize({ 'client_id': clientId, 'scope': scopes, 'immediate': true }, handleAuthResult);
+}
+
+function handleAuthResult(authResult) {
+    var authorizeButton = document.getElementById('authorize-button');
+    if (authResult && !authResult.error) {
+        oauthToken = authResult.access_token;
+        listFilesInApplicationDataFolder();
+        gapi.client.load('drive', 'v2'); //load the API.
+    } else {
+        authorizeButton.onclick = function (event) {
+            gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+            return false;
+        }
+    }
+}
+
+
+
+
+
 
 function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
@@ -41,6 +58,7 @@ function onSuccess(googleUser) {
 function onFailure(error) {
     console.log(error);
 }
+
 function renderButton() {
     gapi.signin2.render('my-signin2', {
         'scope': 'profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive',
@@ -66,10 +84,10 @@ function signOut() {
 function checkStatus(){
     if(signedIn){
         $("#signOut").show();
-        $("#signIn").hide();
+        //$("#signIn").hide();
     } else{
         $("#signIn").show();
-        $("#signOut").hide();
+        //$("#signOut").hide();
     }
 }
 
@@ -125,7 +143,7 @@ function downloadFile(file) {
     if (file.downloadUrl) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file.downloadUrl);
-        xhr.setRequestHeader('Authorization', 'Bearer ' + globalAccessToken2);
+        xhr.setRequestHeader('Authorization', 'Bearer ' + oauthToken);
         xhr.onload = function() {
             console.log("RESPONSE: " + xhr.responseText);
             var jsonResponse = updateJson(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
