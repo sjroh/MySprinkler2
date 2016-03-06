@@ -76,14 +76,31 @@
         <div class="impact" id="homeBody">
             <br>
             <!--<img src="../images/googleCal.png">-->
-            <div class="alert alert-danger" id="calendarAlert">
-                <strong>Calendar Needed!</strong>
-                Follow the "Embed a calendar on your website" steps <a href="https://support.google.com/calendar/answer/41207?hl=en" target="_blank">here</a> to provide us with your google calendar.  This will be used to display your sprinkler schedule.  NOTE:  Make sure
-                to choose the 'ADEM' calendar (step 4) so that only your sprinkler events are shown on this site.
-                <form>
-                    Input iFrame code: <input id="iFrame" type="text">
-                </form>
-                <button id="submit">Submit</button>
+            <div class="alert alert-danger" id="serverInstructions">
+                <strong>Server Setup!</strong>
+                Click <a data-toggle="modal" href="#serverInstructionsModal" > here </a> to view the server setup instructions.
+                Once you're done with the setup, refresh the page or logout and log back in.
+            </div>
+            <div class="modal fade" id="serverInstructionsModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Server Setup</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>You're halfway to having a watered lawn! Follow the following steps: </p>
+
+                            Once you're done with the setup, refresh the page or logout and log back in.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <br><br>

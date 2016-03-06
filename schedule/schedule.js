@@ -1,7 +1,17 @@
 /**
  * Created by Kyle on 2/10/2016.
  */
+$("#serverInstructions").hide();
+
 $(document).ready(function(){
+
+    if(!localStorage.getItem("settings")){
+        $("#serverInstructions").show();
+        console.log("couldn't retrieve settings obj from local storage")
+    } else{
+        var settings = localStorage.getItem("settings");
+        $("#homeBody").prepend(settings.calLink);
+    }
 
     // initialize input widgets first
     $('#basicExample .time').timepicker({
@@ -31,20 +41,6 @@ $(document).ready(function(){
         //else
         //error message
         //alert(datepair.getEndTime());
-
-
-    });
-
-    $('#submit').on('click', function(){
-        var iframeHtml = $("#iFrame").val();
-        if(iframeHtml.length <=8  || (iframeHtml.substring(0,7) != "<iframe")){
-            alert(iframeHtml.substring(0,6) + " Invalid Link: Try again");
-            $("#iFrame").val("");
-        }
-        else{
-            $("#calendarAlert").after(iframeHtml);
-            $("#calendarAlert").hide();
-        }
     });
 
     function checkWidth(){
