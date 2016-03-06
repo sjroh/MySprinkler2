@@ -106,7 +106,7 @@ function findFile(fileName) {
                 //once they finish setup, create a settings.json file
                 //and give instructions on how to setup server on pi
                 //which will set up events.txt
-                if(fileName == "setting.txt"){
+                if(fileName == "settings.txt"){
                     $("#setup").show();
                     console.log("no settings file in drive exists");
                 }else if(fileName == "events.txt"){ //no events file exists (but settings.txt should exist at this point)
