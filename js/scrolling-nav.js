@@ -22,7 +22,7 @@ function onSuccess(googleUser) {
     //var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
 
     localStorage.setItem("user", googleUser);
-    console.log("google user stored in browser");
+    alert("google user stored in browser");
     window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 
 
