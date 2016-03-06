@@ -12,6 +12,7 @@ var globalVariables = {};
 
 function OnLoad() {
     window.setTimeout(checkAuth, 1);
+    alert("onload");
 }
 
 function checkAuth() {
