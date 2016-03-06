@@ -3,6 +3,7 @@
  */
 var signedIn = false;
 var globalAccessToken;
+var globalAccessToken2;
 var apiKey = 'AIzaSyBozblUKAA8gFXaRNswfYxCIQoZ7MhvHHQ';
 $("#setup").hide();
 var globalVariables = {};
@@ -23,13 +24,14 @@ function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
     $("#userName").html(googleUser.getBasicProfile().getName());
-    var accessToken = googleUser.getAuthResponse().access_token;
+    globalAccessToken2 = googleUser.getAuthResponse().access_token;
 
     var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
     //alert(accessToken + " -------- " + accessToken2);
 
     var globalAccessToken = localStorage.getItem("accessToken");
     console.log("retrieved access key from stored browser obj: " + globalAccessToken);
+    console.log("accessKey from clicking signin on this page: " + globalAccessToken2);
     checkStatus();
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
@@ -57,7 +59,7 @@ function signOut() {
         console.log('User signed out.');
         signedIn = false;
         checkStatus();
-        window.location = "http://sjroh.github.io/MySprinkler2/";
+        //window.location = "http://sjroh.github.io/MySprinkler2/";
     });
 }
 
@@ -123,7 +125,7 @@ function downloadFile(file) {
     if (file.downloadUrl) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file.downloadUrl);
-        xhr.setRequestHeader('Authorization', 'Bearer ' + globalAccessToken);
+        xhr.setRequestHeader('Authorization', 'Bearer ' + globalAccessToken2);
         xhr.onload = function() {
             console.log("RESPONSE: " + xhr.responseText);
             var jsonResponse = updateJson(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
