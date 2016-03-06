@@ -33,7 +33,7 @@ function handleAuthResult(authResult) {
     }
 }
 
-OnLoad();
+OnLoad();//FUCK THIS
 
 
 
