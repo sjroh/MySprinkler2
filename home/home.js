@@ -27,9 +27,8 @@ function onSuccess(googleUser) {
     var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
     //alert(accessToken + " -------- " + accessToken2);
 
-    var authResponse = localStorage.getItem("authResponse");
-    console.log("retrieved access key from stored browser obj: " + authResponse.access_token);
-    console.log("expires in: " + authResponse.expires_in);
+    var access_token = localStorage.getItem("accessToken");
+    console.log("retrieved access key from stored browser obj: " + access_token);
     checkStatus();
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
