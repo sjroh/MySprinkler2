@@ -21,8 +21,8 @@ function onSuccess(googleUser) {
     var accessToken = googleUser.getAuthResponse().access_token;
     //var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
 
-    localStorage.setItem("user", googleUser);
-    alert("google user stored in browser");
+    localStorage.setItem("authResponse", googleUser.getAuthResponse());
+    alert("authresponse user stored in browser");
     window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 
 
