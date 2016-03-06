@@ -2,6 +2,7 @@
  * Created by Kyle on 2/8/2016.
  */
 var signedIn = false;
+var globalAccessToken;
 var apiKey = 'AIzaSyBozblUKAA8gFXaRNswfYxCIQoZ7MhvHHQ';
 $("#setup").hide();
 var globalVariables = {};
@@ -27,8 +28,8 @@ function onSuccess(googleUser) {
     var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
     //alert(accessToken + " -------- " + accessToken2);
 
-    var access_token = localStorage.getItem("accessToken");
-    console.log("retrieved access key from stored browser obj: " + access_token);
+    var globalAccessToken = localStorage.getItem("accessToken");
+    console.log("retrieved access key from stored browser obj: " + globalAccessToken);
     checkStatus();
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
@@ -120,22 +121,22 @@ function listFilesInApplicationDataFolder() {
 
 function downloadFile(file) {
     if (file.downloadUrl) {
-        //var accessToken = gapi.auth.getToken().access_token;
-        var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
         var xhr = new XMLHttpRequest();
-       // xhr.open('GET', file.webContentLink);
-        console.log("accessTokenExpires: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().expires_in);
-        console.log("accessToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token);
-        //console.log("idToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token);
-        console.log("downloadUrl: " + file.downloadUrl);
-
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
-                console.log("RESPONSE: " + xhr.responseText);
-            }
+        xhr.open('GET', file.downloadUrl);
+        xhr.setRequestHeader('Authorization', 'Bearer ' + globalAccessToken);
+        xhr.onload = function() {
+            console.log("RESPONSE: " + xhr.responseText);
+            var jsonResponse = updateJson(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
+            //NOTE: should probably put some time stamp in the events.txt file to store when schedule/weather was updated & checked
+            //perhaps we could check up to twice a day (if user logs in at least twice a day).
+            //addEventsToOverview(jsonResponse);//add events to overview on home page
         };
-        xhr.open("GET", "https://docs.google.com/uc?id=0B-q7ueW4T7ngWndncXJVN2J4cUE&export=download", true);
+        xhr.onerror = function() {
+            console.log("ERROR");
+        };
         xhr.send();
+    } else {
+        console.log("No file.downloadUrl");
     }
        /* xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
         xhr.onload = function() {
