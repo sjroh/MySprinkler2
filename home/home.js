@@ -8,11 +8,12 @@ var oauthToken;
 var clientId = "1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com";
 var scopes = "https://www.googleapis.com/auth/drive";
 $("#setup").hide();
+$("#serverInstructions").hide();
+$("#fatalError").hide();
 var globalVariables = {};
 
 function OnLoad() {
     window.setTimeout(checkAuth, 1000);
-    alert("onload");
 }
 
 function checkAuth() {
@@ -23,7 +24,7 @@ function handleAuthResult(authResult) {
     var authorizeButton = document.getElementById('authorize-button');
     if (authResult && !authResult.error) {
         oauthToken = authResult.access_token;
-        listFilesInApplicationDataFolder();
+        findFile('settings.txt');
         addEventsToOverview();
         gapi.client.load('drive', 'v2'); //load the API.
     } else {
@@ -40,17 +41,17 @@ function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
     $("#userName").html(googleUser.getBasicProfile().getName());
-    globalAccessToken2 = googleUser.getAuthResponse().access_token;
+    //globalAccessToken2 = googleUser.getAuthResponse().access_token;
 
-    var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+   //var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
     //alert(accessToken + " -------- " + accessToken2);
 
-    var globalAccessToken = localStorage.getItem("accessToken");
-    console.log("retrieved access key from stored browser obj: " + globalAccessToken);
-    console.log("accessKey from clicking signin on this page: " + globalAccessToken2);
+    //var globalAccessToken = localStorage.getItem("accessToken");
+    //console.log("retrieved access key from stored browser obj: " + globalAccessToken);
+    //console.log("accessKey from clicking signin on this page: " + globalAccessToken2);
     checkStatus();
-    //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
-    //listFilesInApplicationDataFolder();
+    //gapi.client.load('drive', 'v2', findFile);
+    //findFile();
     //addEventsToOverview();
 }
 
@@ -97,32 +98,32 @@ function checkStatus(){
  * @param {Function} callback Function to call when the request is complete.
  */
 
-function listFilesInApplicationDataFolder() {
+function findFile(fileName) {
     var retrievePageOfFiles = function(request) {
         request.execute(function(resp) {
             if(resp.items.length == 0){
                 //no settings file in gdrive exists so show
-                //location warning for user to click on
-                //once they click on this, create a settings.json file
-                $("#setup").show();
-                console.log("no file in drive exists");
+                //setup warnings for user to click on
+                //once they finish setup, create a settings.json file
+                //and give instructions on how to setup server on pi
+                //which will set up events.txt
+                if(fileName == "setting.txt"){
+                    $("#setup").show();
+                    console.log("no settings file in drive exists");
+                }else if(fileName == "events.txt"){ //no events file exists (but settings.txt should exist at this point)
+                    $("#serverInstructionsModal").modal();
+                    $("#serverInstructions").show();
+                }
             }
             else{
-                //found settings -> parse json to obtain settings data
-                console.log(resp.items.length + " file(s) found");
-                for(var i = 0; i < resp.items.length; i++){
-                    console.log(resp.items[i]);
-                    downloadFile(resp.items[i]);
-                    //var url = resp.items[i].downloadUrl;
-                    //var fileId = resp.items[i].id;
-                    //console.log(url);
-                    //getFile(fileId);
-                    /*var reader = new FileReader();
-                    reader.onload = function(){
-                        console.log(reader.result);
-                    };
-                    reader.readAsText(resp.items[i]);*/
+                console.log(resp.items[0].title + " file found");
+                if(fileName == "settings.txt"){//found settings -> parse json to obtain settings data
+                    downloadFile(resp.items[0]);
+                    findFile("events.txt");
+                } else if(fileName == "events.txt"){//found events -> parse json to obtain events data
+                    downloadFile(resp.items[0]);
                 }
+
             }
         });
     };
@@ -133,7 +134,7 @@ function listFilesInApplicationDataFolder() {
         'path': '/drive/v2/files',
         'method': 'GET',
         //'params': {'q': '(\'appfolder\' in parents)'}
-        'params': {'q': 'title = \'settings.txt\''}
+        'params': {'q': 'title = \'' + fileName + '\''}
     });
     retrievePageOfFiles(initialRequest);
 }
@@ -145,13 +146,21 @@ function downloadFile(file) {
         xhr.setRequestHeader('Authorization', 'Bearer ' + oauthToken);
         xhr.onload = function() {
             console.log("RESPONSE: " + xhr.responseText);
-            var jsonResponse = updateJson(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
+            var jsonResponse = JSON.parse(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
+            if(file.title = "settings.txt"){
+                localStorage.setItem("settings", jsonResponse);
+                loadWeather(jsonResponse);
+            } else if(file.title == "events.txt"){
+                localStorage.setItem("events", jsonResponse);
+                addEventsToOverview(jsonResponse);
+            }
             //NOTE: should probably put some time stamp in the events.txt file to store when schedule/weather was updated & checked
             //perhaps we could check up to twice a day (if user logs in at least twice a day).
             //addEventsToOverview(jsonResponse);//add events to overview on home page
         };
         xhr.onerror = function() {
             console.log("ERROR");
+            $("#fatalError").show();
         };
         xhr.send();
     } else {
@@ -174,13 +183,30 @@ function downloadFile(file) {
     }*/
 }
 
-function updateJson(jsonRetrieved){
+function loadWeather(settingsJson){
 
+    var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + settingsJson.location.lat + "&lon=" + settingsJson.location.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+    $.get(getString, function(data){
+        weatherData.list = data.list;
+        for(var i = 0; i < weatherData.list.length; i++){
+            var idName = "#day" + (i+1).toString();
+            var idWName = "#w" + (i+1).toString();
+            var date = new Date(0);
+            date.setUTCSeconds(weatherData.list[i].dt);
+            // date.setTime(weatherData[i].dt * 1000);//date = epoch value * 1000
+            //date.setUTCSeconds()
+            $(idName).html(days[date.getDay()] + "<br>" + months[date.getMonth()] + "  " + date.getUTCDate());
+            //console.log(weatherData.list[i].dt + ": " + date.toDateString());
+            $(idWName).html("<img src='http://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png'>");
+        }
+    });
 }
 
-function addEventsToOverview(/*jsonResponse*/){
+function addEventsToOverview(jsonResponse){
     //sample json object
-    var jsonResponse = {
+    /*var jsonResponse = {
         prev: {},
         current: [
             {
@@ -214,7 +240,7 @@ function addEventsToOverview(/*jsonResponse*/){
                 zoneID: 4
             }
         ]
-    };
+    };*/
 
     var currWeekEpoch = [];
     var date = Math.round(new Date().getTime()/1000.0);

@@ -56,7 +56,9 @@ function setLocation(position) {
     //we're going to have to use this data somewhere to make the preliminary schedule for the week.
     //this code below should be moved somewhere else, into another function to be called every time the user logs in
     //and we have their google settings.txt file (with their lat and long coordinates in it)
-    var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + weatherData.lat + "&lon=" + weatherData.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
+
+    //MOVED TO LOAD WEATHER IN HOME.JS
+    /*var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + weatherData.lat + "&lon=" + weatherData.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
     $.get(getString, function(data){
@@ -72,7 +74,7 @@ function setLocation(position) {
             //console.log(weatherData.list[i].dt + ": " + date.toDateString());
             $(idWName).html("<img src='http://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png'>");
         }
-    });
+    });*/
 
 }
 
@@ -166,6 +168,8 @@ function createSettingsFile(){
         insertFileInApplicationDataFolder(settings, "settings.txt");
         console.log("Settings.txt successfully uploaded");
         $("#setup").hide();
+        $("#serverInstructionsModal").modal();
+        $("#serverInstructions").show();
     }
     else{
         console.log("user still needs to input info");
