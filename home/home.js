@@ -2,6 +2,7 @@
  * Created by Kyle on 2/8/2016.
  */
 var signedIn = false;
+var user = {};
 var apiKey = 'AIzaSyBozblUKAA8gFXaRNswfYxCIQoZ7MhvHHQ';
 $("#setup").hide();
 var globalVariables = {};
@@ -25,12 +26,15 @@ function onSuccess(googleUser) {
     var accessToken = googleUser.getAuthResponse().access_token;
 
     var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
-    alert(accessToken + " -------- " + accessToken2);
+    //alert(accessToken + " -------- " + accessToken2);
+
+    user = localStorage.getItem("user");
+    console.log("retrieved access key from stored browser obj: " + user.getAuthResponse().access_token);
+    console.log("expires in: " + user.getAuthResponse().expires_in);
     checkStatus();
     //gapi.client.load('drive', 'v2', listFilesInApplicationDataFolder);
     listFilesInApplicationDataFolder();
     addEventsToOverview();
-    //test
 }
 
 function onFailure(error) {
@@ -124,7 +128,7 @@ function downloadFile(file) {
        // xhr.open('GET', file.webContentLink);
         console.log("accessTokenExpires: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().expires_in);
         console.log("accessToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token);
-        console.log("idToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token);
+        //console.log("idToken: " + gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token);
         console.log("downloadUrl: " + file.downloadUrl);
 
         xhr.onreadystatechange = function(){
