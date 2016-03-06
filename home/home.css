@@ -65,3 +65,11 @@ td{
 .orangeTop{
     border-top:3px solid orange;
 }
+
+#fatalError{
+    font-family: arial;
+}
+
+#serverInstructions{
+    font-family: arial;
+}
