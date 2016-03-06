@@ -11,7 +11,7 @@ $("#setup").hide();
 var globalVariables = {};
 
 function OnLoad() {
-    window.setTimeout(checkAuth, 1);
+    window.setTimeout(checkAuth, 1000);
     alert("onload");
 }
 
@@ -32,6 +32,8 @@ function handleAuthResult(authResult) {
         }
     }
 }
+
+OnLoad();
 
 
 
