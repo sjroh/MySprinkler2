@@ -75,6 +75,37 @@
             <br>
             <!--img src="../images/googleCal.png"-->
             <br><br>
+            <div class="alert alert-danger" id="setupInstructions">
+                <strong>Setup Needed!</strong>
+                Go to your home page to view the setup instructions!
+            </div>
+            <div class="alert alert-danger" id="serverInstructions">
+                <strong>Server Setup!</strong>
+                Click <a data-toggle="modal" href="#serverInstructionsModal" > here </a> to view the server setup instructions.
+                Once you're done with the setup, refresh the page or logout and log back in.
+            </div>
+            <div class="modal fade" id="serverInstructionsModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Server Setup</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>You're halfway to having a watered lawn! Follow the following steps: </p>
+
+                            Once you're done with the setup, refresh the page or logout and log back in.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <div id="tableHolder">
                 <table id="overviewSchedule">
                     <tr id="day">

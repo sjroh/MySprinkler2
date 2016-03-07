@@ -3,15 +3,20 @@
  *Edited by Abigail Rodriguez 2/21/16
  */
 $("#serverInstructions").hide();
+$("#setupInstructions").hide();
+$(".tabs").hide();
 
 $(document).ready(function(){
-	var numOfSectors = 5;
 
     if(!localStorage.getItem("settings")){
+        $("#setupInstructions").show();
+        console.log("couldn't retrieve settings obj from local storage");
+    } else if(!localStorage.getItem("events")){
         $("#serverInstructions").show();
-        console.log("couldn't retrieve settings obj from local storage")
+        console.log("couldn't retrieve events obj from local storage");
     } else{
-        initializeSectors();//
+        $(".tabs").show();
+        initializeSectors();
     }
 
     function initializeSectors(){

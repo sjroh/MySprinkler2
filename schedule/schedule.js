@@ -2,15 +2,19 @@
  * Created by Kyle on 2/10/2016.
  */
 $("#serverInstructions").hide();
+$("#setupInstructions").hide();
 
 $(document).ready(function(){
 
     if(!localStorage.getItem("settings")){
+        $("#setupInstructions").show();
+        console.log("couldn't retrieve settings obj from local storage");
+    } else if(!localStorage.getItem("events")){
         $("#serverInstructions").show();
-        console.log("couldn't retrieve settings obj from local storage")
+        console.log("couldn't retrieve events obj from local storage");
     } else{
         var settings = JSON.parse(localStorage.getItem("settings"));
-        console.log("retrieved settings from browser storage: " + settings.calLink);
+        console.log("retrieved settings & events from browser storage");
         $("#scheduleBody").prepend(settings.calLink);
         $("#scheduleBody").prepend("<br><br>");
     }
