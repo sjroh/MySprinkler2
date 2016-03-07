@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ecfa89-fdc2-412d-a934-e69bd346497b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/home.html" afterPath="$PROJECT_DIR$/home/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/home.js" afterPath="$PROJECT_DIR$/home/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/settingsFile.js" afterPath="$PROJECT_DIR$/js/settingsFile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/settings.html" afterPath="$PROJECT_DIR$/settings/settings.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/settings.js" afterPath="$PROJECT_DIR$/settings/settings.js" />
     </list>
     <ignored path="MySprinkler2.iws" />
@@ -73,8 +69,8 @@
             <file leaf-file-name="settings.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/settings/settings.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.8237885">
-                    <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+                  <state vertical-scroll-proportion="0.6784141">
+                    <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
                     <folding />
                   </state>
                 </provider>
@@ -815,8 +811,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/settings/settings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8237885">
-          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.6784141">
+          <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
           <folding />
         </state>
       </provider>

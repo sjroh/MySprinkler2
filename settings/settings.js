@@ -26,7 +26,7 @@ $(document).ready(function(){
             var copyHTML = sectorHTML;
             copyHTML = copyHTML.replace(/exampleModal1/g, newID);
             copyHTML = copyHTML.replace(/sec1/g, secID);
-            copyHTML = copyHTML.replace("Sector 1:", "Sector " + (i + 2).toString() + ":");
+            copyHTML = copyHTML.replace("Sector 1:", "Sector " + (i).toString() + ":");
             $("#tab1").append(copyHTML);
         }
 
