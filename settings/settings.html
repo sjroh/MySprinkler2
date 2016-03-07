@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="google-signin-client_id" content="1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com">
 
     <title>SSS Settings</title>
 
@@ -57,7 +58,9 @@
             </li>
 			 <br>
             <a href="#" id="signOut" class="btn btn-default" role="button" onclick="signOut();">Sign out</a>
-
+            <br><br>
+            <div id="signIn"><div id="my-signin2"></div></div>
+            <br><br>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -121,10 +124,10 @@
 					<div id="tab1" class="tab active">
 						<p>
 							Sector 1:
-							<button id = "sec1" class="btn btn-primary high" data-toggle="modal" data-target="#exampleModal1" data-whatever="High">High</button>
-							<button id = "sec1" class="btn btn-primary medium" data-toggle="modal" data-target="#exampleModal1" data-whatever="Medium">Medium</button>
-							<button id = "sec1" class="btn btn-primary low" data-toggle="modal" data-target="#exampleModal1" data-whatever="Low">Low</button>
-							<button id = "sec1" class="btn btn-primary custom" data-toggle="modal" data-target="#exampleModal1" data-whatever="Custom">Custom</button>
+							<button class="btn btn-primary high sec1" data-whatever="High">High</button>
+							<button class="btn btn-primary medium sec1" data-whatever="Medium">Medium</button>
+							<button class="btn btn-primary low sec1" data-whatever="Low">Low</button>
+							<button class="btn btn-primary custom sec1" data-toggle="modal" data-target="#exampleModal1" data-whatever="Custom">Custom</button>
 						</p>
 						
 						<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
