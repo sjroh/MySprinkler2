@@ -88,6 +88,7 @@ $(document).ready(function(){
                 //console.log("button size: " + googleButtons.length);
                 var parent = googleButton.parentNode;
                 if(parent){
+                    $("#signIn").css("margin-right", "-4 em");
                     parent.removeChild(googleButton);
                     mobileButtonParent.appendChild(googleButton);
                     /*for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
