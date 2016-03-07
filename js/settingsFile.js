@@ -154,7 +154,8 @@ function createSettingsFile(){
         for(var i = 0; i < zoneNum; i++){
             zoneArr.push({
                 currLevel: "Medium",
-                custom: "na"
+                custom: "na",
+                id: (i+1)
             })
         }
         var settings = {

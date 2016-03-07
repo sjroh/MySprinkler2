@@ -38,7 +38,17 @@ $(document).ready(function(){
 
         //iterate thru settings & fill sectors on page with correct setting
         for(i = 0; i < settings.zones.length; i++){
-
+            var identifier = "#sec" + (i+1).toString();
+            if(settings.zones[i].currLevel == "High"){
+                identifier += ".high";
+            } else if(settings.zones[i].currLevel == "Medium"){
+                identifier += ".medium";
+            } else if(settings.zones[i].currLevel == "Low"){
+                identifier += ".low";
+            } else if(settings.zones[i].currLevel == "Custom"){
+                identifier += ".custom";
+            }
+            $(identifier).addClass("active");
         }
     }
 	
