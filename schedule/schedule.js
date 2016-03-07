@@ -3,6 +3,8 @@
  */
 $("#serverInstructions").hide();
 $("#setupInstructions").hide();
+$(".addEvent").hide();
+$(".removeEvent").hide();
 
 $(document).ready(function(){
 
@@ -17,6 +19,8 @@ $(document).ready(function(){
         console.log("retrieved settings & events from browser storage");
         $("#scheduleBody").prepend(settings.calLink);
         $("#scheduleBody").prepend("<br><br>");
+        $(".addEvent").show();
+        $(".removeEvent").show();
     }
 
     // initialize input widgets first
