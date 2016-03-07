@@ -10,7 +10,8 @@ $(document).ready(function(){
         console.log("couldn't retrieve settings obj from local storage")
     } else{
         var settings = localStorage.getItem("settings");
-        $("#homeBody").prepend(settings.calLink);
+        console.log("retrieved settings from browser storage: " + settings);
+        $("#scheduleBody").prepend(settings.calLink);
     }
 
     // initialize input widgets first

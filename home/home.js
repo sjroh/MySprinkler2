@@ -341,7 +341,7 @@ $(document).ready(function(){
         }
     }
     checkWidth();
-    var userName = "nameHere";
+    var userName = "";
     $("#userName").text(userName);
     $("#error").hide();
     $("#menu-toggle").click(function(){
