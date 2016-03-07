@@ -147,11 +147,10 @@ function downloadFile(file) {
             console.log("RESPONSE: " + xhr.responseText);
             var jsonResponse = JSON.parse(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
             if(file.title == "settings.txt"){
-                localStorage.setItem("settings", jsonResponse);
-                console.log("storing in browser: " + jsonResponse.calLink);
+                localStorage.setItem("settings", xhr.responseText);
                 loadWeather(jsonResponse);
             } else if(file.title == "events.txt"){
-                localStorage.setItem("events", jsonResponse);
+                localStorage.setItem("events", xhr.responseText);
                 addEventsToOverview(jsonResponse);
             }
             //NOTE: should probably put some time stamp in the events.txt file to store when schedule/weather was updated & checked
