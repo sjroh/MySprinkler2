@@ -148,6 +148,7 @@ function downloadFile(file) {
             var jsonResponse = JSON.parse(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
             if(file.title == "settings.txt"){
                 localStorage.setItem("settings", jsonResponse);
+                console.log("storing in browser: " + jsonResponse);
                 loadWeather(jsonResponse);
             } else if(file.title == "events.txt"){
                 localStorage.setItem("events", jsonResponse);

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ecfa89-fdc2-412d-a934-e69bd346497b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schedule/schedule.js" afterPath="$PROJECT_DIR$/schedule/schedule.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/home.js" afterPath="$PROJECT_DIR$/home/home.js" />
     </list>
     <ignored path="MySprinkler2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34920636">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="51" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -140,11 +140,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/home/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="153" column="50" selection-start-line="153" selection-start-column="50" selection-end-line="153" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.37641722">
+              <caret line="150" column="57" selection-start-line="150" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -176,9 +176,9 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/home/home.css" />
         <option value="$PROJECT_DIR$/js/scrolling-nav.js" />
-        <option value="$PROJECT_DIR$/home/home.js" />
         <option value="$PROJECT_DIR$/schedule/schedule.html" />
         <option value="$PROJECT_DIR$/schedule/schedule.js" />
+        <option value="$PROJECT_DIR$/home/home.js" />
       </list>
     </option>
   </component>
@@ -817,18 +817,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/home.js">
+    <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="153" column="50" selection-start-line="153" selection-start-column="50" selection-end-line="153" selection-end-column="50" />
+          <caret line="13" column="51" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
+    <entry file="file://$PROJECT_DIR$/home/home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34920636">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.37641722">
+          <caret line="150" column="57" selection-start-line="150" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
           <folding />
         </state>
       </provider>
