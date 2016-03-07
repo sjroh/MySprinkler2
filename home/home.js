@@ -10,6 +10,7 @@ var scopes = "https://www.googleapis.com/auth/drive";
 $("#setup").hide();
 $("#serverInstructions").hide();
 $("#fatalError").hide();
+$("#loading").show();
 var globalVariables = {};
 
 function OnLoad() {
@@ -108,10 +109,12 @@ function findFile(fileName) {
                 //which will set up events.txt
                 if(fileName == "settings.txt"){
                     localStorage.removeItem("settings");//remove in case previously created
+                    $("#loading").hide();
                     $("#setup").show();
                     console.log("no settings file in drive exists");
                 }else if(fileName == "events.txt"){ //no events file exists (but settings.txt should exist at this point)
                     localStorage.removeItem("events");//remove in case previously created
+                    $("#loading").hide();
                     $("#serverInstructionsModal").modal();
                     $("#serverInstructions").show();
                 }
@@ -190,6 +193,7 @@ function loadWeather(settingsJson){
     var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + settingsJson.location.lat + "&lon=" + settingsJson.location.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+    $("#loading").hide();
     $.get(getString, function(data){
         weatherData.list = data.list;
         for(var i = 0; i < weatherData.list.length; i++){
