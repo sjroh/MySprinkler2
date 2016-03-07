@@ -153,7 +153,7 @@ function createSettingsFile(){
         var zoneArr = [];
         for(var i = 0; i < zoneNum; i++){
             zoneArr.push({
-                currLevel: "medium",
+                currLevel: "Medium",
                 custom: "na"
             })
         }

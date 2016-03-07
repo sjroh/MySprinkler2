@@ -2,21 +2,38 @@
  *Created by Kyle on 2/10/2016
  *Edited by Abigail Rodriguez 2/21/16
  */
+$("#serverInstructions").hide();
+
 $(document).ready(function(){
 	var numOfSectors = 5;
 
-    function initializeNumberOfSectors(){
+    if(!localStorage.getItem("settings")){
+        $("#serverInstructions").show();
+        console.log("couldn't retrieve settings obj from local storage")
+    } else{
+        initializeSectors();//
+    }
+
+    function initializeSectors(){
         //get number of sectors from settings.txt in google drive here
-        var numSectors = numOfSectors;
+        var settings = JSON.parse(localStorage.getItem("settings"));
+        var numSectors = settings.zones.length;
         var sectorHTML = $("#tab1").html();
-        for(var i = 0; i < numSectors - 1/*already have 1*/; i++){
-            var newID = "exampleModal" + (i + 2).toString();
-            var secID = "sec" + (i + 2).toString();
+        //setup content
+        for(var i = 2; i < numSectors + 1/*already have 1*/; i++){
+            var newID = "exampleModal" + (i).toString();
+            var secID = "sec" + (i).toString();
             var copyHTML = sectorHTML;
             copyHTML = copyHTML.replace(/exampleModal1/g, newID);
             copyHTML = copyHTML.replace(/sec1/g, secID);
             copyHTML = copyHTML.replace("Sector 1:", "Sector " + (i + 2).toString() + ":");
             $("#tab1").append(copyHTML);
+        }
+
+
+        //iterate thru settings & fill sectors on page with correct setting
+        for(i = 0; i < settings.zones.length; i++){
+
         }
     }
 	
@@ -64,7 +81,6 @@ $(document).ready(function(){
     }
 
     checkWidth();
-    initializeNumberOfSectors();
 
     $("#menu-toggle").click(function(){
         if($(".menu-btn").hasClass("glyphicon-chevron-right")){
@@ -88,9 +104,6 @@ $(document).ready(function(){
  
         e.preventDefault();
     });
-	
-
-	
 });
 
 

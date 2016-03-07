@@ -107,9 +107,11 @@ function findFile(fileName) {
                 //and give instructions on how to setup server on pi
                 //which will set up events.txt
                 if(fileName == "settings.txt"){
+                    localStorage.removeItem("settings");//remove in case previously created
                     $("#setup").show();
                     console.log("no settings file in drive exists");
                 }else if(fileName == "events.txt"){ //no events file exists (but settings.txt should exist at this point)
+                    localStorage.removeItem("events");//remove in case previously created
                     $("#serverInstructionsModal").modal();
                     $("#serverInstructions").show();
                 }
