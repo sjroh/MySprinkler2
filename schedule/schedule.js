@@ -12,6 +12,7 @@ $(document).ready(function(){
         var settings = JSON.parse(localStorage.getItem("settings"));
         console.log("retrieved settings from browser storage: " + settings.calLink);
         $("#scheduleBody").prepend(settings.calLink);
+        $("#scheduleBody").prepend("<br><br>");
     }
 
     // initialize input widgets first

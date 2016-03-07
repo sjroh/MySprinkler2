@@ -90,7 +90,6 @@ $(document).ready(function(){
                 if(parent){
                     parent.removeChild(googleButton);
                     mobileButtonParent.appendChild(googleButton);
-                    $("#signIn").css("margin-right", "-4 em");
                     /*for(var i = 0; i < googleButtons.length; i++){//move buttons to mobile view
                      var parent = googleButtons[i].parentNode;
                      parent.removeChild(googleButtons[i]);
