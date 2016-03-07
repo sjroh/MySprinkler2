@@ -10,7 +10,7 @@ $(document).ready(function(){
         console.log("couldn't retrieve settings obj from local storage")
     } else{
         var settings = localStorage.getItem("settings");
-        console.log("retrieved settings from browser storage: " + settings);
+        console.log("retrieved settings from browser storage: " + settings.calLink);
         $("#scheduleBody").prepend(settings.calLink);
     }
 
