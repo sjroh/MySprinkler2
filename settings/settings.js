@@ -144,7 +144,7 @@ $(document).ready(function(){
                 else{
                     console.log(resp.items[0].title + " file found");
                     console.log(resp.items[0]);
-                    updateFile(resp.items[0].fileId, resp.items[0], settings, null);
+                    updateFile(resp.items[0].id, resp.items[0], settings, null);
                 }
             });
         };
