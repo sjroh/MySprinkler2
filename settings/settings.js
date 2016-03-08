@@ -93,7 +93,7 @@ $(document).ready(function(){
     }
 
     $(".btn").on('click', function(){//to change zone watering level
-        var keywords = searchForKeyWords($(this).className().split(/\s+/));//search for high, medium, low, custom and sec#
+        var keywords = searchForKeyWords(this.className.split(/\s+/));//search for high, medium, low, custom and sec#
 
         if(keywords.length == 3){ //keyword = ['level', 'sec#', #]
             keywords[0] = keywords[0][0].toUpperCase() + keywords[0].slice(1);//capitalize first letter in level
