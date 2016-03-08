@@ -101,6 +101,7 @@ $(document).ready(function(){
                 settings.zones[keywords[2] - 1].currLevel = keywords[0];
                 //put updated settings obj in settings.txt
                 updateSettings();
+                localStorage.setItem("settings", settings);
 
                 var activeIdentifier = "." + keywords[1] + "." + "active";
                 $(activeIdentifier).removeClass("active");
@@ -142,6 +143,7 @@ $(document).ready(function(){
                 }
                 else{
                     console.log(resp.items[0].title + " file found");
+                    console.log(resp.items[0]);
                     updateFile(resp.items[0].fileId, resp.items[0], settings, null);
                 }
             });
