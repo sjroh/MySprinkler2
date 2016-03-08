@@ -101,7 +101,7 @@ $(document).ready(function(){
                 settings.zones[keywords[2] - 1].currLevel = keywords[0];
                 //put updated settings obj in settings.txt
                 updateSettings();
-                localStorage.setItem("settings", settings);
+                localStorage.setItem("settings", JSON.stringify(settings));
 
                 var activeIdentifier = "." + keywords[1] + "." + "active";
                 $(activeIdentifier).removeClass("active");
