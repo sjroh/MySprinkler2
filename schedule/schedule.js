@@ -16,6 +16,7 @@ $(document).ready(function(){
         console.log("couldn't retrieve events obj from local storage");
     } else{
         var settings = JSON.parse(localStorage.getItem("settings"));
+        initializeZoneButtons();
         console.log("retrieved settings & events from browser storage");
         $("#scheduleBody").prepend(settings.calLink);
         $("#scheduleBody").prepend("<br><br>");
@@ -55,6 +56,14 @@ $(document).ready(function(){
         //error message
         //alert(datepair.getEndTime());
     });
+
+    function initializeZoneButtons(){
+        for(var i = 1; i < settings.zones.length + 1; i++){
+            var htmlButton = "<a href=\"#\" class=\"zoneButton\">" + i.toString() + "</a>";
+            $("#zoneButtons").append(htmlButton);
+        }
+    }
+
 
     function checkWidth(){
         if($(window).width() < 600){

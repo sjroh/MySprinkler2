@@ -14,7 +14,7 @@
 var weatherData = {
     haveLocation: false
 };
-var iframeHtml = "";
+//var iframeHtml = "";
 var zoneNum = -1;
 /*$.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=30.627977&lon=-96.334407&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b', function(data){
     weatherData = data.list;
@@ -120,7 +120,7 @@ function insertFileInApplicationDataFolder(jData, fileName) {
     });
 }
 
-$('#submitIframe').on('click', function(){
+/*$('#submitIframe').on('click', function(){
     iframeHtml = $("#iFrame").val();
     if(iframeHtml.length <=8  || (iframeHtml.substring(0,7) != "<iframe")){
         alert("Invalid Link: Try again");
@@ -130,7 +130,7 @@ $('#submitIframe').on('click', function(){
         $('#calendarAlert').hide();
         createSettingsFile();
     }
-});
+});*/
 
 $('#zoneAlert').submit(function(){
     zoneNum = $('#zoneNum').val();
@@ -148,7 +148,7 @@ function createSettingsFile(){
     console.log("ifram: " + iframeHtml);
     console.log("weatherdata: " + weatherData.haveLocation);
     console.log("zonenum: " + zoneNum);
-    if(iframeHtml != "" && weatherData.haveLocation && zoneNum != -1)
+    if(/*iframeHtml != "" && */weatherData.haveLocation && zoneNum != -1)
     {
         var zoneArr = [];
         for(var i = 0; i < zoneNum; i++){
@@ -163,7 +163,7 @@ function createSettingsFile(){
                 "lat": weatherData.lat,
                 "long": weatherData.long
             },
-            "calLink": iframeHtml,
+            //"calLink": iframeHtml,
             "zones": zoneArr
         };
         insertFileInApplicationDataFolder(settings, "settings.txt");
