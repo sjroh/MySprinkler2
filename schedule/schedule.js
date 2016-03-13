@@ -38,7 +38,7 @@ $(document).ready(function(){
     // initialize datepair
     var basicExampleEl = document.getElementById('basicExample');
     var datepair = new Datepair(basicExampleEl);
-    $('.addEvent').click(function(){
+    $('.saveEvent').click(function(){
         //if valid date, then
         var currDate = new Date();
         var sDate = datepair.getStartTime();
