@@ -47,10 +47,10 @@ $(document).ready(function(){
         var sDate = datepair.getStartTime();
         var eDate = datepair.getEndTime();
         if(currDate >= sDate){
-            $(".invalidTime").show();
+            $("#invalidTime").show();
         }
         if(zonesClicked.length == 0){
-            $(".invalidZones").show();
+            $("#invalidZones").show();
         }
         if(currDate < sDate && zonesClicked.length != 0){
             alert("You have added a water event!");
