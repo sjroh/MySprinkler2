@@ -134,8 +134,8 @@ $(document).ready(function(){
         if(currDate < sDate && zonesClicked.length != 0){
             $("#addModal").modal('hide');
             var event = {
-                sTime: sDate,
-                eTime: eDate,
+                sTime: Math.round(sDate.getTime()/1000.0),
+                eTime: Math.round(eDate.getTime()/1000.0),
                 zones: zonesClicked,
                 type: "manual"
             };
