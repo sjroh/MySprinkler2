@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="google-signin-client_id" content="1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com">
 
     <title>SSS Schedule</title>
 
@@ -56,7 +57,9 @@
             </li>
 			 <br>
             <a href="#" id="signOut" class="btn btn-default" role="button" onclick="signOut();">Sign out</a>
-
+            <br><br>
+            <div id="signIn"><div id="my-signin2"></div></div>
+            <br><br>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -168,6 +171,11 @@
 
 </div>
 <!-- /#wrapper -->
+
+<!-- Google Login -->
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=OnLoad"></script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
