@@ -40,13 +40,14 @@ $(document).ready(function(){
     $('.addEvent').click(function(){
         //if valid date, then
         var currDate = new Date();
-        var endDate = datepair.getStartTime();
-        if(currDate >= endDate){
+        var sDate = datepair.getStartTime();
+        var eDate = datepair.getEndTime();
+        if(currDate >= sDate){
             alert("Sorry, invalid date");
         }
         else{
             alert("You have added a water event!");
-            console.log("Date given to datepicker: " + endDate);
+            console.log("Date given to datepicker: " + sDate + " -> " + eDate);
         }
         //code here to save water event to google calendar & google drive & raspberry pi
         //else
