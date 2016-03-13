@@ -5,9 +5,12 @@ $("#serverInstructions").hide();
 $("#setupInstructions").hide();
 $(".addEvent").hide();
 $(".removeEvent").hide();
+$("#invalidTime").hide();
+$("#invalidZones").hide();
 
 $(document).ready(function(){
 
+    var zonesClicked = [];
     if(!localStorage.getItem("settings")){
         $("#setupInstructions").show();
         console.log("couldn't retrieve settings obj from local storage");
@@ -44,11 +47,14 @@ $(document).ready(function(){
         var sDate = datepair.getStartTime();
         var eDate = datepair.getEndTime();
         if(currDate >= sDate){
-            alert("Sorry, invalid date");
+            $(".invalidTime").show();
         }
-        else{
+        if(zonesClicked.length == 0){
+            $(".invalidZones").show();
+        }
+        if(currDate < sDate && zonesClicked.length != 0){
             alert("You have added a water event!");
-            console.log("Date given to datepicker: " + sDate + " -> " + eDate);
+            console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
             console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
         }
         //code here to save water event to google calendar & google drive & raspberry pi
@@ -59,6 +65,14 @@ $(document).ready(function(){
 
     $(".zoneButton").click(function(){
         var zoneClicked = parseInt($(this).html());
+        if($.inArray(zoneClicked, zonesClicked) == -1){//not in arr, so select
+            $(this).addClass("zoneSelected");
+            zonesClicked.push(zoneClicked);
+        } else { //previously clicked, so un-select
+            $(this).removeClass("zoneSelected");
+            var index = $.inArray(zoneClicked, zonesClicked);
+            zonesClicked.splice(index, 1);
+        }
         console.log(zoneClicked + "<- clicked");
     });
 

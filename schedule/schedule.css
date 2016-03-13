@@ -33,6 +33,9 @@
 .zoneButton:hover {
     background-color:#043547;
 }
+.zoneSelected{
+    background-color:#043547;
+}
 .zoneButton:active {
     position:relative;
     top:1px;
