@@ -265,19 +265,21 @@ function addEventsToOverview(jsonResponse){
         var endTime = jsonResponse.current[i].eTime;
         var index = findIndexOfDay(startTime, currWeekEpoch);
         console.log(index.toString() + " found for " + startTime);
-        if(sortedByDay[index].length == 0){
-            sortedByDay[index].push(jsonResponse.current[i]);
-        } else {
-            if(sortedByDay[index][0].sTime >= startTime){
-                sortedByDay[index].unshift(jsonResponse.current[i]);
-            }
-            else if(sortedByDay[index][sortedByDay[index].length - 1].sTime <= startTime){
-                sortedByDay[index].push(jsonResponse.current[i])
-            } else{
-                for(var j = 1; j < sortedByDay[index].length; j++){
-                    //add in jsonresponse.current[i] in right spot
-                    if(sortedByDay[index][j].sTime >= startTime && sortedByDay[index][j - 1].sTime < startTime){
-                        sortedByDay[index].splice(j, 0, jsonResponse.current[i]);
+        if(index != -1){
+            if(sortedByDay[index].length == 0){
+                sortedByDay[index].push(jsonResponse.current[i]);
+            } else {
+                if(sortedByDay[index][0].sTime >= startTime){
+                    sortedByDay[index].unshift(jsonResponse.current[i]);
+                }
+                else if(sortedByDay[index][sortedByDay[index].length - 1].sTime <= startTime){
+                    sortedByDay[index].push(jsonResponse.current[i])
+                } else{
+                    for(var j = 1; j < sortedByDay[index].length; j++){
+                        //add in jsonresponse.current[i] in right spot
+                        if(sortedByDay[index][j].sTime >= startTime && sortedByDay[index][j - 1].sTime < startTime){
+                            sortedByDay[index].splice(j, 0, jsonResponse.current[i]);
+                        }
                     }
                 }
             }
@@ -330,9 +332,11 @@ function findIndexOfDay(time, currWeekEpoch){
     for(var i = 0; i < 7; i++){
         var weekDate = new Date(0);
         weekDate.setUTCSeconds(currWeekEpoch[i]);
-        if(date.getDay() === weekDate.getDay())
+        if(date.getDate() === weekDate.getDate())
             return i;
     }
+    return -1;
+
 }
 
 $(document).ready(function(){
