@@ -57,6 +57,11 @@ $(document).ready(function(){
         //alert(datepair.getEndTime());
     });
 
+    $(".zoneButton").click(function(){
+        var zoneClicked = parseInt($(this).html());
+        console.log(zoneClicked + "<- clicked");
+    });
+
     function initializeZoneButtons(){
         for(var i = 1; i < settings.zones.length + 1; i++){
             var htmlButton = "<a href=\"#\" class=\"zoneButton\">" + i + "</a>";
