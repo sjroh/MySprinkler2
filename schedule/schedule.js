@@ -48,6 +48,7 @@ $(document).ready(function(){
         else{
             alert("You have added a water event!");
             console.log("Date given to datepicker: " + sDate + " -> " + eDate);
+            console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
         }
         //code here to save water event to google calendar & google drive & raspberry pi
         //else
