@@ -46,6 +46,7 @@ $(document).ready(function(){
         }
         else{
             alert("You have added a water event!");
+            console.log("Date given to datepicker: " + endDate);
         }
         //code here to save water event to google calendar & google drive & raspberry pi
         //else
