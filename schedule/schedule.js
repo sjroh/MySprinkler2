@@ -46,12 +46,16 @@ $(document).ready(function(){
         var currDate = new Date();
         var sDate = datepair.getStartTime();
         var eDate = datepair.getEndTime();
-        if(currDate >= sDate){
+        if(currDate >= sDate)
             $("#invalidTime").show();
-        }
-        if(zonesClicked.length == 0){
+        else
+            $("#invalidTime").hide();
+
+        if(zonesClicked.length == 0)
             $("#invalidZones").show();
-        }
+        else
+            $("#invalidZones").hide();
+
         if(currDate < sDate && zonesClicked.length != 0){
             alert("You have added a water event!");
             console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
