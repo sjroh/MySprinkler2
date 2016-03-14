@@ -146,6 +146,7 @@ $(document).ready(function(){
             alert("You have added a water event!");
             console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
             console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
+            //should refresh page here
         }
         //code here to save water event to google calendar & google drive & raspberry pi
         //else
@@ -163,6 +164,7 @@ $(document).ready(function(){
                 else{
                     console.log(resp.items[0].title + " file found");
                     console.log(resp.items[0]);
+                    console.log("events in here: " + events);
                     updateFile(resp.items[0].id, resp.items[0], events, null);
                 }
             });
@@ -250,7 +252,7 @@ $(document).ready(function(){
 
         request.execute(function(event){
             events.current[events.current.length - 1].id = event.id;
-           console.log("Event created: " + event.id);
+           console.log("Event created: " + events);
         });
     }
 
