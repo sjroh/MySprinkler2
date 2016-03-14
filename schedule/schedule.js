@@ -142,7 +142,6 @@ $(document).ready(function(){
             };
             events.current.push(event);
             updateCalendar(sDate, eDate, zonesClicked);//also insert event calendar id into events object
-            updateEvents();
             alert("You have added a water event!");
             console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
             console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
@@ -164,7 +163,6 @@ $(document).ready(function(){
                 else{
                     console.log(resp.items[0].title + " file found");
                     console.log(resp.items[0]);
-                    while(!events.current[events.current.length - 1].id){}
                     console.log("event id in here: " + events.current[events.current.length - 1].id);
                     updateFile(resp.items[0].id, resp.items[0], events, null);
                 }
@@ -254,6 +252,7 @@ $(document).ready(function(){
         request.execute(function(event){
             events.current[events.current.length - 1].id = event.id;
            console.log("Event created: " + events.current[events.current.length - 1].id );
+            updateEvents();//now update events.txt
         });
     }
 
