@@ -141,8 +141,8 @@ $(document).ready(function(){
                 type: "manual"
             };
             events.current.push(event);
+            updateCalendar(sDate, eDate, zonesClicked);//also insert event calendar id into events object
             updateEvents();
-            updateCalendar(sDate, eDate, zonesClicked);
             alert("You have added a water event!");
             console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
             console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
@@ -249,6 +249,7 @@ $(document).ready(function(){
         });
 
         request.execute(function(event){
+            events.current[events.current.length - 1].eventId = event.eventId;
            console.log("Event created: " + event.eventId);
         });
     }
