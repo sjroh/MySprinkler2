@@ -3,7 +3,7 @@
  */
 var oauthToken;
 var clientId = "1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com";
-var scopes = "https://www.googleapis.com/auth/drive";
+var scopes = "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/calendar";
 
 $("#serverInstructions").hide();
 $("#setupInstructions").hide();
