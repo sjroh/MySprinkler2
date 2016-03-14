@@ -215,7 +215,7 @@ $(document).ready(function(){
     }
 
     function updateCalendar(sDate, eDate, zonesFor){
-        var calLink = settings.calLink;
+        //var calLink = settings.calLink;
         //parse calLink for timezone
         //var splitArr = calLink.split('=');
         //var timeZone = splitArr[3];
@@ -249,8 +249,8 @@ $(document).ready(function(){
         });
 
         request.execute(function(event){
-            events.current[events.current.length - 1].eventId = event.eventId;
-           console.log("Event created: " + event.eventId);
+            events.current[events.current.length - 1].id = event.id;
+           console.log("Event created: " + event.id);
         });
     }
 
