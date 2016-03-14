@@ -244,12 +244,12 @@ $(document).ready(function(){
         };
 
         var request = gapi.client.calendar.events.insert({
-            'calendarId': 'primary',
+            'calendarId': settings.calId,
             'resource': event
         });
 
         request.execute(function(event){
-           console.log("Event created: " + event.htmlLink);
+           console.log("Event created: " + event.eventId);
         });
     }
 
