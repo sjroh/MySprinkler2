@@ -28,6 +28,7 @@ function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
         oauthToken = authResult.access_token;
         gapi.client.load('drive', 'v2'); //load the API.
+        gapi.client.load('calendar', 'v3');
     } else {
         authorizeButton.onclick = function (event) {
             gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
