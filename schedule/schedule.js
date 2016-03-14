@@ -244,7 +244,7 @@ $(document).ready(function(){
         };
 
         var request = gapi.client.calendar.events.insert({
-            'calendarId': settings.calId,
+            'calendarId': 'primary',
             'resource': event
         });
 
