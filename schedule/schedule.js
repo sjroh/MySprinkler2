@@ -164,7 +164,7 @@ $(document).ready(function(){
                 else{
                     console.log(resp.items[0].title + " file found");
                     console.log(resp.items[0]);
-                    console.log("events in here: " + events);
+                    console.log("event id in here: " + events.current[events.current.length - 1].id);
                     updateFile(resp.items[0].id, resp.items[0], events, null);
                 }
             });
@@ -252,7 +252,7 @@ $(document).ready(function(){
 
         request.execute(function(event){
             events.current[events.current.length - 1].id = event.id;
-           console.log("Event created: " + events);
+           console.log("Event created: " + events.current[events.current.length - 1].id );
         });
     }
 
