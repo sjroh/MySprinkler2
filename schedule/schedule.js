@@ -141,7 +141,7 @@ $(document).ready(function(){
             };
             events.current.push(event);
             updateEvents();
-            updateCalendar();
+            updateCalendar(sDate, eDate, zonesClicked);
             alert("You have added a water event!");
             console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
             console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
@@ -213,8 +213,43 @@ $(document).ready(function(){
         request.execute(callback);
     }
 
-    function updateCalendar(){
+    function updateCalendar(sDate, eDate, zonesFor){
+        var calLink = settings.calLink;
+        //parse calLink for timezone
+        //var splitArr = calLink.split('=');
+        //var timeZone = splitArr[3];
+        //timeZone = timeZone.substr(0, timeZone.length - 6);//remove the '"style' at the end
+        var description = "Watering event on zone(s): ";
+        for(var i = 0; i < zonesFor.length; i++){
+            description+=zonesFor[i].toString();
+            if(i != zonesFor.length - 1)
+                description+=", ";
+            else
+                description+=".";
+        }
 
+        var event = {
+          'summary': "Watering Event",
+            'description': description,
+            'start':{
+                'dateTime': sDate.toISOString()
+            },
+            'end':{
+                'dateTime': eDate.toISOString()
+            },
+            'reminders':{
+                'useDefault':false
+            }
+        };
+
+        var request = gapi.client.calendar.events.insert({
+            'calendarId': settings.calId,
+            'resource': event
+        });
+
+        request.execute(function(event){
+           console.log("Event created: " + event.htmlLink);
+        });
     }
 
     $(".zoneButton").click(function(){

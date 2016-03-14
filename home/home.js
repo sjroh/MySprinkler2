@@ -308,7 +308,7 @@ function addEventsToOverview(jsonResponse){
             }
             endTime = new Date(0);
             endTime.setUTCSeconds(sortedByDay[i][j].eTime);
-            if(endTime.getHours() > 12){
+            if(endTime.getHours() >= 12){
                 colorEnd = "blackBottom";
                 eTimeText = ((endTime.getHours() - 12) == 0) ? "12" : (endTime.getHours() - 12).toString();
                 eTimeText += ":" + ((endTime.getMinutes() < 10) ? ("0" + endTime.getMinutes().toString()) : endTime.getMinutes().toString());
