@@ -160,7 +160,7 @@ $(document).ready(function(){
         for(var i = 0; i < eventsClicked.length; i++){
             //first delete from calendar with delete request
             var xmlhttp = new XMLHttpRequest();
-            var url = "https://www.googleapis.com/calendar/v3/calendar/v3/calendars/" + settings.calId + "/events/" + eventsClicked[i];
+            var url = "https://www.googleapis.com/calendar/v3/calendars/" + settings.calId + "/events/" + eventsClicked[i];
             xmlhttp.onreadystatechange = function(){
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
                     var myArr = JSON.parse(smlhttp.responseText);
