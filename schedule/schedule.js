@@ -160,14 +160,16 @@ $(document).ready(function(){
         for(var i = 0; i < eventsClicked.length; i++){
             //first delete from calendar with delete request
             var xmlhttp = new XMLHttpRequest();
+
             var url = "https://www.googleapis.com/calendar/v3/calendars/" + settings.calId + "/events/" + eventsClicked[i];
-            xmlhttp.onreadystatechange = function(){
-                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-                    var myArr = JSON.parse(smlhttp.responseText);
-                    console.log("RESPONSE CALENDAR: " + myArr);
-                }
-            };
             xmlhttp.open("DELETE", url, true);
+            xmlhttp.setRequestHeader('Authorization', 'Bearer ' + oauthToken);
+            xmlhttp.onload = function(){
+                console.log("RESPONSE: " + xmlhttp.responseText);
+            };
+            xmlhttp.onerror = function(){
+              console.log("ERROR");
+            };
             xmlhttp.send();
 
             var k = 0;
