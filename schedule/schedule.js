@@ -169,6 +169,10 @@ $(document).ready(function(){
             }
         }
         console.log("found to remove: " + eventsIndexRemove);
+        for(i = 0; i < eventsIndexRemove.length; i++){
+            events.current.splice(eventsIndexRemove[i], 1);
+        }
+        updateEvents();
     });
 
     function updateEvents(){
@@ -330,7 +334,7 @@ $(document).ready(function(){
                     description+=", ";
             }
             eventString += "<br>" + description;
-            htmlButton = "<a href=\"#\" id=\"" + events.current[i].id +"\" class=\"eventButton " + colorClass + "\">" + eventString + "</a>";
+            htmlButton = "<a href=\"#\" id=\"" + events.current[i].id +"\" class=\"eventButton " + colorClass + "\">" + eventString + "</a><br>";
 
             $("#eventButtons").append(htmlButton);
         }
