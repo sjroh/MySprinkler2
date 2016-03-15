@@ -352,7 +352,7 @@ $(document).ready(function(){
             timeStr = ((date.getHours() - 12) == 0) ? "12" : (date.getHours() - 12).toString();
             timeStr += ":" + minutesStr + " pm";
         } else{
-            timeStr = (date.() == 0) ? "12" : date.getHours().toString();
+            timeStr = (date.getHours() == 0) ? "12" : date.getHours().toString();
             timeStr += ":" + minutesStr + " am";
         }
         return day + timeStr;
