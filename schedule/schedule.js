@@ -85,7 +85,8 @@ function checkStatus(){
 
 $(document).ready(function(){
 
-    var zonesClicked = [];
+    var zonesClicked = [];//keeps track of zones clicked when adding events
+    var eventsClicked = [];//keeps track of events clicked when removing events
     if(!localStorage.getItem("settings")){
         $("#setupInstructions").show();
         console.log("couldn't retrieve settings obj from local storage");
@@ -95,7 +96,7 @@ $(document).ready(function(){
     } else{
         events = JSON.parse(localStorage.getItem("events"));
         settings = JSON.parse(localStorage.getItem("settings"));
-        initializeZoneButtons();
+        initializeButtons();
         console.log("retrieved settings & events from browser storage");
         $("#scheduleBody").prepend(settings.calLink);
         $("#scheduleBody").prepend("<br><br>");
@@ -117,7 +118,7 @@ $(document).ready(function(){
     // initialize datepair
     var basicExampleEl = document.getElementById('basicExample');
     var datepair = new Datepair(basicExampleEl);
-    $('.saveEvent').click(function(){
+    $('#addEventSave').click(function(){
         //if valid date, then
         var currDate = new Date();
         var sDate = datepair.getStartTime();
@@ -146,11 +147,28 @@ $(document).ready(function(){
             console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
             console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
             //should refresh page here
+            location.reload();
         }
         //code here to save water event to google calendar & google drive & raspberry pi
         //else
         //error message
         //alert(datepair.getEndTime());
+    });
+
+    $("#removeEventSave").click(function(){
+        var eventsIndexRemove = [];
+        for(var i = 0; i < eventsClicked.length; i++){
+            var k = 0;
+            var found = false;
+            while(!found){
+                if(eventsClicked[i] == events.current[k].id){
+                    found = true;
+                    eventsIndexRemove.push(k);
+                }
+                k++;
+            }
+        }
+        console.log("found to remove: " + eventsIndexRemove);
     });
 
     function updateEvents(){
@@ -269,21 +287,80 @@ $(document).ready(function(){
         console.log(zoneClicked + "<- clicked");
     });
 
-    function initializeZoneButtons(){
-        for(var i = 1; i < settings.zones.length + 1; i++){
+    $(".eventButton").click(function(){//used when removing events
+        var eventIdClicked = $(this).attr('id');//obtain eventId
+        if($.inArray(eventIdClicked, eventsClicked) == -1){//not in arr, so select
+            if($(this).hasClass("blueButton")){
+                $(this).addClass("blueSelected");
+            }
+            else{//clicked on green button for custom added events
+                $(this).addClass("greenSelected");
+            }
+            eventsClicked.push(eventIdClicked);
+        } else{ //previously clicked, so un-select
+            $(this).removeClass("blueSelected");
+            $(this).removeClass("greenSelected");
+            var index = $.inArray(eventIdClicked, eventsClicked);
+            eventsClicked.splice(index, 1);
+        }
+        console.log(eventIdClicked + " <- event clicked");
+    });
+
+    function initializeButtons(){
+
+        for(var i = 1; i < settings.zones.length + 1; i++){//initialize zone buttons on adding event modal
             var htmlButton = "<a href=\"#\" class=\"zoneButton\">" + i + "</a>";
             $("#zoneButtons").append(htmlButton);
         }
+        for(i = 0; i < events.current.length; i++){//initialize event buttons on removing event modal
+            var colorClass = (events.current[i].type == "auto") ? "blueButton" : "greenButton";
+            var startDate = new Date(0);
+            startDate.setUTCSeconds(events.current[i].sTime);
+            var startString = obtainTimeString(startDate);
+            var endDate = new Date(0);
+            endDate.setUTCSeconds(events.current[i].eTime);
+            var endString = obtainTimeString(endDate);
+            var eventString = startString + "<br> to <br>" + endString;
+
+            //now add zone description:
+            var description = "Zone(s): ";
+            for(j = 0; j < events.current[i].zones.length; j++){
+                description+=events.current[i].zones[j].toString();
+                if(j != events.current[i].zones.length - 1)
+                    description+=", ";
+            }
+            eventString += "<br>" + description;
+            htmlButton = "<a href=\"#\" id=\"" + events.current[i].id +"\" class=\"eventButton " + colorClass + "\">" + eventString + "</a>";
+
+            $("#eventButtons").append(htmlButton);
+        }
+    }
+
+    function obtainTimeString(date){
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+        var day = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getUTCDate() + " @ ";
+        var timeStr;
+        if(date.getHours() >= 12){
+            timeStr = ((date.getHours() - 12) == 0) ? "12" : (date.getHours() - 12).toString();
+            timeStr += " pm";
+        } else{
+            timeStr = (date.getHours == 0) ? "12" : date.getHours.toString();
+            timeStr += " am";
+        }
+        return day + timeStr;
     }
 
     function checkWidth(){
         if($(window).width() < 600){
             $(".modal-content").addClass("mobileModal");
+            $(".remove-modal-content").addClass("mobileModal");
             $(".mobile").show();
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
             $(".modal-content").removeClass("mobileModal");
+            $(".remove-modal-content").removeClass("mobileModal");
             $(".mobile").hide();
             $(".desktop").show();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-left");

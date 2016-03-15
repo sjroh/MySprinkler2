@@ -143,24 +143,31 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary saveEvent">Save changes</button>
+                            <button type="button" id="addEventSave" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content remove-modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">Remove Event</h4>
                         </div>
                         <div class="modal-body">
-                            ...
+                            Click on the events you would like to cancel below.
+                            <div class="alert alert-warning" id="warningInstructions">
+                                <strong>Warning!</strong>
+                                Removing a watering time placed automatically by the system will cause this weeks watering time to be reduced by that amount.
+                                In effect, this changes the current week's watering amount to a custom value.  System placed watering events are <span class="greenColor">dark blue</span>, while
+                                custom added watering events are <span class="blueColor">green</span>.
+                            </div>
+                            <div id="eventButtons"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" id="removeEventSave" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
