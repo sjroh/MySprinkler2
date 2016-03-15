@@ -348,7 +348,7 @@ $(document).ready(function(){
                     description+=", ";
             }
             eventString += "<br>" + description;
-            htmlButton = "<a href=\"#\" id=\"" + events.current[i].id +"\" class=\"eventButton " + colorClass + "\">" + eventString + "</a><br>";
+            htmlButton = "<a href=\"#\" id=\"" + events.current[i].id +"\" class=\"eventButton " + colorClass + "\">" + eventString + "</a><br><br>";
 
             $("#eventButtons").append(htmlButton);
         }
