@@ -147,7 +147,7 @@ $(document).ready(function(){
             console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
             console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
             //should refresh page here
-            location.reload();
+            //location.reload();
         }
         //code here to save water event to google calendar & google drive & raspberry pi
         //else
