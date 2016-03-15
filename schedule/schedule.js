@@ -341,12 +341,19 @@ $(document).ready(function(){
         var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
         var day = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getUTCDate() + " @ ";
         var timeStr;
+        var minutes = date.getMinutes();
+        var minutesStr;
+        if(minutes < 10){
+            minutesStr = "0" + minutes.toString();
+        } else{
+            minutesStr = minutes.toString();
+        }
         if(date.getHours() >= 12){
             timeStr = ((date.getHours() - 12) == 0) ? "12" : (date.getHours() - 12).toString();
-            timeStr += " pm";
+            timeStr += ":" + minutesStr + " pm";
         } else{
-            timeStr = (date.getHours == 0) ? "12" : date.getHours.toString();
-            timeStr += " am";
+            timeStr = (date.() == 0) ? "12" : date.getHours().toString();
+            timeStr += ":" + minutesStr + " am";
         }
         return day + timeStr;
     }
