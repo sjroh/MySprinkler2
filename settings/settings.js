@@ -198,8 +198,9 @@ $(document).ready(function(){
 
     $(".blueButton").click(function(){
         if(this.id != customChosen){
-            $("#" + customChosen).removeClass("active");
-            $(this).addClass("active");
+            if(customChosen != "")
+                $("#" + customChosen).removeClass("blueSelected");
+            $(this).addClass("blueSelected");
             customChosen = this.id;
         } //else do nothing, already chosen
     });
