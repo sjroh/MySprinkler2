@@ -122,15 +122,21 @@
 			 
 				<div class="tab-content">
 					<div id="tab1" class="tab active">
+                        <div class="alert alert-warning" id="warningInstructions">
+                            <strong>Warning!</strong>
+                            Changing the water level in the middle of the week changes the level for the entire week, including past days, to the new chosen level.
+                            Any water your lawn received in the beginning of the week is subtracted from the new value.  If the result is below 0" your lawn will
+                            not receive any more water for the current week.
+                        </div>
 						<p>
-							Sector 1:
-							<button class="btn btn-primary high sec1" data-whatever="High">High</button>
-							<button class="btn btn-primary medium sec1" data-whatever="Medium">Medium</button>
-							<button class="btn btn-primary low sec1" data-whatever="Low">Low</button>
-							<button class="btn btn-primary custom sec1" data-toggle="modal" data-target="#exampleModal1" data-whatever="Custom">Custom</button>
+							Water Level:
+							<button class="btn btn-primary high sec" data-whatever="High">High</button>
+							<button class="btn btn-primary medium sec" data-whatever="Medium">Medium</button>
+							<button class="btn btn-primary low sec" data-whatever="Low">Low</button>
+							<button class="btn btn-primary custom sec" data-toggle="modal" data-target="#exampleModal1" data-whatever="Custom">Custom</button>
 						</p>
 						
-						<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+						<div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 						  <div class="modal-dialog" role="document">
 							<div class="modal-content">
 							  <div class="modal-header">
@@ -138,19 +144,19 @@
 								<h4 class="modal-title">Time Preference</h4>
 							  </div>
 							  <div class="modal-body">
-								  <!--http://jonthornton.github.io/jquery-timepicker/-->
+                                  <div class="alert alert-danger" id="chooseCustomError">
+                                      <strong>Choose a value!</strong>
+                                      No custom value is selected.  Please choose one or close this popup to cancel.
+                                  </div>
 								  <p id="basicExample">
-										<!--input type="text" class="date start" /-->
-										<input type="text" class="time start" /><br>
-										to <br>
-										<input type="text" class="time end" >
-										<!--input type="text" class="date end" /-->
-
+                                      <a href="#" class="blueButton" id="custom1">0.25"</a>
+                                      <a href="#" class="blueButton" id="custom2">1.5"</a>
+                                      <a href="#" class="blueButton" id="custom3">3.0"</a>
 									</p>
 								</div>
 							  <div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-default addEvent">Save changes</button>
+								<button type="button" class="btn btn-default saveCustom">Save changes</button>
 							  </div>
 							</div>
 						  </div>

@@ -149,21 +149,18 @@ function createSettingsFile(){
     console.log("zonenum: " + zoneNum);
     if(/*iframeHtml != "" && */weatherData.haveLocation && zoneNum != -1)
     {
-        var zoneArr = [];
-        for(var i = 0; i < zoneNum; i++){
-            zoneArr.push({
-                currLevel: "Medium",
-                custom: "na",
-                id: (i+1)
-            })
-        }
         var settings = {
             "location": {
                 "lat": weatherData.lat,
                 "long": weatherData.long
             },
-            //"calLink": iframeHtml,
-            "zones": zoneArr
+            "currLevel": "Medium",
+            "custom":{
+                "customLvl": -1,
+                "weeklyCustom": 0.75,
+                "weeklyCustomActivated": false
+            },
+            "zones": zoneNum
         };
         insertFileInApplicationDataFolder(settings, "settings.txt");
         console.log("Settings.txt successfully uploaded");

@@ -9,6 +9,8 @@ var oauthToken;
 $("#serverInstructions").hide();
 $("#setupInstructions").hide();
 $(".tabs").hide();
+$("#chooseCustomError").hide();
+
 var settings;
 
 function OnLoad() {
@@ -79,6 +81,7 @@ function checkStatus(){
 
 
 $(document).ready(function(){
+    var customChosen = "";
 
     if(!localStorage.getItem("settings")){
         $("#setupInstructions").show();
@@ -92,50 +95,33 @@ $(document).ready(function(){
         initializeSectors();
     }
 
-    $(".btn").on('click', function(){//to change zone watering level
-        var keywords = searchForKeyWords(this.className.split(/\s+/));//search for high, medium, low, custom and sec#
+    $(".sec").on('click', function(){//to change zone watering level
+        var keywords = searchForKeyWord(this.className.split(/\s+/));//search for high, medium, low, custom
 
-        if(keywords.length == 3){ //keyword = ['level', 'sec#', #]
-            keywords[0] = keywords[0][0].toUpperCase() + keywords[0].slice(1);//capitalize first letter in level
-            if(!alreadyActive(keywords[0], keywords[2])){//then change level
-                settings.zones[keywords[2] - 1].currLevel = keywords[0];
-                //put updated settings obj in settings.txt
-                updateSettings();
-                localStorage.setItem("settings", JSON.stringify(settings));
+        keywords[0] = keywords[0][0].toUpperCase() + keywords[0].slice(1);//capitalize first letter in level
+        if(settings.currLevel != keywords[0] && keywords[0] != "Custom"){//then change level (custom is changed thru modal)
+            settings.currLevel = keywords[0];
+            //put updated settings obj in settings.txt
+            updateSettings();
 
-                var activeIdentifier = "." + keywords[1] + "." + "active";
-                $(activeIdentifier).removeClass("active");
-                //iterate thru settings & fill sectors on page with correct setting
-                $(this).addClass("active");
-            }
-        } //else do nothing
+            $(".sec.active").removeClass("active");
+            $(this).addClass("active");
+        }
 
     });
 
-    function alreadyActive(zoneLvl, zoneNum){
-        if(settings.zones[zoneNum - 1].currLevel == zoneLvl){
-            return true;
-        }
-        return false;
-    }
-
-    function searchForKeyWords(classArr){
+    function searchForKeyWord(classArr){
         var returnArr = [];
         for(var i = 0; i < classArr.length; i++){
             if(classArr[i] == "high" || classArr[i] == "medium" || classArr[i] == "low" || classArr[i] == "custom"){
                 returnArr.push(classArr[i]);
-            } else if(classArr[i].length > 3){//test if 'sec#'
-                if(classArr[i].substring(0,3) == "sec"){
-                    returnArr.push(classArr[i]);
-                    var sectorNum = parseInt(classArr[i].substring(3, classArr[i].length));
-                    returnArr.push(sectorNum);
-                }
             }
         }
         return returnArr;
     }
 
     function updateSettings(){
+        localStorage.setItem("settings", JSON.stringify(settings));
         var retrievePageOfFiles = function(request) {
             request.execute(function(resp) {
                 if(resp.items.length == 0){
@@ -196,36 +182,57 @@ $(document).ready(function(){
     }
 
     function initializeSectors(){
-        //get number of sectors from settings.txt in google drive here
-        var numSectors = settings.zones.length;
-        var sectorHTML = $("#tab1").html();
-        //setup content
-        for(var i = 2; i < numSectors + 1/*already have 1*/; i++){
-            var newID = "exampleModal" + (i).toString();
-            var secID = "sec" + (i).toString();
-            var copyHTML = sectorHTML;
-            copyHTML = copyHTML.replace(/exampleModal1/g, newID);
-            copyHTML = copyHTML.replace(/sec1/g, secID);
-            copyHTML = copyHTML.replace("Sector 1:", "Sector " + (i).toString() + ":");
-            $("#tab1").append(copyHTML);
+        var identifier = ".sec";
+        if(settings.currLevel == "High"){
+            identifier += ".high";
+        } else if(settings.currLevel == "Medium"){
+            identifier += ".medium";
+        } else if(settings.currLevel == "Low"){
+            identifier += ".low";
+        } else if(settings.currLevel == "Custom"){
+            identifier += ".custom";
+            $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
         }
-
-
-        //iterate thru settings & fill sectors on page with correct setting
-        for(i = 0; i < settings.zones.length; i++){
-            var identifier = ".sec" + (i+1).toString();
-            if(settings.zones[i].currLevel == "High"){
-                identifier += ".high";
-            } else if(settings.zones[i].currLevel == "Medium"){
-                identifier += ".medium";
-            } else if(settings.zones[i].currLevel == "Low"){
-                identifier += ".low";
-            } else if(settings.zones[i].currLevel == "Custom"){
-                identifier += ".custom";
-            }
-            $(identifier).addClass("active");
-        }
+        $(identifier).addClass("active");
     }
+
+    $(".blueButton").click(function(){
+        if(this.id != customChosen){
+            $("#" + customChosen).removeClass("active");
+            $(this).addClass("active");
+            customChosen = this.id;
+        } //else do nothing, already chosen
+    });
+
+    $(".saveCustom").click(function(){
+        if(customChosen == "custom1"){
+            settings.currLevel = "Custom";
+            settings.custom.customLvl = 0.25;
+            updateSettings();
+            $("#chooseCustomError").hide();
+            $("#customModal").modal("hide");
+            $(".sec.active").removeClass("active");
+            $(".custom").addClass("active");
+        } else if(customChosen == "custom2"){
+            settings.currLevel = "Custom";
+            settings.custom.customLvl = 1.5;
+            updateSettings();
+            $("#chooseCustomError").hide();
+            $("#customModal").modal("hide");
+            $(".sec.active").removeClass("active");
+            $(".custom").addClass("active");
+        } else if(customChosen == "custom3"){
+            settings.currLevel = "Custom";
+            settings.custom.customLvl = 3.0;
+            updateSettings();
+            $("#chooseCustomError").hide();
+            $("#customModal").modal("hide");
+            $(".sec.active").removeClass("active");
+            $(".custom").addClass("active");
+        } else { //error, need to choose
+            $("#chooseCustomError").show();
+        }
+    });
 	
     // initialize input widgets first
     $('#basicExample .time').timepicker({
@@ -238,26 +245,7 @@ $(document).ready(function(){
         'autoclose': true
     });
 
-    // initialize datepair
-    var basicExampleEl = document.getElementById('basicExample');
-    var datepair = new Datepair(basicExampleEl);
-    $('.addEvent').click(function(){
-        //if valid date, then
-        var currDate = new Date();
-        var endDate = datepair.getStartTime();
-        if(currDate >= endDate){
-            alert("Sorry, invalid date");
-        }
-        else{
-            alert("You have added a water event!");
-        }
-        //code here to save water event to google calendar & google drive & raspberry pi
-        //else
-        //error message
-        //alert(datepair.getEndTime());
 
-
-    });
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();

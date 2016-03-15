@@ -187,6 +187,7 @@ $(document).ready(function(){
             events.current.splice(eventsIndexRemove[i], 1);
         }
         updateEvents();
+        $("#removeModal").modal("hide");
     });
 
     function updateEvents(){
@@ -315,14 +316,24 @@ $(document).ready(function(){
                 $(this).addClass("greenSelected");
             }
             eventsClicked.push(eventIdClicked);
+            addSameDayAutoEvents(eventIdClicked);
         } else{ //previously clicked, so un-select
             $(this).removeClass("blueSelected");
             $(this).removeClass("greenSelected");
             var index = $.inArray(eventIdClicked, eventsClicked);
             eventsClicked.splice(index, 1);
+            removeSameDayAutoEvents(eventIdClicked);
         }
         console.log(eventIdClicked + " <- event clicked");
     });
+
+    function addSameDayAutoEvents(eventIdClicked){
+
+    }
+
+    function removeSameDayAutoEvents(eventIdClicked){
+
+    }
 
     function initializeButtons(){
 

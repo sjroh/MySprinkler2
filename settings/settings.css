@@ -3,6 +3,34 @@
     color:white;
 }
 
+.blueButton {
+    -moz-box-shadow: 0px 0px 0px 2px #000000;
+    -webkit-box-shadow: 0px 0px 0px 2px #000000;
+    box-shadow: 0px 0px 0px 2px #000000;
+    background-color:#00658a;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:1px solid #4e6096;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:19px;
+    padding:12px 37px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #283966;
+}
+.blueButton:hover {
+    background-color:#043547;
+}
+.blueSelected{
+    background-color:#043547;
+}
+.blueButton:active {
+    position:relative;
+    top:1px;
+}
+
 #homeBody{
     text-align:center;
 }
