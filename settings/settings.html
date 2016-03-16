@@ -113,7 +113,7 @@
             <br><br>
             <div class="tabs">
 				<ul class="tab-links">
-					<li class="active"><a href="#tab1">Watering Settings</a></li>
+					<li class="active"><a href="#tab1">Settings</a></li>
 					<li><a href="#tab2">Info</a></li>
 					<li><a href="#tab3">FAQ</a></li>
 					<li><a href="#tab4">Tab #4</a></li>
@@ -171,35 +171,39 @@
                             The water level controls the inches of water your landscape will receive per week.  High is 2 inches per week, medium is 1 inch per week,
                             and low is 0.5 inches per week.  Additionally there is a Custom option to choose among three more amounts.  The default setting is 1 inch
                             per week.
-                            <div class="alert alert-warning" id="warningInstructions">
-                                <strong>Warning!</strong>
-                                Changing the water level in the middle of the week changes the level for the entire week, including past days, to the new chosen level.
-                                Any water your lawn received in the beginning of the week is subtracted from the new value.  If the result is below 0" your lawn will
-                                not receive any more water for the current week.
-                            </div>
                         </p>
+                        <div class="alert alert-warning" id="warningInstructions">
+                            <strong>Warning!</strong>
+                            Changing the water level in the middle of the week changes the level for the entire week, including past days, to the new chosen level.
+                            Any water your lawn received in the beginning of the week is subtracted from the new value.  If the result is below 0" your lawn will
+                            not receive any more water for the current week.
+                        </div>
+
                         <p><b>Sprinkler Water Rate</b></p>
                         <p>This controls the sprinkler system's water output rate used in watering time calculations.  The default is 1 inch per hour.  So if you have the
-                        water level on medium, 1 inch per week, and use the default water rate of 1 inch per hour, your lawn will receive 1 hour of watering throughout the week
+                        water level on medium (1 inch per week) and use the default water rate of 1 inch per hour, your lawn will receive 1 hour of watering throughout the week
                         if no precipitation occurs.</p>
                     </div>
 			 
 					<div id="tab3" class="tab">
 						<p><b>How much water does my lawn need per week?</b></p>
-                        <p></p>
+                        <p>While different types of lawns need different amounts of water, in general lawns need at least 1 inch per week.  <a href="http://www.greengrassok.com/greengrass-services/how-to-water-your-lawn">This web-page</a> lists
+                        some good tips.</p>
                         <p><b>How do I know my sprinkler's water rate?</b></p>
                         <p>
                             While the default setting is 1" per hour, you may want to get a more accurate number to allow for our program to water your landscape properly.
                             You can easily find your sprinkler's water rate by placing at least two water gauges or cans around your lawn the next time you water.  Keep track of the amount
                             of time your lawn is watered, and enter the average of the water amount between the cans below to obtain your water rate.  In settings select the
-                                water rate that is closest to the below value.
-                            <form>
-                                Water Amount: <input id="waterAmt" type="number" name="quantity" min=".1" max="1.5" step=".1" value=".5"> inches <br>
-                                Time: <input id="timeAmt" type="number" name="quantity" min="15" max="60" step="1" value="30"> minutes <br>
-                                <button id="submitRate">Find Amount</button>
-                            </form>
-                            <span id="rateResult"></span>
+                            water rate that is closest to the below value.
                         </p>
+                        <form>
+                            Water Amount: <input id="waterAmt" type="number" name="quantity" min=".1" max="1.5" step=".1" value=".5"> inches <br><br>
+                            Time: <input id="timeAmt" type="number" name="quantity" min="15" max="60" step="1" value="30"> minutes
+                        </form><br><br>
+                        <button id="submitRate">Find Amount</button>
+
+                        <span id="rateResult"></span>
+
                     </div>
 			 
 					<div id="tab4" class="tab">
