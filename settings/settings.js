@@ -380,7 +380,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#closeCustomModal").click(function(){
+    /*$("#closeCustomModal").click(function(){
         console.log("clicked close");
         if(settings.currLevel != "Custom"){//remove active class after canceling on modal
             console.log("in here");
@@ -395,7 +395,7 @@ $(document).ready(function(){
             console.log("in here");
             $(".customTime").removeClass("active");
         }
-    });
+    });*///doesn't work...remove later
 
     $("#submitRate").click(function(){
         var waterAmt = $("#waterAmt").val();
