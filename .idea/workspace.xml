@@ -23,7 +23,7 @@
     <favorites_list name="MySprinkler2" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.34575087">
+    <splitter split-orientation="horizontal" split-proportion="0.35215366">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="settings.html" pinned="false" current-in-tab="true">
@@ -125,8 +125,8 @@
           <file leaf-file-name="settings.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/settings/settings.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.65986395">
-                  <caret line="394" column="35" selection-start-line="394" selection-start-column="35" selection-end-line="394" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.5600907">
+                  <caret line="390" column="28" selection-start-line="390" selection-start-column="8" selection-end-line="390" selection-end-column="28" />
                   <folding />
                 </state>
               </provider>
@@ -740,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/settings/settings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65986395">
-          <caret line="394" column="35" selection-start-line="394" selection-start-column="35" selection-end-line="394" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.5600907">
+          <caret line="390" column="28" selection-start-line="390" selection-start-column="8" selection-end-line="390" selection-end-column="28" />
           <folding />
         </state>
       </provider>

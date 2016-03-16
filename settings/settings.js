@@ -381,15 +381,19 @@ $(document).ready(function(){
     });
 
     $("#closeCustomModal").click(function(){
+        console.log("clicked close");
         if(settings.currLevel != "Custom"){//remove active class after canceling on modal
+            console.log("in here");
             $(".custom.sec").removeClass("active");
         }
     });
 
     $("#closeCustomTimeModal").click(function(){
         var hr = settings.wateringHr;
+        console.log("clicked close");
         if(hr == 5 || hr == 7 || hr == 9){ //then not custom time so remove active class after canceling on modal
-         $(".customTime").removeClass("active");
+            console.log("in here");
+            $(".customTime").removeClass("active");
         }
     });
 
