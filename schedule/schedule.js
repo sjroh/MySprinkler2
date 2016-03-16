@@ -12,6 +12,7 @@ $(".removeEvent").hide();
 $("#invalidTime").hide();
 $("#invalidZones").hide();
 $("#warningInstructions").hide();
+$("#noEventsSelectedWarning").hide();
 var events;
 var settings;
 
@@ -158,37 +159,43 @@ $(document).ready(function(){
 
     $("#removeEventSave").click(function(){
         var eventsIndexRemove = [];
-        for(var i = 0; i < eventsClicked.length; i++){
-            //first delete from calendar with delete request
-            var xmlhttp = new XMLHttpRequest();
+        if(eventsClicked.length == 0){
+            $("#noEventsSelectedWarning").show();
+        } else{
+            $("#noEventsSelectedWarning").hide();
+            for(var i = 0; i < eventsClicked.length; i++){
+                //first delete from calendar with delete request
+                var xmlhttp = new XMLHttpRequest();
 
-            var url = "https://www.googleapis.com/calendar/v3/calendars/" + settings.calId + "/events/" + eventsClicked[i];
-            xmlhttp.open("DELETE", url, true);
-            xmlhttp.setRequestHeader('Authorization', 'Bearer ' + oauthToken);
-            xmlhttp.onload = function(){
-                console.log("RESPONSE: " + xmlhttp.responseText);
-            };
-            xmlhttp.onerror = function(){
-              console.log("ERROR");
-            };
-            xmlhttp.send();
+                var url = "https://www.googleapis.com/calendar/v3/calendars/" + settings.calId + "/events/" + eventsClicked[i];
+                xmlhttp.open("DELETE", url, true);
+                xmlhttp.setRequestHeader('Authorization', 'Bearer ' + oauthToken);
+                xmlhttp.onload = function(){
+                    console.log("RESPONSE: " + xmlhttp.responseText);
+                };
+                xmlhttp.onerror = function(){
+                    console.log("ERROR");
+                };
+                xmlhttp.send();
 
-            var k = 0;
-            var found = false;
-            while(!found){
-                if(eventsClicked[i] == events.current[k].id){
-                    found = true;
-                    eventsIndexRemove.push(k);
+                var k = 0;
+                var found = false;
+                while(!found){
+                    if(eventsClicked[i] == events.current[k].id){
+                        found = true;
+                        eventsIndexRemove.push(k);
+                    }
+                    k++;
                 }
-                k++;
             }
+            console.log("found to remove: " + eventsIndexRemove);
+            for(i = 0; i < eventsIndexRemove.length; i++){
+                events.current.splice(eventsIndexRemove[i], 1);
+            }
+            updateEvents();
+            $("#removeModal").modal("hide");
         }
-        console.log("found to remove: " + eventsIndexRemove);
-        for(i = 0; i < eventsIndexRemove.length; i++){
-            events.current.splice(eventsIndexRemove[i], 1);
-        }
-        updateEvents();
-        $("#removeModal").modal("hide");
+
     });
 
     function updateEvents(){
@@ -247,7 +254,8 @@ $(document).ready(function(){
             'body': multipartRequestBody});
         if (!callback) {
             callback = function(file) {
-                console.log("FILE UPDATED: " + file)
+                console.log("FILE UPDATED: " + file);
+                location.reload();
             };
         }
         request.execute(callback);
@@ -342,8 +350,8 @@ $(document).ready(function(){
             var htmlButton = "<a href=\"#\" class=\"zoneButton\">" + i + "</a>";
             $("#zoneButtons").append(htmlButton);
         }
+        var anyManualEvents = false;
         for(i = 0; i < events.current.length; i++){//initialize event buttons on removing event modal
-            var anyManualEvents = false;
             if(events.current[i].type == "manual"){//only allow manual events to be deleted
                 anyManualEvents = true;
                 var colorClass = (events.current[i].type == "auto") ? "greenButton" : "blueButton";//FOR FUTURE FUNCTIONALITY TO DELETE AUTO EVENTS (NOT IMPLEMENTED)
@@ -367,10 +375,9 @@ $(document).ready(function(){
 
                 $("#eventButtons").append(htmlButton);
             }
-            if(!anyManualEvents){
-                $("#warningInstructions").show();
-            }
-
+        }
+        if(!anyManualEvents){
+            $("#warningInstructions").show();
         }
     }
 

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ecfa89-fdc2-412d-a934-e69bd346497b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/settingsFile.js" afterPath="$PROJECT_DIR$/js/settingsFile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schedule/schedule.html" afterPath="$PROJECT_DIR$/schedule/schedule.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schedule/schedule.js" afterPath="$PROJECT_DIR$/schedule/schedule.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/settings.html" afterPath="$PROJECT_DIR$/settings/settings.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/settings.js" afterPath="$PROJECT_DIR$/settings/settings.js" />
     </list>
     <ignored path="MySprinkler2.iws" />
@@ -23,21 +25,21 @@
       <content type="file-editors">
         <state>
           <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-            <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
+            <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/home/home.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="-2.5744681">
+                  <state vertical-scroll-proportion="60.5">
                     <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
                     <folding />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="schedule.html" pinned="false" current-in-tab="false">
+            <file leaf-file-name="schedule.html" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/schedule/schedule.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="-16.32258">
-                    <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+                  <state vertical-scroll-proportion="0.67388827">
+                    <caret line="172" column="50" selection-start-line="172" selection-start-column="50" selection-end-line="172" selection-end-column="50" />
                     <folding />
                   </state>
                 </provider>
@@ -51,14 +53,24 @@
       <content type="file-editors">
         <state>
           <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-            <file leaf-file-name="settings.html" pinned="false" current-in-tab="true">
+            <file leaf-file-name="settings.html" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/settings/settings.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.42935377">
-                    <caret line="185" column="104" selection-start-line="185" selection-start-column="104" selection-end-line="185" selection-end-column="104" />
+                  <state vertical-scroll-proportion="-3.8507462">
+                    <caret line="133" column="92" selection-start-line="133" selection-start-column="92" selection-end-line="133" selection-end-column="92" />
                     <folding>
                       <element signature="n#style#0;n#section#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="schedule.js" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.5826271">
+                    <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
+                    <folding />
                   </state>
                 </provider>
               </entry>
@@ -94,21 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="365" column="40" selection-start-line="365" selection-start-column="40" selection-end-line="365" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings/settings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6258503">
-              <caret line="242" column="32" selection-start-line="242" selection-start-column="32" selection-end-line="242" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="275" column="26" selection-start-line="275" selection-start-column="26" selection-end-line="275" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -154,10 +156,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="schedule.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="schedule.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/schedule/schedule.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.025851939">
               <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
@@ -198,15 +200,15 @@
         <option value="$PROJECT_DIR$/css/common.css" />
         <option value="$PROJECT_DIR$/home/home.js" />
         <option value="$PROJECT_DIR$/schedule/schedule.css" />
-        <option value="$PROJECT_DIR$/schedule/schedule.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/weather/weather.html" />
-        <option value="$PROJECT_DIR$/schedule/schedule.html" />
         <option value="$PROJECT_DIR$/home/home.html" />
         <option value="$PROJECT_DIR$/settings/settings.css" />
-        <option value="$PROJECT_DIR$/settings/settings.html" />
         <option value="$PROJECT_DIR$/js/settingsFile.js" />
+        <option value="$PROJECT_DIR$/settings/settings.html" />
         <option value="$PROJECT_DIR$/settings/settings.js" />
+        <option value="$PROJECT_DIR$/schedule/schedule.js" />
+        <option value="$PROJECT_DIR$/schedule/schedule.html" />
       </list>
     </option>
   </component>
@@ -274,7 +276,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="schedule" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -366,7 +368,7 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.184375" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.184375" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -680,14 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schedule/schedule.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.1384616">
@@ -700,14 +694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.193548">
           <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/schedule/schedule.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.32258">
-          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
           <folding />
         </state>
       </provider>
@@ -728,24 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings/settings.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.387096">
-          <caret line="50" column="15" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings/settings.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42935377">
-          <caret line="185" column="104" selection-start-line="185" selection-start-column="104" selection-end-line="185" selection-end-column="104" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/scrolling-nav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -756,7 +724,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/home/home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5744681">
+        <state vertical-scroll-proportion="60.5">
           <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
           <folding />
         </state>
@@ -770,18 +738,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
+    <entry file="file://$PROJECT_DIR$/settings/settings.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="365" column="40" selection-start-line="365" selection-start-column="40" selection-end-line="365" selection-end-column="40" />
-          <folding />
+        <state vertical-scroll-proportion="-3.8507462">
+          <caret line="133" column="92" selection-start-line="133" selection-start-column="92" selection-end-line="133" selection-end-column="92" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/settings/settings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6258503">
-          <caret line="242" column="32" selection-start-line="242" selection-start-column="32" selection-end-line="242" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="275" column="26" selection-start-line="275" selection-start-column="26" selection-end-line="275" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings/settings.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.387096">
+          <caret line="50" column="15" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schedule/schedule.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025851939">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schedule/schedule.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67388827">
+          <caret line="172" column="50" selection-start-line="172" selection-start-column="50" selection-end-line="172" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5826271">
+          <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
           <folding />
         </state>
       </provider>
