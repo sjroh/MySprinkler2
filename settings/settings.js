@@ -10,7 +10,7 @@ $("#serverInstructions").hide();
 $("#setupInstructions").hide();
 $(".tabs").hide();
 $("#chooseCustomError").hide();
-
+$("#chooseCustomTimeError").hide();
 var settings;
 
 function OnLoad() {
@@ -82,6 +82,7 @@ function checkStatus(){
 
 $(document).ready(function(){
     var customChosen = "";
+    var customTimeChosen = "";
 
     if(!localStorage.getItem("settings")){
         $("#setupInstructions").show();
@@ -204,15 +205,39 @@ $(document).ready(function(){
         } else if(settings.conversionRate == 2.0){
             $("#rate4").addClass("active");
         }
+
+        if(settings.wateringHr == 5){
+            $("#time1").addClass("active");
+        } else if(settings.wateringHr == 7){
+            $("#time2").addClass("active");
+        } else if(settings.wateringHr == 9){
+            $("#time3").addClass("active");
+        } else{ //watering hr is custom
+            var amOrPm = (settings.wateringHr >= 12) ? "pm" : "am";
+            var hr = (settings.wateringHr > 12) ? (settings.wateringHr - 12) : settings.wateringHr;
+            $("#time4").html("Custom: " + hr + " " + amOrPm).addClass("active");
+        }
     }
 
-    $(".blueButton").click(function(){
+    $(".blueButton").click(function(){//custom watering per week in custom modal
         if(this.id != customChosen){
-            if(customChosen != "")
+            if(customChosen != "") {
                 $("#" + customChosen).removeClass("blueSelected");
+            }
             $(this).addClass("blueSelected");
             customChosen = this.id;
+            $(".custom.sec").html("Custom");//?????????????
         } //else do nothing, already chosen
+    });
+
+    $(".blueTimeButton").click(function(){//custom time buttons in custom time modal
+        if(this.id != customTimeChosen){
+            if(customTimeChosen != ""){
+                $("#" + customChosen).removeClass("blueTimeSelected");
+            }
+            $(this).addClass("blueTimeSelected");
+            customTimeChosen = this.id;
+        }
     });
 
     $(".rate").click(function(){
@@ -239,8 +264,27 @@ $(document).ready(function(){
         }//else conversionRate is same as clicked rate
     });
 
+    $(".time").click(function(){
+        if(this.id == "time1" && settings.wateringHr != 5){
+            $(".time.active").removeClass("active");
+            $(this).addClass("active");
+            settings.wateringHr = 5;
+            updateSettings();
+        } else if(this.id == "time2" && settings.wateringHr != 7){
+            $(".time.active").removeClass("active");
+            $(this).addClass("active");
+            settings.wateringHr = 7;
+            updateSettings();
+        } else if(this.id == "time3" && settings.wateringHr != 9){
+            $(".time.active").removeClass("active");
+            $(this).addClass("active");
+            settings.wateringHr = 9;
+            updateSettings();
+        }
+    });
+
     $(".saveCustom").click(function(){
-        if(customChosen == "custom1"){
+        if(customChosen == "custom1" && settings.custom.customLvl != .25){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 0.25;
             $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
@@ -249,7 +293,7 @@ $(document).ready(function(){
             $("#customModal").modal("hide");
             $(".sec.active").removeClass("active");
             $(".custom").addClass("active");
-        } else if(customChosen == "custom2"){
+        } else if(customChosen == "custom2" && settings.custom.customLvl != 1.5){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 1.5;
             $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
@@ -258,7 +302,7 @@ $(document).ready(function(){
             $("#customModal").modal("hide");
             $(".sec.active").removeClass("active");
             $(".custom").addClass("active");
-        } else if(customChosen == "custom3"){
+        } else if(customChosen == "custom3" && settings.custom.customLvl != 3.0){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 3.0;
             $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
@@ -269,6 +313,69 @@ $(document).ready(function(){
             $(".custom").addClass("active");
         } else { //error, need to choose
             $("#chooseCustomError").show();
+        }
+    });
+
+    $(".saveCustomTime").click(function(){
+        $("#chooseCustomTimeError").hide();
+        if(customTimeChosen == "customTime1" && settings.wateringHr != 4){
+            settings.wateringHr = 4;
+            $(".customTime").html("Custom: 4 am");
+            updateSettings();
+            $("#customTimeModal").modal("hide");
+            $(".time.active").removeClass("active");
+            $(".customTime").addClass("active");
+        } else if(customTimeChosen == "customTime2" && settings.wateringHr != 6){
+            settings.wateringHr = 6;
+            $(".customTime").html("Custom: 6 am");
+            updateSettings();
+            $("#customTimeModal").modal("hide");
+            $(".time.active").removeClass("active");
+            $(".customTime").addClass("active");
+        } else if(customTimeChosen == "customTime3" && settings.wateringHr != 8){
+            settings.wateringHr = 8;
+            $(".customTime").html("Custom: 8 am");
+            updateSettings();
+            $("#customTimeModal").modal("hide");
+            $(".time.active").removeClass("active");
+            $(".customTime").addClass("active");
+        } else if(customTimeChosen == "customTime4" && settings.wateringHr != 10){
+            settings.wateringHr = 10;
+            $(".customTime").html("Custom: 10 am");
+            updateSettings();
+            $("#customTimeModal").modal("hide");
+            $(".time.active").removeClass("active");
+            $(".customTime").addClass("active");
+        } else if(customTimeChosen == "customTime5" && settings.wateringHr != 16){
+            settings.wateringHr = 16;
+            $(".customTime").html("Custom: 4 pm");
+            updateSettings();
+            $("#customTimeModal").modal("hide");
+            $(".time.active").removeClass("active");
+            $(".customTime").addClass("active");
+        } else if(customTimeChosen == "customTime6" && settings.wateringHr != 17){
+            settings.wateringHr = 17;
+            $(".customTime").html("Custom: 5 pm");
+            updateSettings();
+            $("#customTimeModal").modal("hide");
+            $(".time.active").removeClass("active");
+            $(".customTime").addClass("active");
+        } else if(customTimeChosen == "customTime7" && settings.wateringHr != 18){
+            settings.wateringHr = 18;
+            $(".customTime").html("Custom: 6 pm");
+            updateSettings();
+            $("#customTimeModal").modal("hide");
+            $(".time.active").removeClass("active");
+            $(".customTime").addClass("active");
+        } else if(customTimeChosen == "customTime8" && settings.wateringHr != 19){
+            settings.wateringHr = 19;
+            $(".customTime").html("Custom: 7 pm");
+            updateSettings();
+            $("#customTimeModal").modal("hide");
+            $(".time.active").removeClass("active");
+            $(".customTime").addClass("active");
+        } else{ //error, need to choose one
+            $("#chooseCustomTimeError").show();
         }
     });
 

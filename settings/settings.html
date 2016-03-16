@@ -136,6 +136,13 @@
                             <button class="btn btn-primary rate" id="rate3">1.5"/hr</button>
                             <button class="btn btn-primary rate" id="rate4">2.0"/hr</button>
                         </p>
+                        <p>
+                            Watering Time:
+                            <button class="btn btn-primary time" id="time1">5 am</button>
+                            <button class="btn btn-primary time" id="time2">7 am</button>
+                            <button class="btn btn-primary time" id="time3">9 am</button>
+                            <button class="btn btn-primary customTime" id="time4" data-toggle="modal" data-target="#customTimeModal">Custom</button>
+                        </p>
 						
 						<div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 						  <div class="modal-dialog" role="document">
@@ -147,7 +154,7 @@
 							  <div class="modal-body">
                                   <div class="alert alert-danger" id="chooseCustomError">
                                       <strong>Choose a value!</strong>
-                                      No custom value is selected.  Please choose one or close this popup to cancel.
+                                      No new custom value is selected.  Please choose one or close this popup to cancel.
                                   </div>
 								  <p id="basicExample">
                                       <a href="#" class="blueButton" id="custom1">0.25"</a>
@@ -162,6 +169,37 @@
 							</div>
 						  </div>
 						</div>
+
+                        <div class="modal fade" id="customTimeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Time Preference</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="alert alert-danger" id="chooseCustomTimeError">
+                                            <strong>Choose a value!</strong>
+                                            No new custom value is selected.  Please choose one or close this popup to cancel.
+                                        </div>
+                                        <p id="basicExample2">
+                                            <a href="#" class="blueTimeButton" id="customTime1">4 am</a>
+                                            <a href="#" class="blueTimeButton" id="customTime2">6 am</a>
+                                            <a href="#" class="blueTimeButton" id="customTime3">8 am</a>
+                                            <a href="#" class="blueTimeButton" id="customTime4">10 am</a>
+                                            <a href="#" class="blueTimeButton" id="customTime5">4 pm</a>
+                                            <a href="#" class="blueTimeButton" id="customTime6">5 pm</a>
+                                            <a href="#" class="blueTimeButton" id="customTime7">6 pm</a>
+                                            <a href="#" class="blueTimeButton" id="customTime8">7 pm</a>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-default saveCustomTime">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 					</div>
 			 
@@ -179,15 +217,20 @@
                             not receive any more water for the current week.
                         </div>
 
-                        <p><b>Sprinkler Water Rate</b></p>
+                        <p><b>Water Rate</b></p>
                         <p>This controls the sprinkler system's water output rate used in watering time calculations.  The default is 1 inch per hour.  So if you have the
                         water level on medium (1 inch per week) and use the default water rate of 1 inch per hour, your lawn will receive 1 hour of watering throughout the week
                         if no precipitation occurs.</p>
+
+                        <p><b>Watering Time</b></p>
+                        <p>This controls the time that your spinkler's will be watered on a given day.  Generally the best time to water is between 4 am and 10 am.  Watering
+                        too early in the morning causes fungus to grow, while watering in the middle of the day causes the water to evaporate too quickly. If you cannot
+                        water in the morning for some reason then you should water between 4 pm and 7 pm.  The default time is 7 am.</p>
                     </div>
 			 
 					<div id="tab3" class="tab">
 						<p><b>How much water does my lawn need per week?</b></p>
-                        <p>While different types of lawns need different amounts of water, in general lawns need at least 1 inch per week.  <a href="http://www.greengrassok.com/greengrass-services/how-to-water-your-lawn">This web-page</a> lists
+                        <p>While different types of lawns need different amounts of water, in general lawns need at least 1 inch per week.  <a href="http://www.greengrassok.com/greengrass-services/how-to-water-your-lawn" target="_blank">This web-page</a> lists
                         some good tips.</p>
                         <p><b>How do I know my sprinkler's water rate?</b></p>
                         <p>
@@ -201,7 +244,7 @@
                             Time: <input id="timeAmt" type="number" name="quantity" min="15" max="60" step="1" value="30"> minutes
                         </form><br><br>
                         <button id="submitRate">Find Amount</button>
-
+                        <br>
                         <span id="rateResult"></span>
 
                     </div>
