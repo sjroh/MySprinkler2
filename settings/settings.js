@@ -271,6 +271,13 @@ $(document).ready(function(){
             $("#chooseCustomError").show();
         }
     });
+
+    $("#submitRate").click(function(){
+        var waterAmt = $("#waterAmt").val();
+        var timeAmt = $("#timeAmt").val();
+        var inchesPerHr = 60*waterAmt/timeAmt;
+        $("#rateResult").html("Your lawn water rate is " + inchesPerHr + " inches per hour.");
+    });
 	
     // initialize input widgets first
     $('#basicExample .time').timepicker({

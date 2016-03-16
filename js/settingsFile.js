@@ -134,10 +134,6 @@ function insertFileInApplicationDataFolder(jData, fileName) {
 
 $('#zoneAlert').submit(function(){
     zoneNum = $('#zoneNum').val();
-    console.log("num: " + zoneNum);
-    zoneNum++;
-    console.log("num: " + zoneNum);
-    zoneNum--;
     $('#zoneAlert').hide();
     createSettingsFile();
     return false;

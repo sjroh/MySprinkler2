@@ -38,7 +38,7 @@
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
+        <ul class="sidebar-nav cursive">
             <li class="sidebar-brand">
                 <a href="#">
                     ADEM
@@ -113,21 +113,15 @@
             <br><br>
             <div class="tabs">
 				<ul class="tab-links">
-					<li class="active"><a href="#tab1">Level</a></li>
-					<li><a href="#tab2">Tab #2</a></li>
-					<li><a href="#tab3">Tab #3</a></li>
+					<li class="active"><a href="#tab1">Watering Settings</a></li>
+					<li><a href="#tab2">Info</a></li>
+					<li><a href="#tab3">FAQ</a></li>
 					<li><a href="#tab4">Tab #4</a></li>
 				</ul>
 			 
 			 
 				<div class="tab-content">
 					<div id="tab1" class="tab active">
-                        <div class="alert alert-warning" id="warningInstructions">
-                            <strong>Warning!</strong>
-                            Changing the water level in the middle of the week changes the level for the entire week, including past days, to the new chosen level.
-                            Any water your lawn received in the beginning of the week is subtracted from the new value.  If the result is below 0" your lawn will
-                            not receive any more water for the current week.
-                        </div>
 						<p>
 							Water Level:
 							<button class="btn btn-primary high sec" data-whatever="High">High</button>
@@ -172,20 +166,48 @@
 					</div>
 			 
 					<div id="tab2" class="tab">
-						<p>Tab #2 content goes here!</p>
-						<p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
-					</div>
+						<p><b>Water Level</b></p>
+                        <p>
+                            The water level controls the inches of water your landscape will receive per week.  High is 2 inches per week, medium is 1 inch per week,
+                            and low is 0.5 inches per week.  Additionally there is a Custom option to choose among three more amounts.  The default setting is 1 inch
+                            per week.
+                            <div class="alert alert-warning" id="warningInstructions">
+                                <strong>Warning!</strong>
+                                Changing the water level in the middle of the week changes the level for the entire week, including past days, to the new chosen level.
+                                Any water your lawn received in the beginning of the week is subtracted from the new value.  If the result is below 0" your lawn will
+                                not receive any more water for the current week.
+                            </div>
+                        </p>
+                        <p><b>Sprinkler Water Rate</b></p>
+                        <p>This controls the sprinkler system's water output rate used in watering time calculations.  The default is 1 inch per hour.  So if you have the
+                        water level on medium, 1 inch per week, and use the default water rate of 1 inch per hour, your lawn will receive 1 hour of watering throughout the week
+                        if no precipitation occurs.</p>
+                    </div>
 			 
 					<div id="tab3" class="tab">
-						<p>Tab #3 content goes here!</p>
-						<p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum ri.</p>
-					</div>
+						<p><b>How much water does my lawn need per week?</b></p>
+                        <p></p>
+                        <p><b>How do I know my sprinkler's water rate?</b></p>
+                        <p>
+                            While the default setting is 1" per hour, you may want to get a more accurate number to allow for our program to water your landscape properly.
+                            You can easily find your sprinkler's water rate by placing at least two water gauges or cans around your lawn the next time you water.  Keep track of the amount
+                            of time your lawn is watered, and enter the average of the water amount between the cans below to obtain your water rate.  In settings select the
+                                water rate that is closest to the below value.
+                            <form>
+                                Water Amount: <input id="waterAmt" type="number" name="quantity" min=".1" max="1.5" step=".1" value=".5"> inches <br>
+                                Time: <input id="timeAmt" type="number" name="quantity" min="15" max="60" step="1" value="30"> minutes <br>
+                                <button id="submitRate">Find Amount</button>
+                            </form>
+                            <span id="rateResult"></span>
+                        </p>
+                    </div>
 			 
 					<div id="tab4" class="tab">
 						<p>Tab #4 content goes here!</p>
 						<p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
 					</div>
 				</div>
+            </div>
 		</div>
 			
  
