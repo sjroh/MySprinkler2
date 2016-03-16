@@ -11,6 +11,7 @@ $(".addEvent").hide();
 $(".removeEvent").hide();
 $("#invalidTime").hide();
 $("#invalidZones").hide();
+$("#warningInstructions").hide();
 var events;
 var settings;
 
@@ -312,8 +313,8 @@ $(document).ready(function(){
             if($(this).hasClass("blueButton")){
                 $(this).addClass("blueSelected");
             }
-            else{//clicked on green button for custom added events
-                $(this).addClass("greenSelected");
+            else{//clicked on green button for auto added events
+                $(this).addClass("greenSelected");//FOR FUTURE FUNCTIONALITY TO DELETE AUTO EVENTS (NOT IMPLEMENTED)
             }
             eventsClicked.push(eventIdClicked);
             addSameDayAutoEvents(eventIdClicked);
@@ -327,41 +328,48 @@ $(document).ready(function(){
         console.log(eventIdClicked + " <- event clicked");
     });
 
-    function addSameDayAutoEvents(eventIdClicked){
+    function addSameDayAutoEvents(eventIdClicked){//FOR FUTURE FUNCTIONALITY TO DELETE AUTO EVENTS (NOT IMPLEMENTED)
 
     }
 
-    function removeSameDayAutoEvents(eventIdClicked){
+    function removeSameDayAutoEvents(eventIdClicked){//FOR FUTURE FUNCTIONALITY TO DELETE AUTO EVENTS (NOT IMPLEMENTED)
 
     }
 
     function initializeButtons(){
 
-        for(var i = 1; i < settings.zones.length + 1; i++){//initialize zone buttons on adding event modal
+        for(var i = 1; i < settings.zones + 1; i++){//initialize zone buttons on adding event modal
             var htmlButton = "<a href=\"#\" class=\"zoneButton\">" + i + "</a>";
             $("#zoneButtons").append(htmlButton);
         }
         for(i = 0; i < events.current.length; i++){//initialize event buttons on removing event modal
-            var colorClass = (events.current[i].type == "auto") ? "blueButton" : "greenButton";
-            var startDate = new Date(0);
-            startDate.setUTCSeconds(events.current[i].sTime);
-            var startString = obtainTimeString(startDate);
-            var endDate = new Date(0);
-            endDate.setUTCSeconds(events.current[i].eTime);
-            var endString = obtainTimeString(endDate);
-            var eventString = startString + "<br> to <br>" + endString;
+            var anyManualEvents = false;
+            if(events.current[i].type == "manual"){//only allow manual events to be deleted
+                anyManualEvents = true;
+                var colorClass = (events.current[i].type == "auto") ? "greenButton" : "blueButton";//FOR FUTURE FUNCTIONALITY TO DELETE AUTO EVENTS (NOT IMPLEMENTED)
+                var startDate = new Date(0);
+                startDate.setUTCSeconds(events.current[i].sTime);
+                var startString = obtainTimeString(startDate);
+                var endDate = new Date(0);
+                endDate.setUTCSeconds(events.current[i].eTime);
+                var endString = obtainTimeString(endDate);
+                var eventString = startString + "<br> to <br>" + endString;
 
-            //now add zone description:
-            var description = "Zone(s): ";
-            for(j = 0; j < events.current[i].zones.length; j++){
-                description+=events.current[i].zones[j].toString();
-                if(j != events.current[i].zones.length - 1)
-                    description+=", ";
+                //now add zone description:
+                var description = "Zone(s): ";
+                for(j = 0; j < events.current[i].zones.length; j++){
+                    description+=events.current[i].zones[j].toString();
+                    if(j != events.current[i].zones.length - 1)
+                        description+=", ";
+                }
+                eventString += "<br>" + description;
+                htmlButton = "<a href=\"#\" id=\"" + events.current[i].id +"\" class=\"eventButton " + colorClass + "\">" + eventString + "</a><br><br>";
+
+                $("#eventButtons").append(htmlButton);
             }
-            eventString += "<br>" + description;
-            htmlButton = "<a href=\"#\" id=\"" + events.current[i].id +"\" class=\"eventButton " + colorClass + "\">" + eventString + "</a><br><br>";
+            if(!anyManualEvents)
+                $("#warningInstructions").show();
 
-            $("#eventButtons").append(htmlButton);
         }
     }
 
