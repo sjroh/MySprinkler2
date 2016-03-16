@@ -151,6 +151,7 @@ function createSettingsFile(){
                 "long": weatherData.long
             },
             "currLevel": "Medium",
+            "wateringHr": 7,
             "custom":{
                 "customLvl": -1,
                 "weeklyCustom": 0.75,

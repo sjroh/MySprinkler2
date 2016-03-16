@@ -233,7 +233,7 @@ $(document).ready(function(){
     $(".blueTimeButton").click(function(){//custom time buttons in custom time modal
         if(this.id != customTimeChosen){
             if(customTimeChosen != ""){
-                $("#" + customChosen).removeClass("blueTimeSelected");
+                $("#" + customTimeChosen).removeClass("blueTimeSelected");
             }
             $(this).addClass("blueTimeSelected");
             customTimeChosen = this.id;
