@@ -367,8 +367,9 @@ $(document).ready(function(){
 
                 $("#eventButtons").append(htmlButton);
             }
-            if(!anyManualEvents)
+            if(!anyManualEvents){
                 $("#warningInstructions").show();
+            }
 
         }
     }
