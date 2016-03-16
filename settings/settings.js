@@ -194,6 +194,16 @@ $(document).ready(function(){
             $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
         }
         $(identifier).addClass("active");
+
+        if(settings.conversionRate == 0.5){
+            $("#rate1").addClass("active");
+        } else if(settings.conversionRate == 1){
+            $("#rate2").addClass("active");
+        } else if(settings.conversionRate == 1.5){
+            $("#rate3").addClass("active");
+        } else if(settings.conversionRate == 2.0){
+            $("#rate4").addClass("active");
+        }
     }
 
     $(".blueButton").click(function(){
@@ -205,10 +215,35 @@ $(document).ready(function(){
         } //else do nothing, already chosen
     });
 
+    $(".rate").click(function(){
+        if(this.id == "rate1" && settings.conversionRate != .5){
+            $(".rate.active").removeClass("active");
+            $(this).addClass("active");
+            settings.conversionRate = .5;
+            updateSettings();
+        } else if(this.id == "rate2" && settings.conversionRate != 1){
+            $(".rate.active").removeClass("active");
+            $(this).addClass("active");
+            settings.conversionRate = 1;
+            updateSettings();
+        } else if(this.id == "rate3" && settings.conversionRate != 1.5){
+            $(".rate.active").removeClass("active");
+            $(this).addClass("active");
+            settings.conversionRate = 1.5;
+            updateSettings();
+        } else if(this.id == "rate4" && settings.conversionRate != 2){
+            $(".rate.active").removeClass("active");
+            $(this).addClass("active");
+            settings.conversionRate = 2;
+            updateSettings();
+        }//else conversionRate is same as clicked rate
+    });
+
     $(".saveCustom").click(function(){
         if(customChosen == "custom1"){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 0.25;
+            $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
             updateSettings();
             $("#chooseCustomError").hide();
             $("#customModal").modal("hide");
@@ -217,6 +252,7 @@ $(document).ready(function(){
         } else if(customChosen == "custom2"){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 1.5;
+            $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
             updateSettings();
             $("#chooseCustomError").hide();
             $("#customModal").modal("hide");
@@ -225,6 +261,7 @@ $(document).ready(function(){
         } else if(customChosen == "custom3"){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 3.0;
+            $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
             updateSettings();
             $("#chooseCustomError").hide();
             $("#customModal").modal("hide");
