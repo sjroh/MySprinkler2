@@ -4,6 +4,7 @@
 $("#serverInstructions").hide();
 $("#setupInstructions").hide();
 $("#tableHolder").hide();
+var signedIn = false;
 
 function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
