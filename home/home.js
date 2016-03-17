@@ -223,12 +223,13 @@ function loadProgressBar(settingsJson){
     } else{
         inchesNeed = settingsJson.customLvl;
     }
-    
+
     var widthWater = (settingsJson.watered.wateredAmt/inchesNeed)*100;
     $("#wateringProgress").css("width", widthWater.toString() + "%");
-
+    $("#wateringProgress").html(widthWater.toString() +"\"");
     var widthRain = (settingsJson.watered.rainedAmt/inchesNeed)*100;
     $("#rainProgress").css("width", widthRain.toString() + '%');
+    $("#rainProgress").html(widthRain.toString() +"\"");
 
     $(".progress").show();
 }
