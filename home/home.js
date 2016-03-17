@@ -226,10 +226,10 @@ function loadProgressBar(settingsJson){
 
     var widthWater = (settingsJson.watered.wateredAmt/inchesNeed)*100;
     $("#wateringProgress").css("width", widthWater.toString() + "%");
-    $("#wateringProgress").html(widthWater.toString() +"\"");
+    $("#wateringProgress").html(settingsJson.watered.wateredAmt +"\"");
     var widthRain = (settingsJson.watered.rainedAmt/inchesNeed)*100;
     $("#rainProgress").css("width", widthRain.toString() + '%');
-    $("#rainProgress").html(widthRain.toString() +"\"");
+    $("#rainProgress").html(settingsJson.watered.rainedAmt +"\"");
 
     $(".progress").show();
 }
