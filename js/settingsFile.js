@@ -152,6 +152,7 @@ function createSettingsFile(){
             },
             "currLevel": "Medium",
             "wateringHr": 7,
+            "wateredAmt": 0,
             "custom":{
                 "customLvl": -1,
                 "weeklyCustom": 0.75,
