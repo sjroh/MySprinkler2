@@ -11,6 +11,7 @@ $("#setup").hide();
 $("#serverInstructions").hide();
 $("#fatalError").hide();
 $("#loading").show();
+$(".progress").hide();
 var globalVariables = {};
 
 function OnLoad() {
@@ -154,6 +155,7 @@ function downloadFile(file) {
             if(file.title == "settings.txt"){
                 localStorage.setItem("settings", xhr.responseText);
                 loadWeather(jsonResponse);
+                loadProgressBar(jsonResponse);
             } else if(file.title == "events.txt"){
                 localStorage.setItem("events", xhr.responseText);
                 addEventsToOverview(jsonResponse);
@@ -210,44 +212,33 @@ function loadWeather(settingsJson){
     });
 }
 
-function addEventsToOverview(jsonResponse){
-    //sample json object
-    /*var jsonResponse = {
-        prev: {},
-        current: [
-            {
-                sTime: 1456958100,
-                eTime: 1456958400,
-                zoneID: 1
-            },
-            {
-                sTime: 1456950000,
-                eTime: 1456951200,
-                zoneID: 1
-            },
-            {
-                sTime: 1457210400,
-                eTime: 1457210760,
-                zoneID: 2
-            },
-            {
-                sTime: 1457297400,
-                eTime: 1457297700,
-                zoneID: 3
-            },
-            {
-                sTime: 1457268900,
-                eTime: 1457269500,
-                zoneID: 4
-            },
-            {
-                sTime: 1457265329,
-                eTime: 1457266529,
-                zoneID: 4
-            }
-        ]
-    };*/
+function loadProgressBar(settingsJson){
+    var inchesNeed;
+    if(settingsJson.currLevel == "High"){
+        inchesNeed = 2;
+    } else if(settingsJson.currLevel == "Medium"){
+        inchesNeed = 1;
+    } else if(settingsJson.currLevel == "Low"){
+        inchesNeed = .5;
+    } else{
+        inchesNeed = settingsJson.customLvl;
+    }
+    
+    var widthWater = (settingsJson.watered.wateredAmt/inchesNeed)*100;
+    $("#wateringProgress").css("width", widthWater.toString() + "%");
 
+    var widthRain = (settingsJson.watered.rainedAmt/inchesNeed)*100;
+    $("#rainProgress").css("width", widthRain.toString() + '%');
+
+    $(".progress").show();
+}
+
+function addEventsToOverview(jsonResponse){
+    //populate watering progress bar first
+
+
+
+    //now populate events
     var currWeekEpoch = [];
     var date = Math.round(new Date().getTime()/1000.0);
     currWeekEpoch.push(date);
