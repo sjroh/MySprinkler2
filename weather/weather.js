@@ -5,6 +5,49 @@ $("#serverInstructions").hide();
 $("#setupInstructions").hide();
 $("#tableHolder").hide();
 
+function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    signedIn = true;
+    checkStatus();
+}
+
+function onFailure(error) {
+    console.log(error);
+}
+
+function renderButton() {
+    gapi.signin2.render('my-signin2', {
+        'scope': 'profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
+}
+
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+        signedIn = false;
+        checkStatus();
+        window.location = "http://sjroh.github.io/MySprinkler2/";
+    });
+}
+
+function checkStatus(){
+    if(signedIn){
+        $("#signOut").show();
+        $("#signIn").hide();
+    } else{
+        $("#signIn").show();
+        $("#signOut").hide();
+    }
+}
+
 $(document).ready(function(){
 
     if(!localStorage.getItem("settings")){
