@@ -89,23 +89,29 @@ $(document).ready(function(){
 
     function setWeatherImage(weatherToday){
         if(weatherToday.main == "Clear"){
-
+            weatherImageMobile = "sunnymobile.jpg";
+            weatherImageSmall = "sunnysmall.jpg";
         } else if(weatherToday.main == "Rain" || weatherToday.main == "Drizzle"){
-
+            weatherImageMobile = "rainmobile.jpg";
+            weatherImageSmall = "rainsmall.jpg";
+        } else if(weatherToday.main == "Thunderstorm" || weatherToday.main == "Extreme"){
+            weatherImageMobile = "stormmobile.jpg";
+            weatherImageSmall = "stormsmall.jpg";
+        } else{
+            weatherImageMobile = "wetgrass2mobile.jpg";
+            weatherImageSmall = "wetgrass2small.jpg";
         }
     }
 
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();
-            //$(".slideshow").css('background-image', 'url(' + weatherImageMobile + ')');
-            $(".slideshow").css('background-image', 'url(../images/cloudymobile.jpg)');
+            $(".slideshow").css('background-image', 'url(' + weatherImageMobile + ')');
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
             $(".mobile").hide();
-            //$(".slideshow").css('background-image', 'url(' + weatherImageSmall + ')');
-            $(".slideshow").css('background-image', 'url(../images/cloudysmall.jpg)');
+            $(".slideshow").css('background-image', 'url(' + weatherImageSmall + ')');
             $(".desktop").show();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-left");
         }
