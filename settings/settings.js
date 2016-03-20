@@ -420,10 +420,12 @@ $(document).ready(function(){
         if($(window).width() < 600){
             $(".mobile").show();
             $(".desktop").hide();
+            $(".slideshow").css('background-image', 'url(../images/wetgrass2mobile.jpg');
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
             $(".mobile").hide();
             $(".desktop").show();
+            $(".slideshow").css('background-image', 'url(../images/wetgrass2small.jpg');
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-left");
         }
     }

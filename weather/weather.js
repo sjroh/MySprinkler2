@@ -87,10 +87,12 @@ $(document).ready(function(){
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();
+            $(".slideshow").css('background-image', 'url(../images/snowmobile.jpg');
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
             $(".mobile").hide();
+            $(".slideshow").css('background-image', 'url(../images/snow.jpg');
             $(".desktop").show();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-left");
         }
