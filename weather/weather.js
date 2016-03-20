@@ -92,7 +92,7 @@ $(document).ready(function(){
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
             $(".mobile").hide();
-            $(".slideshow").css('background-image', 'url(../images/snow.jpg');
+            $(".slideshow").css('background-image', 'url(../images/snowsmall.jpg');
             $(".desktop").show();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-left");
         }
