@@ -5,6 +5,8 @@ $("#serverInstructions").hide();
 $("#setupInstructions").hide();
 $("#tableHolder").hide();
 var signedIn = false;
+var weatherImageSmall;
+var weatherImageMobile;
 
 function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
@@ -70,6 +72,7 @@ $(document).ready(function(){
             // console.log(weatherData);
             var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+            setWeatherImage(weatherData[0].weather);
             for(var i = 0; i < weatherData.length; i++){
                 var idName = "#day" + (i+1).toString();
                 var idWName = "#w" + (i+1).toString();
@@ -84,15 +87,25 @@ $(document).ready(function(){
         });
     }
 
+    function setWeatherImage(weatherToday){
+        if(weatherToday.main == "Clear"){
+
+        } else if(weatherToday.main == "Rain" || weatherToday.main == "Drizzle"){
+
+        }
+    }
+
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();
-            $(".slideshow").css('background-image', 'url(../images/stormmobile.jpg');
+            //$(".slideshow").css('background-image', 'url(' + weatherImageMobile + ')');
+            $(".slideshow").css('background-image', 'url(../images/cloudymobile.jpg)');
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
             $(".mobile").hide();
-            $(".slideshow").css('background-image', 'url(../images/stormsmall.jpg');
+            //$(".slideshow").css('background-image', 'url(' + weatherImageSmall + ')');
+            $(".slideshow").css('background-image', 'url(../images/cloudysmall.jpg)');
             $(".desktop").show();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-left");
         }
