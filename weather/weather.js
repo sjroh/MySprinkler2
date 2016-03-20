@@ -72,7 +72,7 @@ $(document).ready(function(){
             // console.log(weatherData);
             var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-            setWeatherImage(weatherData[0].weather);
+            setWeatherImage(weatherData[0].weather[0]);
             for(var i = 0; i < weatherData.length; i++){
                 var idName = "#day" + (i+1).toString();
                 var idWName = "#w" + (i+1).toString();
