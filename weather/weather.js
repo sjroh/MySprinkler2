@@ -87,7 +87,7 @@ $(document).ready(function(){
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();
-            $(".slideshow").css('background-image', 'url(../images/sunnymobile.jpg');
+            $(".slideshow").css('background-image', 'url(../images/snow2mobile.jpg');
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
