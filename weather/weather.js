@@ -87,12 +87,12 @@ $(document).ready(function(){
     function checkWidth(){
         if($(window).width() < 600){
             $(".mobile").show();
-            $(".slideshow").css('background-image', 'url(../images/snowmobile.jpg');
+            $(".slideshow").css('background-image', 'url(../images/sunnymobile.jpg');
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
             $(".mobile").hide();
-            $(".slideshow").css('background-image', 'url(../images/snowsmall.jpg');
+            $(".slideshow").css('background-image', 'url(../images/sunnysmall.jpg');
             $(".desktop").show();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-left");
         }
