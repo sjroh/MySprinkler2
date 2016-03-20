@@ -88,6 +88,7 @@ $(document).ready(function(){
     }
 
     function setWeatherImage(weatherToday){
+        console.log("weather: " + weatherToday.main);
         if(weatherToday.main == "Clear"){
             weatherImageMobile = "../images/sunnymobile.jpg";
             weatherImageSmall = "../images/sunnysmall.jpg";
