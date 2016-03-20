@@ -89,18 +89,19 @@ $(document).ready(function(){
 
     function setWeatherImage(weatherToday){
         if(weatherToday.main == "Clear"){
-            weatherImageMobile = "sunnymobile.jpg";
-            weatherImageSmall = "sunnysmall.jpg";
+            weatherImageMobile = "../images/sunnymobile.jpg";
+            weatherImageSmall = "../images/sunnysmall.jpg";
         } else if(weatherToday.main == "Rain" || weatherToday.main == "Drizzle"){
-            weatherImageMobile = "rainmobile.jpg";
-            weatherImageSmall = "rainsmall.jpg";
+            weatherImageMobile = "../images/rainmobile.jpg";
+            weatherImageSmall = "../images/rainsmall.jpg";
         } else if(weatherToday.main == "Thunderstorm" || weatherToday.main == "Extreme"){
-            weatherImageMobile = "stormmobile.jpg";
-            weatherImageSmall = "stormsmall.jpg";
+            weatherImageMobile = "../images/stormmobile.jpg";
+            weatherImageSmall = "../images/stormsmall.jpg";
         } else{
-            weatherImageMobile = "wetgrass2mobile.jpg";
-            weatherImageSmall = "wetgrass2small.jpg";
+            weatherImageMobile = "../images/wetgrass2mobile.jpg";
+            weatherImageSmall = "../images/wetgrass2small.jpg";
         }
+        checkWidth();
     }
 
     function checkWidth(){
