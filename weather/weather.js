@@ -8,6 +8,30 @@ var signedIn = false;
 var weatherImageSmall;
 var weatherImageMobile;
 
+
+// GOOGLE SIGN IN CODE
+function OnLoad() {
+    window.setTimeout(checkAuth, 1000);
+}
+
+function checkAuth() {
+    gapi.auth.authorize({ 'client_id': clientId, 'scope': scopes, 'immediate': true }, handleAuthResult);
+}
+
+function handleAuthResult(authResult) {
+    var authorizeButton = document.getElementById('authorize-button');
+    if (authResult && !authResult.error) {
+        //oauthToken = authResult.access_token;
+    } else {
+        authorizeButton.onclick = function (event) {
+            gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+            return false;
+        }
+    }
+}
+
+OnLoad();
+
 function onSuccess(googleUser) {
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     signedIn = true;
