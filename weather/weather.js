@@ -1,6 +1,10 @@
 /**
  * Created by Kyle on 2/10/2016.
  */
+var oauthToken;
+var clientId = "1098632840077-a0im0gkftlvomqb612gtsan5pe8v09jp.apps.googleusercontent.com";
+var scopes = "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/calendar";
+
 $("#serverInstructions").hide();
 $("#setupInstructions").hide();
 $("#tableHolder").hide();
@@ -21,7 +25,7 @@ function checkAuth() {
 function handleAuthResult(authResult) {
     var authorizeButton = document.getElementById('authorize-button');
     if (authResult && !authResult.error) {
-        //oauthToken = authResult.access_token;
+        oauthToken = authResult.access_token;
     } else {
         authorizeButton.onclick = function (event) {
             gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
