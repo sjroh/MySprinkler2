@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ecfa89-fdc2-412d-a934-e69bd346497b" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/abigailpic.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="MySprinkler2.iws" />
@@ -46,8 +47,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25029376">
-              <caret line="156" column="80" selection-start-line="156" selection-start-column="80" selection-end-line="156" selection-end-column="80" />
+            <state vertical-scroll-proportion="0.22444183">
+              <caret line="155" column="78" selection-start-line="155" selection-start-column="78" selection-end-line="155" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -744,8 +745,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25029376">
-          <caret line="156" column="80" selection-start-line="156" selection-start-column="80" selection-end-line="156" selection-end-column="80" />
+        <state vertical-scroll-proportion="0.22444183">
+          <caret line="155" column="78" selection-start-line="155" selection-start-column="78" selection-end-line="155" selection-end-column="78" />
           <folding />
         </state>
       </provider>
