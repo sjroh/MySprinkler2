@@ -168,6 +168,7 @@ $(document).ready(function(){
         var index = link.search("embed?") + 6;
         var link = [link.slice(0, index), mode, link.slice(index)].join('');
         var link = link.replace("width=\"800\"", "width=\"350\"");
+        var link = link.replace("height=\"600\"", "height=\"300\"");
         console.log(link);
         $("#scheduleBody").prepend(link);
     }
