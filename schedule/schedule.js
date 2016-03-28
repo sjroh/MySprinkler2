@@ -100,7 +100,12 @@ $(document).ready(function(){
         settings = JSON.parse(localStorage.getItem("settings"));
         initializeButtons();
         console.log("retrieved settings & events from browser storage");
-        $("#scheduleBody").prepend(settings.calLink);
+        if($(window).width() > 600){ //then use google calendar
+            $("#scheduleBody").prepend(settings.calLink);
+        } else{ //then use 'Agenda' view for mobile
+            constructMobileAgenda();
+        }
+
         $("#scheduleBody").prepend("<br><br>");
         $(".addEvent").show();
         $(".removeEvent").show();
@@ -156,6 +161,16 @@ $(document).ready(function(){
         //error message
         //alert(datepair.getEndTime());
     });
+
+    function constructMobileAgenda(){
+        var link = settings.calLink;
+        var mode = "mode=AGENDA&amp;";
+        var index = link.search("embed?") + 6;
+        var link = [link.slice(0, index), mode, link.slice(index)].join('');
+        var link = link.replace("width=\"800\"", "width=\"350\"");
+        console.log(link);
+        $("#scheduleBody").prepend(link);
+    }
 
     $("#removeEventSave").click(function(){
         var eventsIndexRemove = [];
