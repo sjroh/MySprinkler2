@@ -39,6 +39,7 @@ function renderButton() {
     });
 
 }
+renderButton();
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();

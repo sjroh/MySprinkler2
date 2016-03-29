@@ -127,7 +127,10 @@ $(document).ready(function(){
         } else if(weatherToday.main == "Thunderstorm" || weatherToday.main == "Extreme"){
             weatherImageMobile = "../images/stormmobile.jpg";
             weatherImageSmall = "../images/stormsmall.jpg";
-        } else{
+        } else if(weatherToday.main == "Clouds" || weatherToday.main == "Atmosphere"){
+            weatherImageMobile = "../images/coudymobile.jpg";
+            weatherImageSmall = "../images/cloudysmall.jpg";
+        } else{ //default pic if code none of the above
             weatherImageMobile = "../images/wetgrass2mobile.jpg";
             weatherImageSmall = "../images/wetgrass2small.jpg";
         }
