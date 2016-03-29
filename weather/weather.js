@@ -128,7 +128,7 @@ $(document).ready(function(){
             weatherImageMobile = "../images/stormmobile.jpg";
             weatherImageSmall = "../images/stormsmall.jpg";
         } else if(weatherToday.main == "Clouds" || weatherToday.main == "Atmosphere"){
-            weatherImageMobile = "../images/coudymobile.jpg";
+            weatherImageMobile = "../images/cloudymobile.jpg";
             weatherImageSmall = "../images/cloudysmall.jpg";
         } else{ //default pic if code none of the above
             weatherImageMobile = "../images/wetgrass2mobile.jpg";
