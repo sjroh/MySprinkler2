@@ -149,7 +149,7 @@ $(document).ready(function(){
     function checkWidth(){
         if($(window).width() < 600){
             $(".weatherTitle").hide();
-            $("#today").css("margin-top", "0");
+            $("#today").css("margin-top", "20px");
             $(".mobile").show();
             $(".slideshow").css('background-image', 'url(' + weatherImageMobile + ')');
             $(".desktop").hide();
