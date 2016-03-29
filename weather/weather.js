@@ -149,12 +149,14 @@ $(document).ready(function(){
     function checkWidth(){
         if($(window).width() < 600){
             $(".weatherTitle").hide();
+            $("#today").css("margin-top", "0");
             $(".mobile").show();
             $(".slideshow").css('background-image', 'url(' + weatherImageMobile + ')');
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
             $(".weatherTitle").show();
+            $("#today").css("margin-top", "-50px");
             $(".mobile").hide();
             $(".slideshow").css('background-image', 'url(' + weatherImageSmall + ')');
             $(".desktop").show();
