@@ -20,7 +20,7 @@ function OnLoad() {
 
 function checkAuth() {
     if(!signedIn){
-        window.location = "http://sjroh.github.io/MySprinkler2/";
+        window.location = "http://sjroh.github.io/MySprinkler2/weather/weather.html";
     }
     gapi.auth.authorize({ 'client_id': clientId, 'scope': scopes, 'immediate': true }, handleAuthResult);
 }
