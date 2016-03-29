@@ -97,6 +97,7 @@ $(document).ready(function(){
     }
 
     $(".sec").on('click', function(){//to change zone watering level
+        $(".custom.sec").html("Custom");//reset custom button text
         var keywords = searchForKeyWord(this.className.split(/\s+/));//search for high, medium, low, custom
 
         keywords[0] = keywords[0][0].toUpperCase() + keywords[0].slice(1);//capitalize first letter in level
@@ -285,7 +286,7 @@ $(document).ready(function(){
     });
 
     $(".saveCustom").click(function(){
-        if(customChosen == "custom1" && settings.custom.customLvl != .25){
+        if(customChosen == "custom1" && (settings.custom.customLvl != .25 || settings.custom.customLvl == .25 && settings.currLevel != "Custom")){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 0.25;
             $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
@@ -294,7 +295,7 @@ $(document).ready(function(){
             $("#customModal").modal("hide");
             $(".sec.active").removeClass("active");
             $(".custom").addClass("active");
-        } else if(customChosen == "custom2" && settings.custom.customLvl != 1.5){
+        } else if(customChosen == "custom2" && (settings.custom.customLvl != 1.5 || settings.custom.customLvl == 1.5 && settings.currLevel != "Custom")){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 1.5;
             $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
@@ -303,7 +304,7 @@ $(document).ready(function(){
             $("#customModal").modal("hide");
             $(".sec.active").removeClass("active");
             $(".custom").addClass("active");
-        } else if(customChosen == "custom3" && settings.custom.customLvl != 3.0){
+        } else if(customChosen == "custom3" && (settings.custom.customLvl != 3.0 || settings.custom.customLvl == 3.0 && settings.currLevel != "Custom")){
             settings.currLevel = "Custom";
             settings.custom.customLvl = 3.0;
             $(".custom.sec").html("Custom: " + settings.custom.customLvl + "\"");
