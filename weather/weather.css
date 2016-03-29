@@ -5,11 +5,11 @@
 
 #today{
 	background-color: rgba(0, 0, 0, 0.5);
-	height: 200px;
-    width: 400px;
-	position: absolute;
-	top: 40px;
-    right: 400px;
+	height: 100px;
+    width: 50%;
+	margin-top: -50px;
+	margin-left: auto;
+	margin-right:auto;
 	border-radius: 25px;
 	border-spacing: 10px;
 	font-size: 15px;
@@ -22,9 +22,7 @@ td#date, td#weather, td#temp{
 	padding-left: 25px;
 }
 
-td#date{
-	padding-bottom:100px;
-}
+
 
 td#weather, td#temp{
 	padding-top:25px;

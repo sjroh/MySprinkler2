@@ -96,7 +96,7 @@ $(document).ready(function(){
 
     function loadWeatherTable(){
         var settings = JSON.parse(localStorage.getItem("settings"));
-        $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + settings.location.lat + '&lon=' + settings.location.long + '&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b', function(data){
+        $.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + settings.location.lat + '&lon=' + settings.location.long + '&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b&units=imperial', function(data){
             var weatherData = data.list;
             // console.log(weatherData);
             var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
