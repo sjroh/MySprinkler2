@@ -148,11 +148,13 @@ $(document).ready(function(){
 
     function checkWidth(){
         if($(window).width() < 600){
+            $(".weatherTitle").hide();
             $(".mobile").show();
             $(".slideshow").css('background-image', 'url(' + weatherImageMobile + ')');
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
+            $(".weatherTitle").show();
             $(".mobile").hide();
             $(".slideshow").css('background-image', 'url(' + weatherImageSmall + ')');
             $(".desktop").show();
