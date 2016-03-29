@@ -267,6 +267,7 @@ $(document).ready(function(){
 
     $(".time").click(function(){
         $(".customTime").removeClass("active");
+        $(".customTime").html("Custom");
         if(this.id == "time1" && settings.wateringHr != 5){
             $(".time.active").removeClass("active");
             $(this).addClass("active");
