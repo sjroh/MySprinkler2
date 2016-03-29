@@ -3,6 +3,52 @@
     color:white;
 }
 
+#today{
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 200px;
+    width: 400px;
+	position: absolute;
+	top: 40px;
+    right: 400px;
+	border-radius: 25px;
+	border-spacing: 10px;
+	font-size: 15px;
+	text-align: center;
+     /*border: 25px solid navy;*/
+}
+
+td#date, td#weather, td#temp{
+	padding-right:25px;
+	padding-left: 25px;
+}
+
+td#date{
+	padding-bottom:100px;
+}
+
+td#weather, td#temp{
+	padding-top:25px;
+}
+
+td#mon1{
+	text-align:top;
+}
+
+td#hi1{
+	width:5em;
+}
+
+
+td#lo1{
+	text-align: left;
+	width:10em;
+}
+
+td#day1, td#hi1{
+	font-size: 35px;
+}
+
+
 #homeBody{
     text-align:center;
 }
@@ -23,6 +69,23 @@
     width:80%;
 }
 
-td#day1, td#w1{
+/*td#day1, td#w1{
     border-right:solid 1px;
+}*/
+
+tr#day{
+	font-size: 25px;
+}
+  
+tr#high{
+	font-size: 25px;
+}
+
+tr#low{
+	color: #9C9C9C;
+	/*color: white;*/
+}
+
+td{
+    width:10em;
 }

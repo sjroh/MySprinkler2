@@ -104,15 +104,24 @@ $(document).ready(function(){
             setWeatherImage(weatherData[0].weather[0]);
             for(var i = 0; i < weatherData.length; i++){
                 var idName = "#day" + (i+1).toString();
+				var idMonName = "#mon" + (i+1).toString();
                 var idWName = "#w" + (i+1).toString();
+				var idHName = "#hi" + (i+1).toString();//
+				var idLName = "#lo" + (i+1).toString();//
+				var idDesName = "#d" + (i+1).toString();//
                 var date = new Date(0);
                 date.setUTCSeconds(weatherData[i].dt);
                 // date.setTime(weatherData[i].dt * 1000);//date = epoch value * 1000
                 //date.setUTCSeconds()
-                $(idName).html(days[date.getDay()] + "<br>" + months[date.getMonth()] + "  " + date.getUTCDate());
+                //$(idName).html(days[date.getDay()] + "<br>" + months[date.getMonth()] + "  " + date.getUTCDate());
+                $(idName).html(days[date.getDay()]);
                 console.log(weatherData[i].dt + ": " + date.toDateString());
-                $(idWName).html("<img src='http://openweathermap.org/img/w/" + weatherData[i].weather[0].icon + ".png'>");
-            }
+                $(idMonName).html(months[date.getMonth()] + "  " + date.getUTCDate());
+				$(idWName).html("<img src='http://openweathermap.org/img/w/" + weatherData[i].weather[0].icon + ".png'>");
+				$(idDesName).html(weatherData[i].weather[0].description);
+				$(idHName).html(Math.round(weatherData[i].temp.max) + "&deg;");
+				$(idLName).html(Math.round(weatherData[i].temp.min) + "&deg;");
+		   }
         });
     }
 
