@@ -421,15 +421,15 @@ $(document).ready(function(){
 
     function checkWidth(){
         if($(window).width() < 600){
-            $(".modal-content").addClass("mobileModal");
-            $(".remove-modal-content").addClass("mobileModal");
+            //$(".modal-content").addClass("mobileModal");
+            //$(".remove-modal-content").addClass("mobileModal");
             $(".slideshow").css('background-image', 'url(../images/wetgrass2mobile.jpg');
             $(".mobile").show();
             $(".desktop").hide();
             $(".menu-btn").addClass("glyphicon glyphicon-chevron-right");
         } else{
-            $(".modal-content").removeClass("mobileModal");
-            $(".remove-modal-content").removeClass("mobileModal");
+            //$(".modal-content").removeClass("mobileModal");
+            //$(".remove-modal-content").removeClass("mobileModal");
             $(".slideshow").css('background-image', 'url(../images/wetgrass2small.jpg');
             $(".mobile").hide();
             $(".desktop").show();
