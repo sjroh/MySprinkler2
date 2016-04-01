@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ecfa89-fdc2-412d-a934-e69bd346497b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schedule/schedule.js" afterPath="$PROJECT_DIR$/schedule/schedule.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/settings.html" afterPath="$PROJECT_DIR$/settings/settings.html" />
     </list>
     <ignored path="MySprinkler2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,21 +35,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/settings/settings.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.67742">
-              <caret line="255" column="135" selection-start-line="255" selection-start-column="135" selection-end-line="255" selection-end-column="135" />
+            <state vertical-scroll-proportion="0.6756757">
+              <caret line="261" column="140" selection-start-line="261" selection-start-column="140" selection-end-line="261" selection-end-column="140" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5673759">
-              <caret line="333" column="9" selection-start-line="333" selection-start-column="9" selection-end-line="333" selection-end-column="9" />
+            <state vertical-scroll-proportion="-18.833334">
+              <caret line="202" column="30" selection-start-line="202" selection-start-column="30" selection-end-line="202" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -178,8 +178,8 @@
         <option value="$PROJECT_DIR$/schedule/schedule.html" />
         <option value="$PROJECT_DIR$/schedule/jquery.timepicker.js" />
         <option value="$PROJECT_DIR$/settings/settings.js" />
-        <option value="$PROJECT_DIR$/settings/settings.html" />
         <option value="$PROJECT_DIR$/schedule/schedule.js" />
+        <option value="$PROJECT_DIR$/settings/settings.html" />
       </list>
     </option>
   </component>
@@ -248,7 +248,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="schedule" />
+              <option name="myItemId" value="settings" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -779,18 +779,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings/settings.html">
+    <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.67742">
-          <caret line="255" column="135" selection-start-line="255" selection-start-column="135" selection-end-line="255" selection-end-column="135" />
+        <state vertical-scroll-proportion="-18.833334">
+          <caret line="202" column="30" selection-start-line="202" selection-start-column="30" selection-end-line="202" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schedule/schedule.js">
+    <entry file="file://$PROJECT_DIR$/settings/settings.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5673759">
-          <caret line="333" column="9" selection-start-line="333" selection-start-column="9" selection-end-line="333" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.6756757">
+          <caret line="261" column="140" selection-start-line="261" selection-start-column="140" selection-end-line="261" selection-end-column="140" />
           <folding />
         </state>
       </provider>
