@@ -111,6 +111,10 @@ $(document).ready(function(){
         $(".removeEvent").show();
     }
 
+    $('input').focus(function(){
+       this.blur();
+    });
+
     // initialize input widgets first
     $('#basicExample .time').timepicker({
         'showDuration': true,
