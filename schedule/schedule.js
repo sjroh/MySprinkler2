@@ -332,6 +332,7 @@ $(document).ready(function(){
             var index = $.inArray(zoneClicked, zonesClicked);
             zonesClicked.splice(index, 1);
         }
+        zonesClicked.sort();
         console.log(zoneClicked + "<- clicked");
     });
 
