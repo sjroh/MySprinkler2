@@ -134,7 +134,7 @@ $(document).ready(function(){
         var currDate = new Date();
         var sDate = datepair.getStartTime();
         var eDate = datepair.getEndTime();
-        if(currDate >= sDate)
+        if(currDate >= sDate || sDate == eDate)
             $("#invalidTime").show();
         else
             $("#invalidTime").hide();
@@ -144,7 +144,7 @@ $(document).ready(function(){
         else
             $("#invalidZones").hide();
 
-        if(currDate < sDate && zonesClicked.length != 0){
+        if(currDate < sDate && zonesClicked.length != 0 && sDate != eDate){
             $("#addModal").modal('hide');
             var event = {
                 sTime: Math.round(sDate.getTime()/1000.0),
