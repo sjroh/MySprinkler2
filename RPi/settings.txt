@@ -1,0 +1,22 @@
+{
+    "calId": "096dt5rsqodqgdsk96j1mrtp98@group.calendar.google.com",
+    "calLink": "<iframe src=\"https://calendar.google.com/calendar/embed?src=096dt5rsqodqgdsk96j1mrtp98@group.calendar.google.com&ctz=America/Chicago\" style=\"border: 0\" width=\"800\" height=\"600\" frameborder=\"0\" scrolling=\"no\"></iframe>",
+    "conversionRate": 1,
+    "currLevel": "High",
+    "custom": {
+        "customLvl": -1,
+        "weeklyCustom": 0.75,
+        "weeklyCustomActivated": false
+    },
+    "location": {
+        "lat": 30.616559,
+        "long": -96.31197429999999
+    },
+    "timezone": null,
+    "watered": {
+        "rainedAmt": 2,
+        "wateredAmt": 4
+    },
+    "wateringHr": 17,
+    "zones": "2"
+}
