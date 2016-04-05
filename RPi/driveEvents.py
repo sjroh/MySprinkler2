@@ -143,7 +143,7 @@ def update_events_mongo():
         jdata = json.dumps(c, default=lambda x:x.__dict__)
         value = json.loads(jdata)
         result = collection.update({'id':c['id']}, {"$set": value}, upsert=True)
-    
+
     print ("Updating settings on MongoDB done")
 
 def update_events_drive():
@@ -177,6 +177,8 @@ def update_past_events():
         del EVENTS['current'][i]
     update_events_drive()
 
+# need one more function to move events to list of past
+# when water level hit max
 
 def add_event(event_id, sTime, eTime, zones, event_type):
     global EVENTS

@@ -29,5 +29,5 @@ events_list = ms.make_schedule()
 for event in events_list:
     event_id = ce.add_event(event['sTime'], event['eTime'], event['zones'], event['type'])
     de.add_event(event_id, event['sTime'], event['eTime'], event['zones'], event['type'])
-    
 
+# remove schedule based on the amount of rain
