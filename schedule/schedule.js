@@ -228,7 +228,7 @@ $(document).ready(function(){
                 else{
                     console.log(resp.items[0].title + " file found");
                     console.log(resp.items[0]);
-                    console.log("event id in here: " + events.current[events.current.length - 1].id);
+                    //console.log("event id in here: " + events.current[events.current.length - 1].id);
                     updateFile(resp.items[0].id, resp.items[0], events, null);
                 }
             });
