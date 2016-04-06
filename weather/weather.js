@@ -148,6 +148,7 @@ $(document).ready(function(){
 
     function checkWidth(){
         if($(window).width() < 600){
+            $("tbody tr").css("width", "5em");
             $(".weatherTitle").hide();
             $("#today").css("margin-top", "20px");
             $(".mobile").show();
