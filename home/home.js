@@ -206,7 +206,7 @@ function loadWeather(settingsJson){
             date.setUTCSeconds(weatherData.list[i].dt);
             // date.setTime(weatherData[i].dt * 1000);//date = epoch value * 1000
             //date.setUTCSeconds()
-            $(idName).html("<b>" + days[date.getDay()] + "</b><br>" + months[date.getMonth()] + "  " + date.getUTCDate());
+            $(idName).html("<b><span style=\"font-size:25\">" + days[date.getDay()] + "</span></b><br>" + months[date.getMonth()] + "  " + date.getUTCDate());
             //console.log(weatherData.list[i].dt + ": " + date.toDateString());
             $(idWName).html("<img src='http://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png'>");
         }

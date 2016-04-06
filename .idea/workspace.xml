@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="98ecfa89-fdc2-412d-a934-e69bd346497b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/home.js" afterPath="$PROJECT_DIR$/home/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weather/weather.html" afterPath="$PROJECT_DIR$/weather/weather.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weather/weather.js" afterPath="$PROJECT_DIR$/weather/weather.js" />
     </list>
     <ignored path="MySprinkler2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,9 +68,14 @@
       <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/home/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6453901">
-              <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.4893617">
+              <caret line="208" column="57" selection-start-line="208" selection-start-column="57" selection-end-line="208" selection-end-column="57" />
+              <folding>
+                <marker date="1459983968075" expanded="true" signature="8163:8179" placeholder="..." />
+                <marker date="1459983968075" expanded="true" signature="8165:8177" placeholder="..." />
+                <marker date="1459983968075" expanded="true" signature="8179:8255" placeholder="..." />
+                <marker date="1459983968075" expanded="true" signature="8180:8252" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -779,9 +782,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/home/home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6453901">
-          <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.4893617">
+          <caret line="208" column="57" selection-start-line="208" selection-start-column="57" selection-end-line="208" selection-end-column="57" />
+          <folding>
+            <marker date="1459983968075" expanded="true" signature="8163:8179" placeholder="..." />
+            <marker date="1459983968075" expanded="true" signature="8165:8177" placeholder="..." />
+            <marker date="1459983968075" expanded="true" signature="8179:8255" placeholder="..." />
+            <marker date="1459983968075" expanded="true" signature="8180:8252" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
