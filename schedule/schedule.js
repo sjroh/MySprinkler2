@@ -297,7 +297,7 @@ $(document).ready(function(){
         }
 
         var event = {
-          'summary': "Watering Event",
+          'summary': "Watering Event (Manual)",
             'description': description,
             'start':{
                 'dateTime': sDate.toISOString()
