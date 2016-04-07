@@ -151,7 +151,7 @@ def update_settings_mongo():
     
     print ("Updating settings on MongoDB done")
 
-def update_rainedAmt(rainedAmt):
+def update_rainedAmt(rainedAmt):#QUESTION: we're going to round right? i guess youll insert it rounded?
     if INITIATED == False: #run init
         init()
     global SETTINGS

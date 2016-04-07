@@ -169,7 +169,7 @@ def update_past_events():
     current_sec = int(round(time.time()))
     del_list = []
     for i in range(0, len(EVENTS['current'])):
-        if int(EVENTS['current'][i]['eTime']) < current_sec:
+        if int(EVENTS['current'][i]['eTime']) < current_sec:#QUESTION: i think we should put an event in the past events if the day has passed not just if it is before in time
             del_list.append(i)
             EVENTS['prev'].append(EVENTS['current'][i])
     del_list.reverse()
