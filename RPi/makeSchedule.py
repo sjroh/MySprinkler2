@@ -9,7 +9,7 @@ import driveEvents
 ##########     imports END
 
 #run at 12:30am every night and first bootup
-def make_schedule():
+def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay):
 	#NEED: 
 	#amtRainedPrevDay -> rounded to .25?
 	#prevPrecipPercentages -> array 0 to endOfSprinklerWk where prevPrecipPercentages[0] is yesterday's percentage
@@ -57,8 +57,8 @@ def make_schedule():
 		continueCombining = True
 		while daysCanWater < numBlocks and continueCombining:#must combine blocks
 			if blocks.fifteen >= 1 and blocks.thirty >= 1:
-				blocks.fifteen--
-				blocks.thirty--
+				blocks.fifteen-=1
+				blocks.thirty-=1
 				blocks.fortyfive+=1
 				numBlocks = blocks.thirty + blocks.fifteen + blocks.fortyfive + blocks.sixty
 			else if blocks.thirty > 1:
@@ -67,8 +67,30 @@ def make_schedule():
 				numBlocks = blocks.thirty + blocks.fifteen + blocks.fortyfive + blocks.sixty
 			else:
 				continueCombining = False
-		schedules = calculateBestSchedule(numBlocks, currPrecipPercentages, daysCanWater)
-    return True
+		schedule = calculateBestSchedule(numBlocks, currPrecipPercentages, daysCanWater)
+		
+		print "With watering time total: ", neededTime
+		print "Schedule: ", schedule
+		
+		#now add in time blocks
+		timeSchedule = [0] * len(schedule)
+		for i in len(timeSchedule):
+			if schedule[i] != False and schedule[i] != None:
+				if blocks.fortyfive > 0:
+					blocks.fortyfive -= 1
+					timeSchedule[i] = 45
+				else if blocks.thirty > 0:
+					blocks.thirty -= 1
+					timeSchedule[i] = 30
+				else if blocks.sixty > 0:
+					blocks.sixty -= 1
+					timeSchedule[i] = 60
+				else if blocks.fifteen > 0:# should never fail
+					blocks.fifteen -= 1
+					timeSchedule[i] = 15
+			
+		print "TimeSchedule: ", timeSchedule
+    return timeSchedule
 
 def getTimeBlocks(neededTime):
 	blocks30 = 0;
@@ -98,17 +120,28 @@ def calculateBestSchedule(blocksNum, percentages, daysCanWater):
 	else
 		allCombos = findAllCombos(len(week), percentages, blocksNum)
 		utilValues = [-1] * len(allCombos)
-		maxUtil = rateUtility(allCombos, utilValues)
 		optimalUtilValue = findOptimalUtil(allCombos[0])#use 1 combo to get numtotaldays/numwateringdays
-		highestUtilValSchedules = findHighest(allCombos, utilValues, maxUtil)
-		return highestUtilValSchedules
 		
-def findHighest(weeks, utilVals, max):
-	maxWeeks = []
+		bestUtil = rateUtility(allCombos, utilValues, optimalUtilValue)
+		bestUtilValSchedules = findBest(allCombos, utilValues, bestUtil)
+		schedule = reduceBestSchedule(bestUtilValSchedules)#may be more than one with same highest util value, so eliminate all but one
+		return schedule
+
+def reduceBestSchedule(bestUtilSchedules):
+	#check if schedule exists that is not on first day ->creates a tendancy to move days to the end of the week
+	if len(bestUtilSchedules[0]) >= 3:
+		for schedule in bestUtilSchedules:
+			if schedule[0] == False or schedule[0] == None:
+				return schedule
+	
+	return bestUtilSchedules[0]
+		
+def findBest(weeks, utilVals, best):
+	bestWeeks = []
 	for i in range(len(weeks)):
-		if utilVals[i] == max:
-			maxWeeks.append(weeks[i])
-	return maxWeeks
+		if utilVals[i] == best:
+			bestWeeks.append(weeks[i])
+	return bestWeeks
 		
 def findOptimalUtil(combo):
 	numWateringDays = 0
@@ -118,13 +151,13 @@ def findOptimalUtil(combo):
 
 	return len(combo)/numWateringDays#should round down I think since both integers
 		
-def rateUtility(allCombos, utilValues):
-	maxUtil = -1
+def rateUtility(allCombos, utilValues, optimalUtilValue):#rates schedules util values & returns best utility value
+	best = 1000
 	for i in range(len(allCombos)):
 		utilValues[i] = utilityFunction(allCombos[i])
-		if utilValues[i] > maxUtil:
-			maxUtil = utilValues[i]
-	return maxUtil
+		if abs(utilValues[i] - optimalUtilValue) < best:
+			bestUtil = utilValues[i]
+	return best
 			
 def utilityFunction(combo):
 	positions = []
