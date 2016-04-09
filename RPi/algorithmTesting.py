@@ -121,11 +121,8 @@ def calculateBestSchedule(blocksNum, percentages, daysCanWater):
 	week = [False] * len(percentages)
 	schedules = []
 	
-	if blocksNum > daysCanWater:#just in case -> should be fixed by combining blocks previously
-		for day in week:
-			day = True
-		schedules.append(week)
-		return schedules
+	if daysCanWater == 0:#just in case -> should be fixed by combining blocks previously
+		return week
 	elif blocksNum == 0:
 		schedules.append(week)
 		return schedules
@@ -218,9 +215,14 @@ def findAllCombos(weekLength, percentages, blocksNum):
 	index = 0
 	recursiveFind(week, combos, index)
 	correctBlocksCombos = []
-	for weekCombo in combos:
-		if wateringDays(weekCombo) == blocksNum:
-			correctBlocksCombos.append(weekCombo)
+	foundOne = False
+	counter = copy.deepcopy(blocksNum)
+	while foundOne == False:	
+		for weekCombo in combos:
+			if wateringDays(weekCombo) == counter:
+				correctBlocksCombos.append(weekCombo)
+				foundOne = True
+		counter-=1
 	return correctBlocksCombos	
 
 def recursiveFind(week, combos, index):#does this work in python?
@@ -266,14 +268,14 @@ def main():
 		'customLvl': .5
 	}
 	settings = {
-		'currLevel': 'Low',
+		'currLevel': 'High',
 		'watered': watered,
 		'custom': custom,
-		'conversionRate': 1
+		'conversionRate': 1 #.5 -> 2.0
 	}
 	SETTINGS = settings
 	prevPrecipPercentages = [0, 0, 0, 29, 52, 21]
-	currPrecipPercentages = [0, 5, 15, 29, 20, 20]
+	currPrecipPercentages = [20, 20, 30, 35, 20, 30]
 	print settings
 	print "PrecipPercentages: ", currPrecipPercentages
 	amtRainedPrevDay = 0
