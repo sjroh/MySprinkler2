@@ -275,7 +275,7 @@ def main():
 	}
 	SETTINGS = settings
 	prevPrecipPercentages = [0, 0, 0, 29, 52, 21]
-	currPrecipPercentages = [20, 20, 30, 35, 20, 30]
+	currPrecipPercentages = [50, 20, 30, 35, 20, 10]
 	print settings
 	print "PrecipPercentages: ", currPrecipPercentages
 	amtRainedPrevDay = 0
