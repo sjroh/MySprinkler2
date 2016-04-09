@@ -2,9 +2,7 @@
 #!/usr/bin/python
 
 ##########     imports BEGIN
-
-import getWeathers
-import driveEvents
+import copy
 
 ##########     imports END
 
@@ -17,36 +15,37 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 	
 	#if new week (prevDaysPrecipPercentages = null)then 
 		#run = true
-	#else if any weather percentage threshold crossed || (amtRainedPrevDay > 0 && prevPrecipPercentages[0] < 30) || (amtRainedPrevDay == 0 && prevPrecipPercentages[0] >= 50)
+	#elif any weather percentage threshold crossed || (amtRainedPrevDay > 0 && prevPrecipPercentages[0] < 30) || (amtRainedPrevDay == 0 && prevPrecipPercentages[0] >= 50)
 		#run = true
 	#else run = false
-	
-	if run
+	run = True
+	if run:
 		#delete all old automatic events
-		for event in EVENTS['current']:
-			if event['type'] == "auto":
-				remove_event(event['id'])
-		update_settings_mongo()
-		update_settings_drive()
+		#for event in EVENTS['current']:
+			#if event['type'] == "auto":
+				#remove_event(event['id'])
 		totalWkNeed = 0;
 		if SETTINGS['currLevel'] == "High":
-			totalWkNeed = 2
-		else if SETTINGS['currLevel'] == "Medium":
-			totalWkNeed = 1
-		else if SETTINGS['currLevel'] == "Low":
+			totalWkNeed = 2.0
+		elif SETTINGS['currLevel'] == "Medium":
+			totalWkNeed = 1.0
+		elif SETTINGS['currLevel'] == "Low":
 			totalWkNeed = 0.5
-		else
+		else:
 			totalWkNeed = SETTINGS['custom']['customLvl']
 		neededWater = totalWkNeed - SETTINGS['watered']['wateredAmt'] - SETTINGS['watered']['rainedAmt']
 		rate = SETTINGS['conversionRate']
 		
 		neededTime = neededWater / rate
 		blocks = getTimeBlocks(neededTime)
-	
+		print "Watering time needed: ", neededTime, " hr"
+		print "Water needed: ", neededWater, " inches"
+
 		daysCanWater = 0
 		for day in range(len(currPrecipPercentages)):
-			if percentages[day] >= 50:
-				removeBlock(blocks)
+			if currPrecipPercentages[day] >= 50:
+				removeBlock(blocks)#in anticipation of rain
+				print "removed 1 block"
 			
 		for precip in currPrecipPercentages:
 			if precip < 30:
@@ -57,13 +56,17 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 		blocks.fortyfive = 0
 		blocks.sixty = 0
 		continueCombining = True
-		while daysCanWater < numBlocks and continueCombining:#must combine blocks
+		while (daysCanWater < numBlocks or numBlocks > 3) and continueCombining:#must combine blocks
 			if blocks.fifteen >= 1 and blocks.thirty >= 1:
 				blocks.fifteen-=1
 				blocks.thirty-=1
 				blocks.fortyfive+=1
 				numBlocks = blocks.thirty + blocks.fifteen + blocks.fortyfive + blocks.sixty
-			else if blocks.thirty > 1:
+			elif blocks.thirty > 2:
+				blocks.thirty-=3
+				blocks.fortyfive+=2
+				numBlocks-=1
+			elif blocks.thirty > 1:
 				blocks.thirty -= 2
 				blocks.sixty+=1
 				numBlocks = blocks.thirty + blocks.fifteen + blocks.fortyfive + blocks.sixty
@@ -71,40 +74,47 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 				continueCombining = False
 		schedule = calculateBestSchedule(numBlocks, currPrecipPercentages, daysCanWater)
 		
-		print "With watering time total: ", neededTime
 		print "Schedule: ", schedule
 		
 		#now add in time blocks
 		timeSchedule = [0] * len(schedule)
-		for i in len(timeSchedule):
+		for i in range(len(timeSchedule)):
 			if schedule[i] != False and schedule[i] != None:
 				if blocks.fortyfive > 0:
 					blocks.fortyfive -= 1
 					timeSchedule[i] = 45
-				else if blocks.thirty > 0:
+				elif blocks.thirty > 0:
 					blocks.thirty -= 1
 					timeSchedule[i] = 30
-				else if blocks.sixty > 0:
+				elif blocks.sixty > 0:
 					blocks.sixty -= 1
 					timeSchedule[i] = 60
-				else if blocks.fifteen > 0:# should never fail
+				elif blocks.fifteen > 0:# should never fail
 					blocks.fifteen -= 1
 					timeSchedule[i] = 15
 			
 		print "TimeSchedule: ", timeSchedule
-    return timeSchedule
+		return timeSchedule
 
+class Blocks(object):
+	
+	def __init__(self, thirty, fifteen):
+		self.thirty = thirty
+		self.fifteen = fifteen
+		self.fortyfive = 0
+		self.sixty = 0
+		
+		
 def getTimeBlocks(neededTime):
 	blocks30 = 0;
 	blocks15 = 0;
 	while neededTime >= .50:
 		neededTime -= .50
 		blocks30+=1
-	if neededTime == .25
+	if neededTime >= .25:
 		neededTime -= .25
 		blocks15+=1
-	blocks.thirty = blocks30
-	blocks.fifteen = blocks15
+	blocks = Blocks(blocks30, blocks15)
 	return blocks
 	
 def calculateBestSchedule(blocksNum, percentages, daysCanWater):
@@ -116,21 +126,33 @@ def calculateBestSchedule(blocksNum, percentages, daysCanWater):
 			day = True
 		schedules.append(week)
 		return schedules
-	else if blocksNum == 0:
+	elif blocksNum == 0:
 		schedules.append(week)
 		return schedules
-	else
+	else:
 		allCombos = findAllCombos(len(week), percentages, blocksNum)
 		utilValues = [-1] * len(allCombos)
+		evenlyDistributed = [True] * len(allCombos)#true if watering days evenly distributed
 		optimalUtilValue = findOptimalUtil(allCombos[0])#use 1 combo to get numtotaldays/numwateringdays
+		bestUtil = rateUtility(allCombos, utilValues, optimalUtilValue, evenlyDistributed)
+
+		#print "evenlyDistributed: ", evenlyDistributed
+		evenlyDistributedBest = []
+		bestUtilValSchedules = findBest(allCombos, utilValues, evenlyDistributed, evenlyDistributedBest, bestUtil)
 		
-		bestUtil = rateUtility(allCombos, utilValues, optimalUtilValue)
-		bestUtilValSchedules = findBest(allCombos, utilValues, bestUtil)
-		schedule = reduceBestSchedule(bestUtilValSchedules)#may be more than one with same highest util value, so eliminate all but one
+		schedule = reduceBestSchedule(bestUtilValSchedules, evenlyDistributedBest)#may be more than one with same highest util value, so eliminate all but one
 		return schedule
 
-def reduceBestSchedule(bestUtilSchedules):
+def reduceBestSchedule(bestUtilSchedules, evenlyDistributed):
 	#check if schedule exists that is not on first day ->creates a tendancy to move days to the end of the week
+	if len(bestUtilSchedules[0]) >= 3:
+		for i in range(len(bestUtilSchedules)):
+			if evenlyDistributed[i] and (bestUtilSchedules[i][0] == False or bestUtilSchedules[i][0] == None):
+				return bestUtilSchedules[i]
+	if len(bestUtilSchedules[0]) >= 3:
+		for i in range(len(bestUtilSchedules)):
+			if evenlyDistributed[i]:
+				return bestUtilSchedules[i]
 	if len(bestUtilSchedules[0]) >= 3:
 		for schedule in bestUtilSchedules:
 			if schedule[0] == False or schedule[0] == None:
@@ -138,11 +160,12 @@ def reduceBestSchedule(bestUtilSchedules):
 	
 	return bestUtilSchedules[0]
 		
-def findBest(weeks, utilVals, best):
+def findBest(weeks, utilVals, evenlyDistributed, evenlyDistributedBest, best):
 	bestWeeks = []
 	for i in range(len(weeks)):
 		if utilVals[i] == best:
 			bestWeeks.append(weeks[i])
+			evenlyDistributedBest.append(evenlyDistributed[i])
 	return bestWeeks
 		
 def findOptimalUtil(combo):
@@ -150,23 +173,22 @@ def findOptimalUtil(combo):
 	for day in combo:
 		if day == True:
 			numWateringDays+=1
-
+	#print "optimalvalue: ", len(combo)/numWateringDays
 	return len(combo)/numWateringDays#should round down I think since both integers
 		
-def rateUtility(allCombos, utilValues, optimalUtilValue):#rates schedules util values & returns best utility value
+def rateUtility(allCombos, utilValues, optimalUtilValue, evenlyDistributed):#rates schedules util values & returns best utility value
 	best = 1000
 	for i in range(len(allCombos)):
-		utilValues[i] = utilityFunction(allCombos[i])
-		if abs(utilValues[i] - optimalUtilValue) < best:
-			bestUtil = utilValues[i]
+		utilValues[i] = utilityFunction(allCombos[i], evenlyDistributed, i)
+		if abs(utilValues[i] - optimalUtilValue) < abs(best - optimalUtilValue):
+			best = utilValues[i]
 	return best
 			
-def utilityFunction(combo):
+def utilityFunction(combo, evenlyDistributed, j):
 	positions = []
 	for i in range(len(combo)):
 		if combo[i] == True :
-			positions.append(copy.copy(i)))#do I have to make this copy here?
-			
+			positions.append(copy.copy(i))#do I have to make this copy here?
 	if len(positions) <= 1:
 		return 0
 	else:
@@ -174,6 +196,13 @@ def utilityFunction(combo):
 		differences = []
 		while(index <= len(positions) - 1):
 			differences.append(positions[index] - positions[index-1])
+			index+=1
+			
+		differencesSame = True
+		for k in (range(len(differences)-1)):
+			if(differences[k] != differences[k+1]):
+				evenlyDistributed[j] = False
+		#print evenlyDistributed[j], differences, combo
 		average = sum(differences) / len(differences)
 		return average
 			
@@ -188,10 +217,11 @@ def findAllCombos(weekLength, percentages, blocksNum):
 	combos = []
 	index = 0
 	recursiveFind(week, combos, index)
+	correctBlocksCombos = []
 	for weekCombo in combos:
-	if wateringDays(weekCombo) == blocksNum
-		schedules.append(weekCombo)
-	return combos	
+		if wateringDays(weekCombo) == blocksNum:
+			correctBlocksCombos.append(weekCombo)
+	return correctBlocksCombos	
 
 def recursiveFind(week, combos, index):#does this work in python?
 	weekCopy = list(week)
@@ -199,12 +229,14 @@ def recursiveFind(week, combos, index):#does this work in python?
 		combos.append(weekCopy)
 		return
 	if weekCopy[index] == None:
-		indexCopy = copy.copy(index)
+		indexCopy = copy.deepcopy(index)
 		indexCopy+=1
 		recursiveFind(weekCopy, combos, indexCopy)
 	else:
-		indexCopy = copy.copy(index)
+		indexCopy = copy.deepcopy(index)
 		indexCopy+=1
+		indexCopy2 = copy.deepcopy(index)
+		indexCopy2+=1
 		weekCopy[index] = True
 		weekCopy2 = list(weekCopy)
 		weekCopy2[index] = False
@@ -212,9 +244,9 @@ def recursiveFind(week, combos, index):#does this work in python?
 		recursiveFind(weekCopy2, combos, indexCopy2)
 		
 def removeBlock(blocks):
-	if blocks.fifteen != 0
+	if blocks.fifteen != 0:
 		blocks.fifteen -= 1
-	else if blocks.thirty != 0:
+	elif blocks.thirty != 0:
 		blocks.thirty -= 1
 	
 def wateringDays(week):
@@ -225,11 +257,28 @@ def wateringDays(week):
 	return wateringDays
 	
 def main():
-    # should run by cron
-    # update weather forcasts
-    gw = getWeathers
-    de = driveEvents
-    
+	global SETTINGS
+	watered = {
+		'wateredAmt' : 0,
+		'rainedAmt' : 0
+	}
+	custom = {
+		'customLvl': .5
+	}
+	settings = {
+		'currLevel': 'Low',
+		'watered': watered,
+		'custom': custom,
+		'conversionRate': 1
+	}
+	SETTINGS = settings
+	prevPrecipPercentages = [0, 0, 0, 29, 52, 21]
+	currPrecipPercentages = [0, 5, 15, 29, 20, 20]
+	print settings
+	print "PrecipPercentages: ", currPrecipPercentages
+	amtRainedPrevDay = 0
+	make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay)
+	
 
 if __name__ == '__main__':
     main()
