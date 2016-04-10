@@ -20,11 +20,11 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 	newVal = [0] * len(currPrecipPercentages)
 	for i in range(len(currPrecipPercentages):
 		if thresholdCrossed == False:
-			if currPrecipPercentages[i] < 30 and prevPrecipPercentages[i+1] < 30:
+			if currPrecipPercentages[i] < 40 and prevPrecipPercentages[i+1] < 40:
 				thresholdCrossed = False
-			elif currPrecipPercentages[i] < 50 and currPrecipPercentages[i] >= 30 and prevPrecipPercentages[i+1] < 50 and prevPrecipPercentages[i+1] >= 30:
+			elif currPrecipPercentages[i] < 60 and currPrecipPercentages[i] >= 40 and prevPrecipPercentages[i+1] < 40 and prevPrecipPercentages[i+1] >= 40:
 				thresholdCrossed = False
-			elif currPrecipPercentages[i] >= 50 and prevPrecipPercentages[i+1] >= 50:
+			elif currPrecipPercentages[i] >= 60 and prevPrecipPercentages[i+1] >= 60:
 				thresholdCrossed = False
 			else:
 				thresholdCrossed = True
@@ -32,7 +32,7 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 	
 	if newWeek:
 		run = True
-	elif thresholdCrossed || (amtRainedPrevDay > 0 && prevPrecipPercentages[0] < 30) || (amtRainedPrevDay == 0 && prevPrecipPercentages[0] >= 50)
+	elif thresholdCrossed || (amtRainedPrevDay > 0 && prevPrecipPercentages[0] < 40) || (amtRainedPrevDay == 0 && prevPrecipPercentages[0] >= 60)
 		run = True
 	else: return None
 	
@@ -60,12 +60,12 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 
 		daysCanWater = 0
 		for day in range(len(currPrecipPercentages)):
-			if currPrecipPercentages[day] >= 50:
+			if currPrecipPercentages[day] >= 60:
 				removeBlock(blocks)#in anticipation of rain
 				print "removed 1 block"
 			
 		for precip in currPrecipPercentages:
-			if precip < 30:
+			if precip < 40:
 				daysCanWater+=1
 				
 		numBlocks = blocks.thirty + blocks.fifteen
@@ -136,13 +136,9 @@ def getTimeBlocks(neededTime):
 	
 def calculateBestSchedule(blocksNum, percentages, daysCanWater):
 	week = [False] * len(percentages)
-	schedules = []
 	
-	if daysCanWater == 0:#just in case -> should be fixed by combining blocks previously
+	if daysCanWater == 0 or blocksNum == 0:#just in case -> should be fixed by combining blocks previously
 		return week
-	elif blocksNum == 0:
-		schedules.append(week)
-		return schedules
 	else:
 		allCombos = findAllCombos(len(week), percentages, blocksNum)
 		utilValues = [-1] * len(allCombos)
@@ -224,7 +220,7 @@ def utilityFunction(combo, evenlyDistributed, j):
 def findAllCombos(weekLength, percentages, blocksNum):
 	week = [False] * len(percentages)
 	for i in range(len(week)):
-		if percentages[i] >= 30:
+		if percentages[i] >= 40:
 			week[i] = None
 	
 	#now find all combos with all days without a NONE specifier
@@ -271,7 +267,7 @@ def removeBlock(blocks):
 def wateringDays(week):
 	wateringDays = 0
 	for day in week:
-		if day == True:#Not False and Not None (indicating > 30% on that day)
+		if day == True:#Not False and Not None (indicating > 40% on that day)
 			wateringDays+=1
 	return wateringDays
 	

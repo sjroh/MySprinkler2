@@ -43,12 +43,12 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 
 		daysCanWater = 0
 		for day in range(len(currPrecipPercentages)):
-			if currPrecipPercentages[day] >= 50:
+			if currPrecipPercentages[day] >= 60:
 				removeBlock(blocks)#in anticipation of rain
 				print "removed 1 block"
 			
 		for precip in currPrecipPercentages:
-			if precip < 30:
+			if precip < 40:
 				daysCanWater+=1
 				
 		numBlocks = blocks.thirty + blocks.fifteen
@@ -119,13 +119,9 @@ def getTimeBlocks(neededTime):
 	
 def calculateBestSchedule(blocksNum, percentages, daysCanWater):
 	week = [False] * len(percentages)
-	schedules = []
 	
-	if daysCanWater == 0:#just in case -> should be fixed by combining blocks previously
+	if daysCanWater == 0 or blocksNum == 0:#just in case -> should be fixed by combining blocks previously
 		return week
-	elif blocksNum == 0:
-		schedules.append(week)
-		return schedules
 	else:
 		allCombos = findAllCombos(len(week), percentages, blocksNum)
 		utilValues = [-1] * len(allCombos)
@@ -207,7 +203,7 @@ def utilityFunction(combo, evenlyDistributed, j):
 def findAllCombos(weekLength, percentages, blocksNum):
 	week = [False] * len(percentages)
 	for i in range(len(week)):
-		if percentages[i] >= 30:
+		if percentages[i] >= 40:
 			week[i] = None
 	
 	#now find all combos with all days without a NONE specifier
@@ -254,7 +250,7 @@ def removeBlock(blocks):
 def wateringDays(week):
 	wateringDays = 0
 	for day in week:
-		if day == True:#Not False and Not None (indicating > 30% on that day)
+		if day == True:#Not False and Not None (indicating > 40% on that day)
 			wateringDays+=1
 	return wateringDays
 	
@@ -268,14 +264,14 @@ def main():
 		'customLvl': .5
 	}
 	settings = {
-		'currLevel': 'High',
+		'currLevel': 'Low',
 		'watered': watered,
 		'custom': custom,
-		'conversionRate': 1 #.5 -> 2.0
+		'conversionRate': 2.0 #.5 -> 2.0
 	}
 	SETTINGS = settings
-	prevPrecipPercentages = [0, 0, 0, 29, 52, 21]
-	currPrecipPercentages = [50, 20, 30, 35, 20, 10]
+	prevPrecipPercentages = [0, 0, 0, 29, 12, 21]
+	currPrecipPercentages = [10, 20]
 	print settings
 	print "PrecipPercentages: ", currPrecipPercentages
 	amtRainedPrevDay = 0
