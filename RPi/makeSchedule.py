@@ -32,7 +32,7 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 	
 	if newWeek:
 		run = True
-	elif thresholdCrossed || (amtRainedPrevDay > 0 && prevPrecipPercentages[0] < 40) || (amtRainedPrevDay == 0 && prevPrecipPercentages[0] >= 60)
+	elif thresholdCrossed || (amtRainedPrevDay > 0) || (amtRainedPrevDay == 0 && prevPrecipPercentages[0] >= 60)
 		run = True
 	else: return None
 	
