@@ -85,10 +85,12 @@ $(document).ready(function(){
     if(!localStorage.getItem("settings")){
         $("#setupInstructions").show();
         setWeatherImage({main: null});
+        $("today").hide();
         console.log("couldn't retrieve settings obj from local storage");
     } else if(!localStorage.getItem("events")){
         $("#serverInstructions").show();
         setWeatherImage({main: null});
+        $("#today").hide();
         console.log("couldn't retrieve events obj from local storage");
     } else{
         $("#tableHolder").show();
