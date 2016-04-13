@@ -3,8 +3,18 @@
     color:white;
 }
 
+
+
 .modal-body p{
-    border:none
+    border:none;
+}
+
+.white{
+    color:white;
+}
+
+.black{
+    color:black;
 }
 
 .blueButton {
