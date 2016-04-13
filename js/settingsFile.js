@@ -165,6 +165,7 @@ function createSettingsFile(){
             "zones": zoneNum
         };
         insertFileInApplicationDataFolder(settings, "settings.txt");
+        localStorage.setItem("settings", JSON.stringify(settings));
         console.log("Settings.txt successfully uploaded");
         $("#setup").hide();
         $("#serverInstructionsModal").modal();
