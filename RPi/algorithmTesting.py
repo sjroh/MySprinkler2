@@ -138,6 +138,7 @@ def calculateBestSchedule(blocksNum, percentages, daysCanWater):
 
 def reduceBestSchedule(bestUtilSchedules, evenlyDistributed):
 	#check if schedule exists that is not on first day ->creates a tendancy to move days to the end of the week
+	print "best: ", bestUtilSchedules
 	if len(bestUtilSchedules[0]) >= 3:
 		for i in range(len(bestUtilSchedules)):
 			if evenlyDistributed[i] and (bestUtilSchedules[i][0] == False or bestUtilSchedules[i][0] == None):
@@ -267,11 +268,11 @@ def main():
 		'currLevel': 'High',
 		'watered': watered,
 		'custom': custom,
-		'conversionRate': 1.0 #.5 -> 2.0
+		'conversionRate': 2.0 #.5 -> 2.0
 	}
 	SETTINGS = settings
 	prevPrecipPercentages = [0, 0, 0, 29, 12, 21]
-	currPrecipPercentages = [66, 41, 25, 0, 0, 0, 0]
+	currPrecipPercentages = [0, 0, 0]
 	print settings
 	print "PrecipPercentages: ", currPrecipPercentages
 	amtRainedPrevDay = 0
