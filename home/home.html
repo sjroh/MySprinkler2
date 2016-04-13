@@ -88,7 +88,7 @@
                 <div class="alert alert-danger">
                     <strong>Setup Info</strong>
                     If you set up your system now then your watering week will be defined with tomorrow as the first day.  Please setup your system the day before you would like a watering week to be defined.
-                    For instance, if you want a week to be defined as Sunday through Saturday, run through the setup process on a Saturday.
+                    For instance, if you want a week to be defined as Sunday through Saturday, set up your system on a Saturday.
                 </div>
                 <div class="alert alert-danger" id="locationAlert">
                     <strong>Location Needed!</strong>
@@ -107,7 +107,7 @@
                     <strong>Zones Needed!</strong>
                     Let us know how many zones your lawn has.  They will default to a 'Medium' water level.  Feel free to change this in Settings later.
                     <form>
-                        Input Number of Zones: <input id="zoneNum" type="number" min="1" max="30"><br><br>
+                        Input Number of Zones: <input id="zoneNum" type="number" min="1" max="26"><br><br>
                         <input type="submit">
                     </form>
                 </div>
@@ -132,9 +132,11 @@
                             <h4 class="modal-title">Server Setup</h4>
                         </div>
                         <div class="modal-body">
-                            <p>You're halfway to having a watered lawn! Follow the following steps: </p>
+                            <p>You're halfway to having a watered lawn! Follow these two steps to finish: </p>
+                            1) Turn on your Raspberry Pi ADEM System by plugging in the Raspberry Pi's power source
+                            2) After it boots up, either click the 'Setup' icon on the desktop or open up the Chromium browser to begin the Raspberry Pi setup
 
-                            Once you're done with the setup, refresh the page or logout and log back in.
+                            Once you're done with the setup, to view the updated web-app pages refresh this page or logout and log back in.
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
