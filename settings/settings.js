@@ -226,7 +226,6 @@ $(document).ready(function(){
             }
             $(this).addClass("blueSelected");
             customChosen = this.id;
-            $(".custom.sec").html("Custom");//?????????????
         } //else do nothing, already chosen
     });
 
