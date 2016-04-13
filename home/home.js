@@ -195,7 +195,7 @@ function loadWeather(settingsJson){
     var weatherData = {};
     var getString = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + settingsJson.location.lat + "&lon=" + settingsJson.location.long +  "&cnt=7&mode=json&appid=0039a67282bf9ff15995e2c340d6906b";
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+    var days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
     $("#loading").hide();
     $.get(getString, function(data){
         weatherData.list = data.list;
