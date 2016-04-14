@@ -262,17 +262,17 @@ def main():
 		'rainedAmt' : 0
 	}
 	custom = {
-		'customLvl': .5
+		'customLvl': 3.0
 	}
 	settings = {
-		'currLevel': 'High',
+		'currLevel': 'Custom',
 		'watered': watered,
 		'custom': custom,
 		'conversionRate': 2.0 #.5 -> 2.0
 	}
 	SETTINGS = settings
 	prevPrecipPercentages = [0, 0, 0, 29, 12, 21]
-	currPrecipPercentages = [0, 0, 0]
+	currPrecipPercentages = [60, 80, 50]
 	print settings
 	print "PrecipPercentages: ", currPrecipPercentages
 	amtRainedPrevDay = 0
