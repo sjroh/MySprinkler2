@@ -1193,7 +1193,7 @@
 		showDuration: false,
 		showOn: ['click', 'focus'],
 		showOnFocus: true,
-		step: 15,
+		step: 5,
 		stopScrollPropagation: false,
 		timeFormat: 'g:ia',
 		typeaheadHighlight: true,
