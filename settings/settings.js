@@ -266,20 +266,20 @@ $(document).ready(function(){
     $(".time").click(function(){
         $(".customTime").removeClass("active");
         $(".customTime").html("Custom");
-        if(this.id == "time1" && settings.wateringHr != 5){
+        if(this.id == "time1" && settings.wateringHr != 4){
+            $(".time.active").removeClass("active");
+            $(this).addClass("active");
+            settings.wateringHr = 4;
+            updateSettings();
+        } else if(this.id == "time2" && settings.wateringHr != 5){
             $(".time.active").removeClass("active");
             $(this).addClass("active");
             settings.wateringHr = 5;
             updateSettings();
-        } else if(this.id == "time2" && settings.wateringHr != 7){
+        } else if(this.id == "time3" && settings.wateringHr != 6){
             $(".time.active").removeClass("active");
             $(this).addClass("active");
-            settings.wateringHr = 7;
-            updateSettings();
-        } else if(this.id == "time3" && settings.wateringHr != 8){
-            $(".time.active").removeClass("active");
-            $(this).addClass("active");
-            settings.wateringHr = 8;
+            settings.wateringHr = 6;
             updateSettings();
         }
     });
@@ -310,16 +310,16 @@ $(document).ready(function(){
 
     $(".saveCustomTime").click(function(){
         $("#chooseCustomTimeError").hide();
-        if(customTimeChosen == "customTime1" && settings.wateringHr != 4){
-            settings.wateringHr = 4;
-            $(".customTime").html("Custom: 4 am");
+        if(customTimeChosen == "customTime1" && settings.wateringHr != 7){
+            settings.wateringHr = 7;
+            $(".customTime").html("Custom: 7 am");
             updateSettings();
             $("#customTimeModal").modal("hide");
             $(".time.active").removeClass("active");
             $(".customTime").addClass("active");
-        } else if(customTimeChosen == "customTime2" && settings.wateringHr != 6){
-            settings.wateringHr = 6;
-            $(".customTime").html("Custom: 6 am");
+        } else if(customTimeChosen == "customTime2" && settings.wateringHr != 8){
+            settings.wateringHr = 8;
+            $(".customTime").html("Custom: 8 am");
             updateSettings();
             $("#customTimeModal").modal("hide");
             $(".time.active").removeClass("active");

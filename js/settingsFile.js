@@ -151,7 +151,7 @@ function createSettingsFile(){
                 "long": weatherData.long
             },
             "currLevel": "Medium",
-            "wateringHr": 7,
+            "wateringHr": 5,
             "watered":{
                 "wateredAmt": 0,
                 "rainedAmt": 0
