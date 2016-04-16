@@ -10,6 +10,7 @@ $("#setupInstructions").hide();
 $(".addEvent").hide();
 $(".removeEvent").hide();
 $("#invalidTime").hide();
+$("#tooManyZones").hide();
 $("#invalidZones").hide();
 $("#warningInstructions").hide();
 $("#noEventsSelectedWarning").hide();
@@ -327,10 +328,16 @@ $(document).ready(function(){
         if($.inArray(zoneClicked, zonesClicked) == -1){//not in arr, so select
             $(this).addClass("zoneSelected");
             zonesClicked.push(zoneClicked);
+            if(zonesClicked.length > 1){
+                $("#tooManyZones").show();
+            }
         } else { //previously clicked, so un-select
             $(this).removeClass("zoneSelected");
             var index = $.inArray(zoneClicked, zonesClicked);
             zonesClicked.splice(index, 1);
+            if(zonesClicked.length < 2){
+                $("#tooManyZones").hide();
+            }
         }
         zonesClicked.sort();
         console.log(zoneClicked + "<- clicked");

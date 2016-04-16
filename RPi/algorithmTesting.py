@@ -242,11 +242,18 @@ def recursiveFind(week, combos, index):#does this work in python?
 		recursiveFind(weekCopy, combos, indexCopy)
 		recursiveFind(weekCopy2, combos, indexCopy2)
 		
-def removeBlock(blocks):
+def removeBlock(blocks):#remove block b/c forecasted rain
 	if blocks.fifteen != 0:
 		blocks.fifteen -= 1
-	elif blocks.thirty != 0:
-		blocks.thirty -= 1
+	elif SETTINGS['currLevel'] == "High" or (SETTINGS['currLevel'] == "Custom" and SETTINGS['custom']['customLvl'] == 3.0):#if currLevel is 3"/wk or 2"/wk
+		if blocks.thirty != 0:
+			blocks.fifteen+=1
+			blocks.thirty-=1		
+	else:#if currLevel is lower than 2"/wk
+		if blocks.thirty != 0:
+			blocks.fifteen+=1
+			blocks.thirty-=1
+
 	
 def wateringDays(week):
 	wateringDays = 0
@@ -272,7 +279,7 @@ def main():
 	}
 	SETTINGS = settings
 	prevPrecipPercentages = [0, 0, 0, 29, 12, 21]
-	currPrecipPercentages = [60, 80, 50]
+	currPrecipPercentages = [75, 70, 20, 90, 60, 70, 10]
 	print settings
 	print "PrecipPercentages: ", currPrecipPercentages
 	amtRainedPrevDay = 0
