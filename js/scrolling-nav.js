@@ -19,9 +19,6 @@ function onSuccess(googleUser) {
     signedIn = true;
     checkStatus();
     var accessToken = googleUser.getAuthResponse().access_token;
-    //var accessToken2 = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
-
-    //localStorage.setItem("accessToken", googleUser.getAuthResponse().access_token);
     window.location = "http://sjroh.github.io/MySprinkler2/home/home.html";
 }
 function onFailure(error) {

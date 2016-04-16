@@ -161,7 +161,7 @@ function createSettingsFile(){
                 "weeklyCustom": 0.75,
                 "weeklyCustomActivated": false
             },
-            "conversionRate": 1,
+            "conversionRate": 1.0,
             "zones": zoneNum
         };
         insertFileInApplicationDataFolder(settings, "settings.txt");
