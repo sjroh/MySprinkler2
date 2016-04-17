@@ -10,10 +10,6 @@ import driveEvents
 
 #run at 12:30am every night and first bootup
 def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay, newWeek):
-	#NEED: 
-	#amtRainedPrevDay -> rounded to .25?
-	#prevPrecipPercentages -> array 0 to endOfSprinklerWk where prevPrecipPercentages[0] is yesterday's percentage
-	#currPrecipPercentages -> array 0 to endOfSprinklerWk -> where [0] is today's percentage -> so size is 1 less than above
 	
 	thresholdCrossed = False
 	origVal = [0] * len(currPrecipPercentages)
@@ -55,14 +51,11 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 		
 		neededTime = neededWater / rate
 		blocks = getTimeBlocks(neededTime)
-		print "Watering time needed: ", neededTime, " hr"
-		print "Water needed: ", neededWater, " inches"
 
 		daysCanWater = 0
 		for day in range(len(currPrecipPercentages)):
 			if currPrecipPercentages[day] >= 60:
 				removeBlock(blocks)#in anticipation of rain
-				print "removed 1 block"
 			
 		for precip in currPrecipPercentages:
 			if precip < 40:
@@ -91,7 +84,6 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 				continueCombining = False
 		schedule = calculateBestSchedule(numBlocks, currPrecipPercentages, daysCanWater)
 		
-		print "Schedule: ", schedule
 		
 		#now add in time blocks
 		timeSchedule = [0] * len(schedule)
@@ -110,7 +102,6 @@ def make_schedule(prevPrecipPercentages, currPrecipPercentages, amtRainedPrevDay
 					blocks.fifteen -= 1
 					timeSchedule[i] = 15
 			
-		print "TimeSchedule: ", timeSchedule
 		return timeSchedule
 
 class Blocks(object):
@@ -146,7 +137,6 @@ def calculateBestSchedule(blocksNum, percentages, daysCanWater):
 		optimalUtilValue = findOptimalUtil(allCombos[0])#use 1 combo to get numtotaldays/numwateringdays
 		bestUtil = rateUtility(allCombos, utilValues, optimalUtilValue, evenlyDistributed)
 
-		#print "evenlyDistributed: ", evenlyDistributed
 		evenlyDistributedBest = []
 		bestUtilValSchedules = findBest(allCombos, utilValues, evenlyDistributed, evenlyDistributedBest, bestUtil)
 		
@@ -183,7 +173,6 @@ def findOptimalUtil(combo):
 	for day in combo:
 		if day == True:
 			numWateringDays+=1
-	#print "optimalvalue: ", len(combo)/numWateringDays
 	return len(combo)/numWateringDays#should round down I think since both integers
 		
 def rateUtility(allCombos, utilValues, optimalUtilValue, evenlyDistributed):#rates schedules util values & returns best utility value
@@ -198,7 +187,7 @@ def utilityFunction(combo, evenlyDistributed, j):
 	positions = []
 	for i in range(len(combo)):
 		if combo[i] == True :
-			positions.append(copy.copy(i))#do I have to make this copy here?
+			positions.append(copy.copy(i))
 	if len(positions) <= 1:
 		return 0
 	else:
@@ -212,7 +201,6 @@ def utilityFunction(combo, evenlyDistributed, j):
 		for k in (range(len(differences)-1)):
 			if(differences[k] != differences[k+1]):
 				evenlyDistributed[j] = False
-		#print evenlyDistributed[j], differences, combo
 		average = sum(differences) / len(differences)
 		return average
 			
@@ -261,8 +249,14 @@ def recursiveFind(week, combos, index):#does this work in python?
 def removeBlock(blocks):
 	if blocks.fifteen != 0:
 		blocks.fifteen -= 1
-	elif blocks.thirty != 0:
-		blocks.thirty -= 1
+	elif SETTINGS['currLevel'] == "High" or (SETTINGS['currLevel'] == "Custom" and SETTINGS['custom']['customLvl'] == 3.0):#if currLevel is 3"/wk or 2"/wk
+		if blocks.thirty != 0:
+			blocks.fifteen+=1
+			blocks.thirty-=1		
+	else:#if currLevel is lower than 2"/wk
+		if blocks.thirty != 0:
+			blocks.fifteen+=1
+			blocks.thirty-=1
 	
 def wateringDays(week):
 	wateringDays = 0

@@ -206,11 +206,11 @@ $(document).ready(function(){
             $("#rate4").addClass("active");
         }
 
-        if(settings.wateringHr == 5){
+        if(settings.wateringHr == 4){
             $("#time1").addClass("active");
-        } else if(settings.wateringHr == 7){
+        } else if(settings.wateringHr == 5){
             $("#time2").addClass("active");
-        } else if(settings.wateringHr == 8){
+        } else if(settings.wateringHr == 6){
             $("#time3").addClass("active");
         } else{ //watering hr is custom
             var amOrPm = (settings.wateringHr >= 12) ? "pm" : "am";
