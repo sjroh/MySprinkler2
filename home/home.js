@@ -161,9 +161,6 @@ function downloadFile(file) {
                 localStorage.setItem("events", xhr.responseText);
                 addEventsToOverview(jsonResponse);
             }
-            //NOTE: should probably put some time stamp in the events.txt file to store when schedule/weather was updated & checked
-            //perhaps we could check up to twice a day (if user logs in at least twice a day).
-            //addEventsToOverview(jsonResponse);//add events to overview on home page
         };
         xhr.onerror = function() {
             console.log("ERROR");
@@ -173,21 +170,6 @@ function downloadFile(file) {
     } else {
         console.log("No file.downloadUrl");
     }
-       /* xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
-        xhr.onload = function() {
-            console.log("Response: " + xhr.responseText);
-            var jsonResponse = updateJson(xhr.responseText);//update it (remove old entries older than 7 days// make new schedule, push to google drive & check weather here?
-            //NOTE: should probably put some time stamp in the events.txt file to store when schedule/weather was updated & checked
-            //perhaps we could check up to twice a day (if user logs in at least twice a day).
-            //addEventsToOverview(jsonResponse);//add events to overview on home page
-        };
-        xhr.onerror = function() {
-            console.log("ERROR");
-        };
-        xhr.send();
-    } else {
-        console.log("No file.downloadUrl");
-    }*/
 }
 
 function loadWeather(settingsJson){
@@ -236,10 +218,6 @@ function loadProgressBar(settingsJson){
 }
 
 function addEventsToOverview(jsonResponse){
-    //populate watering progress bar first
-
-
-
     //now populate events
     var currWeekEpoch = [];
     var date = Math.round(new Date().getTime()/1000.0);
