@@ -98,7 +98,7 @@ $(document).ready(function(){
 
     $(".sec").on('click', function(){//to change zone watering level
         var keywords = searchForKeyWord(this.className.split(/\s+/));//search for high, medium, low, custom
-
+        $(".sec.custom").html("Custom");
         keywords[0] = keywords[0][0].toUpperCase() + keywords[0].slice(1);//capitalize first letter in level
         if(settings.currLevel != keywords[0] && keywords[0] != "Custom"){//then change level (custom is changed thru modal)
             settings.currLevel = keywords[0];
