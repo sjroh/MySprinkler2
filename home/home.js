@@ -313,6 +313,9 @@ function addEventsToOverview(jsonResponse){
     indexInWkToSt++;//since tabel is labelled starting at 1
     for(i = indexInWkToSt; i < 7; i++){
         $("day" + i.toString()).css("background-color", "#EDEBEA");
+        $("w" + i.toString()).css("background-color", "#EDEBEA");
+        $("e" + i.toString()).css("background-color", "#EDEBEA");
+
     }
 
 }

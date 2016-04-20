@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ecfa89-fdc2-412d-a934-e69bd346497b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/home.js" afterPath="$PROJECT_DIR$/home/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/settingsFile.js" afterPath="$PROJECT_DIR$/js/settingsFile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schedule/schedule.html" afterPath="$PROJECT_DIR$/schedule/schedule.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schedule/schedule.js" afterPath="$PROJECT_DIR$/schedule/schedule.js" />
     </list>
     <ignored path="MySprinkler2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,13 +58,13 @@
       <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/home/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8155136">
-              <caret line="314" column="67" selection-start-line="314" selection-start-column="67" selection-end-line="314" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.8616352">
+              <caret line="316" column="12" selection-start-line="316" selection-start-column="12" selection-end-line="316" selection-end-column="12" />
               <folding>
-                <marker date="1461115839227" expanded="true" signature="7017:7035" placeholder="..." />
-                <marker date="1461115839227" expanded="true" signature="7019:7033" placeholder="..." />
-                <marker date="1461115839227" expanded="true" signature="7035:7107" placeholder="..." />
-                <marker date="1461115839227" expanded="true" signature="7036:7104" placeholder="..." />
+                <marker date="1461116144835" expanded="true" signature="7017:7035" placeholder="..." />
+                <marker date="1461116144835" expanded="true" signature="7019:7033" placeholder="..." />
+                <marker date="1461116144835" expanded="true" signature="7035:7107" placeholder="..." />
+                <marker date="1461116144835" expanded="true" signature="7036:7104" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -423,10 +419,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
           <folding>
-            <marker date="1461115839227" expanded="true" signature="7017:7035" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7019:7033" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7035:7107" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7036:7104" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7017:7035" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7019:7033" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7035:7107" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7036:7104" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -486,10 +482,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
           <folding>
-            <marker date="1461115839227" expanded="true" signature="7017:7035" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7019:7033" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7035:7107" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7036:7104" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7017:7035" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7019:7033" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7035:7107" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7036:7104" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -767,13 +763,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/home/home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8155136">
-          <caret line="314" column="67" selection-start-line="314" selection-start-column="67" selection-end-line="314" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.8616352">
+          <caret line="316" column="12" selection-start-line="316" selection-start-column="12" selection-end-line="316" selection-end-column="12" />
           <folding>
-            <marker date="1461115839227" expanded="true" signature="7017:7035" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7019:7033" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7035:7107" placeholder="..." />
-            <marker date="1461115839227" expanded="true" signature="7036:7104" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7017:7035" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7019:7033" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7035:7107" placeholder="..." />
+            <marker date="1461116144835" expanded="true" signature="7036:7104" placeholder="..." />
           </folding>
         </state>
       </provider>
