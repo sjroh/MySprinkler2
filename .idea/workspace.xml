@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ecfa89-fdc2-412d-a934-e69bd346497b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/home.html" afterPath="$PROJECT_DIR$/home/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schedule/schedule.html" afterPath="$PROJECT_DIR$/schedule/schedule.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/settings.html" afterPath="$PROJECT_DIR$/settings/settings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weather/weather.html" afterPath="$PROJECT_DIR$/weather/weather.html" />
     </list>
     <ignored path="MySprinkler2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -113,21 +110,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48139796">
+            <state vertical-scroll-proportion="-6.373134">
               <caret line="88" column="35" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/settings/settings.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.612904">
-              <caret line="240" column="147" selection-start-line="240" selection-start-column="147" selection-end-line="240" selection-end-column="147" />
+            <state vertical-scroll-proportion="1.4539545">
+              <caret line="264" column="31" selection-start-line="264" selection-start-column="31" selection-end-line="264" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -759,18 +756,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings/settings.html">
+    <entry file="file://$PROJECT_DIR$/home/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.612904">
-          <caret line="240" column="147" selection-start-line="240" selection-start-column="147" selection-end-line="240" selection-end-column="147" />
+        <state vertical-scroll-proportion="-6.373134">
+          <caret line="88" column="35" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/home.html">
+    <entry file="file://$PROJECT_DIR$/settings/settings.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48139796">
-          <caret line="88" column="35" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
+        <state vertical-scroll-proportion="1.4539545">
+          <caret line="264" column="31" selection-start-line="264" selection-start-column="31" selection-end-line="264" selection-end-column="31" />
           <folding />
         </state>
       </provider>
