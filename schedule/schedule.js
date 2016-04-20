@@ -136,7 +136,7 @@ $(document).ready(function(){
         var currDatePlus10 = new Date(currDate.getTime() + 10*60000);
         var sDate = datepair.getStartTime();
         var eDate = datepair.getEndTime();
-        if(currDate >= sDate || sDate >= eDate)
+        if(currDatePlus10 >= sDate || sDate >= eDate)
             $("#invalidTime").show();
         else
             $("#invalidTime").hide();
@@ -159,13 +159,7 @@ $(document).ready(function(){
             alert("You have added a water event!");
             console.log("Date given to datepicker: " + sDate + " -> " + eDate + " with zones " + zonesClicked);
             console.log("epoch: " + Math.round(sDate.getTime()/1000.0) + " -> " + Math.round(eDate.getTime()/1000.0));
-            //should refresh page here
-            //location.reload();
         }
-        //code here to save water event to google calendar & google drive & raspberry pi
-        //else
-        //error message
-        //alert(datepair.getEndTime());
     });
 
     function constructMobileAgenda(){
@@ -284,11 +278,6 @@ $(document).ready(function(){
     }
 
     function updateCalendar(sDate, eDate, zonesFor){
-        //var calLink = settings.calLink;
-        //parse calLink for timezone
-        //var splitArr = calLink.split('=');
-        //var timeZone = splitArr[3];
-        //timeZone = timeZone.substr(0, timeZone.length - 6);//remove the '"style' at the end
         var description = "Watering event on zone(s): ";
         for(var i = 0; i < zonesFor.length; i++){
             description+=zonesFor[i].toString();
@@ -459,6 +448,5 @@ $(document).ready(function(){
             $(".menu-btn").addClass("glyphicon-chevron-right");
         }
     });
-
 });
 

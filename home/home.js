@@ -294,6 +294,27 @@ function addEventsToOverview(jsonResponse){
             $("#e" + (i + 1).toString()).append(htmlEvent);
         }
     }
+
+    //finally make background color grey if not in current watering week
+    var days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+
+    var indexStart = jsonResponse.weekStart;
+    var today = new Date();
+    var todayIndex = today.getDay();
+    var indexes = [];
+    var indexInWkToSt;
+    for(i = 0; i < 6; i++){
+        indexes.push(todayIndex);
+        if(todayIndex == indexStart){
+            indexInWkToSt = i;
+        }
+        todayIndex = (todayIndex < 6) ? todayIndex+1 : 0
+    }
+    indexInWkToSt++;//since tabel is labelled starting at 1
+    for(i = indexInWkToSt; i < 7; i++){
+        $("day" + i.toString()).css("background-color", "#EDEBEA");
+    }
+
 }
 
 function findIndexOfDay(time, currWeekEpoch){
