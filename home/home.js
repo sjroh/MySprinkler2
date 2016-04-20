@@ -314,7 +314,7 @@ function addEventsToOverview(jsonResponse){
     console.log("indexInWkToST: " + indexInWkToSt);
     console.log("weekStart: " + settings.weekStart);
     if(indexInWkToSt != 1){
-        for(i = indexInWkToSt; i < 7; i++){
+        for(i = indexInWkToSt; i < 8; i++){
             $("#day" + i.toString()).css("background-color", "#EDEBEA");
             $("#w" + i.toString()).css("background-color", "#EDEBEA");
             $("#e" + i.toString()).css("background-color", "#EDEBEA");
