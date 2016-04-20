@@ -297,8 +297,8 @@ function addEventsToOverview(jsonResponse){
 
     //finally make background color grey if not in current watering week
     var days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
-
-    var indexStart = jsonResponse.weekStart;
+    var settings = JSON.parse(localStorage.getItem("settings"));
+    var indexStart = settings.weekStart;
     var today = new Date();
     var todayIndex = today.getDay();
     var indexes = [];
@@ -312,7 +312,7 @@ function addEventsToOverview(jsonResponse){
     }
     indexInWkToSt++;//since tabel is labelled starting at 1
     console.log("indexInWkToST: " + indexInWkToSt);
-    console.log("weekStart: " + jsonResponse.weekStart);
+    console.log("weekStart: " + settings.weekStart);
     if(indexInWkToSt != 1){
         for(i = indexInWkToSt; i < 7; i++){
             $("#day" + i.toString()).css("background-color", "#EDEBEA");
