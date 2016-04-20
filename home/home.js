@@ -311,12 +311,14 @@ function addEventsToOverview(jsonResponse){
         todayIndex = (todayIndex < 6) ? todayIndex+1 : 0
     }
     indexInWkToSt++;//since tabel is labelled starting at 1
-    for(i = indexInWkToSt; i < 7; i++){
-        $("day" + i.toString()).css("background-color", "#EDEBEA");
-        $("w" + i.toString()).css("background-color", "#EDEBEA");
-        $("e" + i.toString()).css("background-color", "#EDEBEA");
-
+    if(indexInWkToSt != 1){
+        for(i = indexInWkToSt; i < 7; i++){
+            $("#day" + i.toString()).css("background-color", "#EDEBEA");
+            $("#w" + i.toString()).css("background-color", "#EDEBEA");
+            $("#e" + i.toString()).css("background-color", "#EDEBEA");
+        }
     }
+
 
 }
 
