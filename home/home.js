@@ -311,6 +311,8 @@ function addEventsToOverview(jsonResponse){
         todayIndex = (todayIndex < 6) ? todayIndex+1 : 0
     }
     indexInWkToSt++;//since tabel is labelled starting at 1
+    console.log("indexInWkToST: " + indexInWkToSt);
+    console.log("weekStart: " + jsonResponse.weekStart);
     if(indexInWkToSt != 1){
         for(i = indexInWkToSt; i < 7; i++){
             $("#day" + i.toString()).css("background-color", "#EDEBEA");
