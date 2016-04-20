@@ -133,6 +133,7 @@ $(document).ready(function(){
     $('#addEventSave').click(function(){
         //if valid date, then
         var currDate = new Date();
+        var currDatePlus10 = new Date(currDate.getTime() + 10*60000);
         var sDate = datepair.getStartTime();
         var eDate = datepair.getEndTime();
         if(currDate >= sDate || sDate >= eDate)
@@ -145,7 +146,7 @@ $(document).ready(function(){
         else
             $("#invalidZones").hide();
 
-        if(currDate < sDate && zonesClicked.length != 0 && sDate != eDate && sDate < eDate){
+        if(currDatePlus10 < sDate && zonesClicked.length != 0 && sDate != eDate && sDate < eDate){
             $("#addModal").modal('hide');
             var event = {
                 sTime: Math.round(sDate.getTime()/1000.0),
