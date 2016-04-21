@@ -296,6 +296,7 @@ $(document).ready(function(){
             'end':{
                 'dateTime': eDate.toISOString()
             },
+            'location': settings.location.lat.toString() + ";" + settings.location.long.toString(),
             'reminders':{
                 'useDefault':false
             }
