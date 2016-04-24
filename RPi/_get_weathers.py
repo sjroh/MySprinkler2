@@ -19,7 +19,7 @@ import simplejson
 def update():
     try:
         conn = pymongo.MongoClient()
-        print ('[MySprinkler2] Connected to MongoDB')
+        print ('[SSS][GET_WEATHERS] START')
         db = conn.sprinkler
         collection = db.settings.find()
         collection_forecasts = db.forecasts
@@ -46,7 +46,7 @@ def update():
             forecasts = json.loads(jsondata)
             #print forecasts
 
-            print len(forecasts)
+            print ("[SSS][GET_WEATHERS] size of forecasts : " + str(len(forecasts)))
             for f in forecasts:
                 day = f['day'].split('-')
                 #f['day_sec'] = datetime.datetime(days[0], days[1], days[2], 0, 0).total_seconds()
@@ -55,10 +55,11 @@ def update():
                 jdata = json.dumps(f, default=lambda x:x.__dict__)
                 #print simplejson.dumps(jdata, indent=4, skipkeys=True, sort_keys=True)
                 value = json.loads(jdata)
+                #print (f)
                 result = collection_forecasts.update({'day':f['day']}, {"$set": value}, upsert=True)
         
     except pymongo.errors.ConnectionFailure, e:
-        print ('[MySprinkler2] MongoDB Connection Failure')
+        print ('[SSS][GET_WEATHERS] DB connection error')
 
 
 def getPrecipitations(date1, date2):
@@ -66,7 +67,7 @@ def getPrecipitations(date1, date2):
     
     try:
         conn = pymongo.MongoClient()
-        print ('[MySprinkler2] Connected to MongoDB')
+        print ('[SSS][GET_WEATHERS][GET_PRECIP] Connected to MongoDB')
         db = conn.sprinkler
         collection = db.forecasts
         
@@ -89,7 +90,7 @@ def getPrecipitations(date1, date2):
                 else :
                     result.append(0)
     except pymongo.errors.ConnectionFailure, e:
-        print ('[MySprinkler2] MongoDB Connection Failure')
+        print ('[SSS][GET_WEATHERS][GET_PRECIP] MongoDB Connection Failure')
         
     return result
 
@@ -99,7 +100,7 @@ def getHumidities(date1, date2):
     
     try:
         conn = pymongo.MongoClient()
-        print ('[MySprinkler2] Connected to MongoDB')
+        print ('[SSS][GET_WEATHERS][GET_HUMIDITY] Connected to MongoDB')
         db = conn.sprinkler
         collection = db.forecasts
         
@@ -113,7 +114,7 @@ def getHumidities(date1, date2):
         for f in forecasts:
             result.append(float(f['humidity']['value']))
     except pymongo.errors.ConnectionFailure, e:
-        print ('[MySprinkler2] MongoDB Connection Failure')
+        print ('[SSS][GET_WEATHERS][GET_HUMIDITY] MongoDB Connection Failure')
         
     return result
 

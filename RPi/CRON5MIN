@@ -1,0 +1,2 @@
+#!/bin/sh
+python /home/pi/Workspace/_cron_5min.py &

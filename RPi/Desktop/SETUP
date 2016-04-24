@@ -1,0 +1,16 @@
+#!/bin/sh
+python /home/pi/Workspace/_setup.py
+
+echo "\n\n/**********************************************************/"
+echo "/**********************************************************/"
+echo "  "
+echo "\tPlease wait, It will automatically open a web Application."
+./SSS
+echo "\tNow you may close this window."
+echo "\tIt will automatically close it after a minute."
+echo "  "
+echo "/**********************************************************/"
+echo "/**********************************************************/\n\n"
+
+sleep 1m
+#rm /home/pi/Desktop/*.txt
