@@ -136,7 +136,7 @@ $(document).ready(function(){
         var currDatePlus10 = new Date(currDate.getTime() + 10*60000);
         var sDate = datepair.getStartTime();
         var eDate = datepair.getEndTime();
-        if(currDatePlus10 >= sDate || sDate >= eDate)
+        if(/*currDatePlus10*/currDate >= sDate || sDate >= eDate)
             $("#invalidTime").show();
         else
             $("#invalidTime").hide();
@@ -146,7 +146,7 @@ $(document).ready(function(){
         else
             $("#invalidZones").hide();
 
-        if(currDatePlus10 < sDate && zonesClicked.length != 0 && sDate != eDate && sDate < eDate){
+        if(/*currDatePlus10*/currDate < sDate && zonesClicked.length != 0 && sDate != eDate && sDate < eDate){
             $("#addModal").modal('hide');
             var event = {
                 sTime: Math.round(sDate.getTime()/1000.0),
