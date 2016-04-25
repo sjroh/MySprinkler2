@@ -136,7 +136,7 @@ $(document).ready(function(){
         var currDatePlus10 = new Date(currDate.getTime() + 10*60000);
         var sDate = datepair.getStartTime();
         var eDate = datepair.getEndTime();
-        if(/*currDatePlus10*/currDate >= sDate || sDate >= eDate)
+        if(currDatePlus10 >= sDate || sDate >= eDate)
             $("#invalidTime").show();
         else
             $("#invalidTime").hide();
