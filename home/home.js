@@ -206,7 +206,7 @@ function loadProgressBar(settingsJson){
     } else{
         inchesNeed = settingsJson.customLvl;
     }
-    console.log("printing1:" + settingsJson.watered.wateredAmt);
+    console.log("printing1:" + inchesNeed);
     console.log("printing2:" + (settingsJson.watered.wateredAmt/inchesNeed)*100);
     var widthWater = (settingsJson.watered.wateredAmt/inchesNeed)*100;
     $("#wateringProgress").css("width", widthWater.toString() + "%");
