@@ -204,7 +204,7 @@ function loadProgressBar(settingsJson){
     } else if(settingsJson.currLevel == "Low"){
         inchesNeed = .5;
     } else{
-        inchesNeed = settingsJson.customLvl;
+        inchesNeed = settingsJson.custom.customLvl;
     }
     console.log("printing1:" + inchesNeed);
     console.log("printing2:" + (settingsJson.watered.wateredAmt/inchesNeed)*100);
