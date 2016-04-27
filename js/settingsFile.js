@@ -106,7 +106,8 @@ function createSettingsFile(){
             },
             "weekStart": dayStart,
             "conversionRate": 1.0,
-            "zones": zoneNum
+            "zones": zoneNum,
+            "timezone": "America/Chicago"
         };
         insertFileInApplicationDataFolder(settings, "settings.txt");
         localStorage.setItem("settings", JSON.stringify(settings));
